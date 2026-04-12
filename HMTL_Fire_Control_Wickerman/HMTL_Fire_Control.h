@@ -37,14 +37,9 @@
                                 // and one pilot, plus optional HMTL controller for lights.
 
 #ifndef CONTROL_MODE
-  #define CONTROL_MODE CONTROL_SINGLE_DOUBLE
+  //#define CONTROL_MODE CONTROL_SINGLE_DOUBLE
+  #define CONTROL_MODE CONTROL_SINGLE_QUINT
 #endif
-
-// TODO: Remove before commit
-#define OBJECT_TYPE OBJECT_TYPE_TOUCH_CONTROLLER  // TODO: Remove before commit
-#define CONTROL_MODE CONTROL_SINGLE_QUINT         // TODO: Remove before commit
-// TODO: Remove before commit
-
 
 // LCD display
 extern LiquidCrystal lcd;
@@ -144,15 +139,46 @@ void handle_sensors();
   #define SENSOR_DISPLAY_MODE             SENSOR_LCD_NEXT
 
 #elif OBJECT_TYPE == OBJECT_TYPE_FIRE_CONTROLLER
-  #define POOFER1_POOF1_QUICK_SENSOR   3
-  #define POOFER1_POOF1_LONG_SENSOR    2
-  #define POOFER1_POOF2_QUICK_SENSOR   0
-  #define POOFER1_POOF2_LONG_SENSOR    1
-
+  #define SENSOR_FAR_LEFT              0
+  #define SENSOR_MID_LEFT              1
+  #define SENSOR_MID_RIGHT             2
+  #define SENSOR_FAR_RIGHT             3
   #define SENSOR_EXTERNAL_1            4
   #define SENSOR_EXTERNAL_2            5
   #define SENSOR_EXTERNAL_3            6
   #define SENSOR_EXTERNAL_4            7
+
+
+  #if CONTROL_MODE == CONTROL_SINGLE_QUINT
+    /* Normal mode switches */
+    #define POOFER1_QUICK_SENSOR          SENSOR_FAR_LEFT
+    #define POOFER2_QUICK_SENSOR          SENSOR_MID_LEFT
+    #define POOFER3_QUICK_SENSOR          SENSOR_MID_RIGHT
+    #define POOFER4_QUICK_SENSOR          SENSOR_FAR_RIGHT
+    #define POOFER5_QUICK_SENSOR          SENSOR_EXTERNAL_1
+
+    #define POOFER1_LONG_SENSOR           SENSOR_EXTERNAL_3
+    #define POOFER2_LONG_SENSOR           SENSOR_EXTERNAL_4
+    #define POOFER3_LONG_SENSOR           -1
+    #define POOFER4_LONG_SENSOR           -1
+    #define POOFER5_LONG_SENSOR           SENSOR_EXTERNAL_2
+
+    #define POOFER_PROGRAM_1_SENSOR       SENSOR_FAR_LEFT
+    #define POOFER_PROGRAM_2_SENSOR       SENSOR_MID_LEFT
+
+    /* Replace the "lights on" switch with a programming mode switch */
+    #define PROGRAM_MODE_SWITCH           3
+    #define LIGHTS_ON_SWITCH             -1
+
+    /* Programming mode sensors */
+    #define POOFER_PROGRAM_A_SENSOR       0
+  #else
+
+    #define POOFER1_POOF1_QUICK_SENSOR   3
+    #define POOFER1_POOF1_LONG_SENSOR    2
+    #define POOFER1_POOF2_QUICK_SENSOR   0
+    #define POOFER1_POOF2_LONG_SENSOR    1
+  #endif
 
   #define SENSOR_LCD_LEFT              9
   #define SENSOR_LCD_UP                8
