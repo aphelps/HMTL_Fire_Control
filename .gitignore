@@ -5,3 +5,6 @@ cscope.*
 .pioenvs
 .sconsign.dblite
 .pio
+.idea
+CMakeLists.txt
+cmake-build-debug
