@@ -16,8 +16,14 @@
 
 #include "EEPROM.h"
 #include <RS485_non_blocking.h>
-#include <SoftwareSerial.h>
-#include "LiquidCrystal.h"
+#ifndef ESP32
+  #include <SoftwareSerial.h>
+#endif
+#ifdef ESP32
+  #include <LiquidCrystal_I2C.h>
+#else
+  #include "LiquidCrystal.h"
+#endif
 
 #include "SPI.h"
 #include "FastLED.h"
@@ -54,7 +60,11 @@ TimeSync timesync;
 #define HMTL_FIRE_CONTROL_BUILD 7 // %META INCR
 
 //LiquidTWI lcd(0); ??? Why isn't this used?
-LiquidCrystal lcd(0);
+#ifdef ESP32
+  LiquidCrystal_I2C lcd(0x27, 16, 2); // I2C addr 0x27 or 0x3F — verify with I2C scan
+#else
+  LiquidCrystal lcd(0);
+#endif
 
 MPR121 touch_sensor; // MPR121 must be initialized after Wire.begin();
 uint16_t my_address = 0;
@@ -87,8 +97,12 @@ void setup() {
 #endif
   DEBUG2_VALUELN("* Baud is ", BAUD);
 
-  /* Initialize random see by reading from an unconnected analog pin */
+  /* Initialize random seed */
+#ifdef ESP32
+  randomSeed(esp_random());
+#else
   randomSeed(analogRead(0) + analogRead(2) + micros());
+#endif
 
   /* Initialize display */
   initialize_display();
@@ -131,6 +145,9 @@ void setup() {
   byte num_sockets = 0;
 
   /* Setup the RS485 connection */
+#ifdef ESP32
+  Serial2.begin(RS485Socket::DEFAULT_BAUD, SERIAL_8N1, 16, 17);
+#endif
   rs485.setup();
   rs485.initBuffer(rs485_data_buffer, SEND_BUFFER_SIZE);
   sockets[num_sockets++] = &rs485;

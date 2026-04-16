@@ -11,7 +11,11 @@
 #include "MPR121.h"
 #include "PixelUtil.h"
 //#include <LiquidTWI.h>
-#include "LiquidCrystal.h"
+#ifdef ESP32
+  #include <LiquidCrystal_I2C.h>
+#else
+  #include "LiquidCrystal.h"
+#endif
 #include "TimeSync.h"
 
 #define BAUD 115200
@@ -42,7 +46,11 @@
 #endif
 
 // LCD display
-extern LiquidCrystal lcd;
+#ifdef ESP32
+  extern LiquidCrystal_I2C lcd;
+#else
+  extern LiquidCrystal lcd;
+#endif
 void update_lcd();
 void initialize_display();
 
@@ -61,10 +69,18 @@ extern TimeSync timesync;
 extern uint32_t sensor_state;
 
 /* Physical pins for the rocker switches */
-#define SWITCH_PIN_1 5
-#define SWITCH_PIN_2 6
-#define SWITCH_PIN_3 9
-#define SWITCH_PIN_4 10
+#ifndef SWITCH_PIN_1
+  #define SWITCH_PIN_1 5
+#endif
+#ifndef SWITCH_PIN_2
+  #define SWITCH_PIN_2 6
+#endif
+#ifndef SWITCH_PIN_3
+  #define SWITCH_PIN_3 9
+#endif
+#ifndef SWITCH_PIN_4
+  #define SWITCH_PIN_4 10
+#endif
 
 void initialize_switches();
 void sensor_switches();
