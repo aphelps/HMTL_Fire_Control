@@ -950,11 +950,16 @@ void handle_sensors() {
 }
 
 void initialize_display() {
+#ifdef ESP32
+  lcd.init();
+  lcd.backlight();
+#else
   lcd.begin(16, 2);
+  lcd.setBacklight(HIGH);
+#endif
 
   lcd.setCursor(0, 0);
   lcd.print("Initializing");
-  lcd.setBacklight(HIGH);
 }
 
 

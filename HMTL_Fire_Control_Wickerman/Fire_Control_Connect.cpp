@@ -9,7 +9,9 @@
 #include <Arduino.h>
 #include "EEPROM.h"
 #include <RS485_non_blocking.h>
-#include <SoftwareSerial.h>
+#ifndef ESP32
+  #include <SoftwareSerial.h>
+#endif
 #include "SPI.h"
 #include "Wire.h"
 #include "FastLED.h"
