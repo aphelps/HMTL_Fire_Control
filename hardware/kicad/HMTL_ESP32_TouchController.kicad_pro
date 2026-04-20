@@ -1,0 +1,15 @@
+{
+  "meta": {"filename": "HMTL_ESP32_TouchController.kicad_pro", "version": 1},
+  "schematic": {
+    "annotate_start_num": 0,
+    "drawing": {"default_line_thickness": 6, "default_text_size": 50,
+      "field_names": [], "junction_size_choice": 3,
+      "label_size_ratio": 0.25, "pin_symbol_size": 0,
+      "text_offset_ratio": 0.08},
+    "legacy_lib_dir": "", "legacy_lib_list": [],
+    "net_format_name": "", "ngspice_settings": {},
+    "page_layout_descr_file": "",
+    "plot_directory": ""
+  },
+  "boards": [], "sheets": [], "text_variables": {}
+}
