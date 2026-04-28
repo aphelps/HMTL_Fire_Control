@@ -477,6 +477,7 @@ LIB_SYMS = [
     ("power",               "GND"),
     ("power",               "+3.3V"),
     ("power",               "+5V"),
+    ("power",               "PWR_FLAG"),
 ]
 
 # ─── Place all components ─────────────────────────────────────────────────────
@@ -512,6 +513,7 @@ def build_elements():
     # GND: A1, B1, A12, B12, S1 — all same bottom position
     gndx, gndy = pp("Connector", "USB_C_Receptacle", "A1", J8X, J8Y)
     e(pwr("GND", gndx, gndy))
+    e(pwr_flag(gndx, gndy))   # GND net driven by USB connector (passive pins)
     shx, shy = pp("Connector", "USB_C_Receptacle", "S1", J8X, J8Y)
     e(pwr("GND", shx, shy))
     # CC1/CC2 (A5, B5): no_connect (no CC resistors in this USB2.0-only design)
@@ -531,6 +533,7 @@ def build_elements():
     f1p2x, f1p2y = pp("Device", "Polyfuse", "2", F1X, F1Y, 90)
     e(glabel("VBUS_RAW", f1p1x, f1p1y, "input", 180))
     e(glabel("VBUS",     f1p2x, f1p2y, "output"))
+    e(pwr_flag(f1p2x, f1p2y))   # VBUS net driven by USB connector (passive pins)
 
     # D1 USBLC6-2SC6 ESD clamp
     D1X, D1Y = 22, 55
@@ -1020,6 +1023,7 @@ def build_elements():
     u7vcc_x, u7vcc_y = pp("74xx", "74AHCT125", "14", U7EX, U7EY)
     u7gnd_x, u7gnd_y = pp("74xx", "74AHCT125", "7",  U7EX, U7EY)
     e(pwr("+5V", u7vcc_x, u7vcc_y))
+    e(pwr_flag(u7vcc_x, u7vcc_y))  # +5V net driven by VBUS/connector (passive pins)
     e(pwr("GND", u7gnd_x, u7gnd_y))
 
     # C12 +5V bypass cap near 74AHCT125 (vertical)

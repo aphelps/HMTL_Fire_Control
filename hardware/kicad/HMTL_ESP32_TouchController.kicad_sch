@@ -2,7 +2,7 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid "c776ad97-96bb-4822-b3c1-62c915828a3e")
+	(uuid "3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b")
 	(paper "A3")
 	(title_block
 		(title "HMTL ESP32 Touch Controller")
@@ -6048,6 +6048,107 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:PWR_FLAG"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Custom:ESP32-WROOM-32E"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -6482,7 +6583,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "363be102-c0cf-4e8c-8d5f-f3bf6e0c80de")
+		(uuid "828cf018-8aaa-4385-8a8a-9721fb8d6add")
 		(property "Reference" "J8"
 			(at 22.00 33.00 0)
 			(effects
@@ -6518,83 +6619,83 @@
 			)
 		)
 		(pin "A1"
-			(uuid "c72d57d2-6af4-4bb6-ad66-e2fe00e55dd4")
+			(uuid "291aecb5-8aef-45b9-a1c7-8ed2cddaffeb")
 		)
 		(pin "A2"
-			(uuid "77121563-0758-42a8-a740-9cb8db101c07")
+			(uuid "525fad87-4330-44f4-9182-3ffcb33e6d82")
 		)
 		(pin "A3"
-			(uuid "b3697230-2a24-4fc2-8c51-2f42eb2d2209")
+			(uuid "de67efae-0861-42e7-8615-a436e660d28c")
 		)
 		(pin "A4"
-			(uuid "3ddd56a5-4ce5-4228-9140-d600d1d251c4")
+			(uuid "f74a4e6a-0684-44a3-8e22-b5d7bff6c491")
 		)
 		(pin "A5"
-			(uuid "66e4b280-9f02-4af0-abb2-93a69096d9cb")
+			(uuid "9bc9c4d3-e581-41d1-a358-b3d45cbe783d")
 		)
 		(pin "A6"
-			(uuid "501d41d4-359c-4cd6-ade6-7b5bc89bae68")
+			(uuid "5b033ab4-1281-487f-a772-9aff8d343c32")
 		)
 		(pin "A7"
-			(uuid "77c6093c-20e3-4f00-9fcb-bf545b3002db")
+			(uuid "b6a340fc-2fee-4835-9ce2-e51f25bb2b75")
 		)
 		(pin "A8"
-			(uuid "092f790f-9164-49ff-b58b-86e4c3d66b57")
+			(uuid "5f7125e1-03c9-4eb5-9de7-b31e5dfd9ba2")
 		)
 		(pin "A9"
-			(uuid "ae0c6f99-bc59-4895-8b5f-5d0e6c8ccb3a")
+			(uuid "526540d3-593a-4ace-90a9-7544c266f913")
 		)
 		(pin "A10"
-			(uuid "902a5718-2b59-43a6-bd44-b9aaa8aeb5a5")
+			(uuid "21594314-4fe5-4be1-a65b-95c6816aa4a4")
 		)
 		(pin "A11"
-			(uuid "a0b1dbb6-a122-41fd-a9fa-d7077461af9b")
+			(uuid "17cb70d1-925a-4af3-9a9d-8634f7e74df0")
 		)
 		(pin "A12"
-			(uuid "1c48068c-edc4-416b-91a3-b4da59a4c59a")
+			(uuid "1bbaacbd-d20b-453c-a393-12cbcfef3d44")
 		)
 		(pin "B1"
-			(uuid "a5a7dfff-f217-4864-9363-dbd184714ff5")
+			(uuid "078a091d-70d5-40db-b7ef-3a4c740937d0")
 		)
 		(pin "B2"
-			(uuid "b37ce8b4-3297-4d28-9312-cc83c97d3259")
+			(uuid "c76b2738-f159-4c4f-b0c3-994315788d0e")
 		)
 		(pin "B3"
-			(uuid "a3c784fa-19ef-40b6-b6cc-b0059bc804b1")
+			(uuid "fafdc678-dad7-4f08-9631-816f0c37d53a")
 		)
 		(pin "B4"
-			(uuid "ae29cb65-9876-4d5e-810c-f22155e52d66")
+			(uuid "276f6ddf-cef0-4e74-941c-fd57787d892d")
 		)
 		(pin "B5"
-			(uuid "3ea056af-57c7-4b98-8bfb-968d6c67985d")
+			(uuid "fbb6ab24-c7b2-4c5c-b513-39444ee58556")
 		)
 		(pin "B6"
-			(uuid "43033a31-bdc1-4c16-98d6-b70ddec2862d")
+			(uuid "20a1e9f0-ae68-4e55-8d8d-9418e13e7eea")
 		)
 		(pin "B7"
-			(uuid "1615fbc6-f616-4fc1-9815-59d337715f8a")
+			(uuid "3638a1c6-fa46-480a-ba72-31adfe67ba30")
 		)
 		(pin "B8"
-			(uuid "46933b37-365b-47bb-9cf4-074c6bbd5eef")
+			(uuid "a30af40c-a6c5-4165-9f72-b34e1cacb881")
 		)
 		(pin "B9"
-			(uuid "2589a37c-d0d8-4a1c-be6a-870b2f4c7423")
+			(uuid "5511be05-8f97-458e-b39d-b16b3094ed2a")
 		)
 		(pin "B10"
-			(uuid "5e38941c-1a3d-4a49-b140-b7a00aba488a")
+			(uuid "18b1a699-f5f5-4ac6-914b-d9fccb664d33")
 		)
 		(pin "B11"
-			(uuid "c66e1456-e684-41b2-a18c-3cb615d6d45c")
+			(uuid "c48681f3-72a4-4fd2-8a2f-f484fc7ede6c")
 		)
 		(pin "B12"
-			(uuid "c6687786-e213-49e7-a1ff-c3bd67a552ea")
+			(uuid "16f22edf-e2b7-45f9-8a98-4342601658cf")
 		)
 		(pin "S1"
-			(uuid "0e31684a-ff91-4749-9a38-4155f53ce642")
+			(uuid "a3174e6b-8333-48c8-96b3-482b900eda9a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "J8")
 					(unit 1)
 				)
@@ -6608,7 +6709,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "c0c9c8ee-38ad-4b34-a201-69cb06e00ee4")
+		(uuid "6486e144-aa38-43f9-a4cb-16b6999a2e4a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -6621,7 +6722,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "34268315-5963-47ca-82d5-f3abf61123fe")
+		(uuid "2f0578dc-8754-4412-af88-882fbd5a41c5")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -6634,7 +6735,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "8aaa9f47-a6d0-4b19-90da-713edd2f83ed")
+		(uuid "633f44f9-15c3-4a3c-81e2-1f8869684fbf")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -6647,7 +6748,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "8625d564-4a53-4353-938e-5a1d4d9f8f6a")
+		(uuid "dc986815-2fbb-4869-ae72-cd7a277a7d05")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -6660,7 +6761,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "44c16dad-2990-4f62-bde6-dbb9e72a64a0")
+		(uuid "7e67cc5b-6ef7-4205-aea0-33d2603b9a34")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -6674,7 +6775,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "542b87cb-9e89-4046-889b-fb000ae299c4")
+		(uuid "fcf76799-4005-46b3-bdad-fa773bfda4ee")
 		(property "Reference" "#PWR002"
 			(at 22.00 73.64 0)
 			(effects
@@ -6693,12 +6794,67 @@
 			)
 		)
 		(pin "1"
-			(uuid "cc996380-99c5-4282-a981-1a83803dc632")
+			(uuid "e94329c6-7713-4bb3-91ce-252c0265712e")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "#PWR002")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 22.00 75.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "49c58925-9f79-4710-bf52-2756afc2c878")
+		(property "Reference" "#FLG003"
+			(at 22.00 73.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 22.00 77.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 22.00 75.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 22.00 75.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d583fdca-27de-4934-a4d7-c69bab84c839")
+		)
+		(instances
+			(project "HMTL_ESP32_TouchController"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#FLG003")
 					(unit 1)
 				)
 			)
@@ -6712,8 +6868,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e1222758-52fd-46f0-85d9-015392e6889d")
-		(property "Reference" "#PWR003"
+		(uuid "33e3effb-3d6b-403f-a8fb-111bc16a5a99")
+		(property "Reference" "#PWR005"
 			(at 14.38 73.64 0)
 			(effects
 				(font
@@ -6731,12 +6887,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "10671b66-53c1-4f16-a2f9-6604d092856f")
+			(uuid "be0f4a99-c74e-435d-995d-6b7f24816627")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR003")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR005")
 					(unit 1)
 				)
 			)
@@ -6744,51 +6900,51 @@
 	)
 	(no_connect
 		(at 37.24 14.68)
-		(uuid "460fcd36-0a95-4854-afce-4722764bd08f")
+		(uuid "d9f1e880-0296-4a44-abac-08e49323fea4")
 	)
 	(no_connect
 		(at 37.24 17.22)
-		(uuid "519fe9fc-2023-481c-9250-fa4a649044b7")
+		(uuid "35211695-3e2b-401c-a4cf-3a3ac1811011")
 	)
 	(no_connect
 		(at 37.24 45.16)
-		(uuid "041cc37f-702a-4f21-88af-b269b50a9e78")
+		(uuid "30a4cd6a-35c8-409d-89b7-2fd01774c7fd")
 	)
 	(no_connect
 		(at 37.24 42.62)
-		(uuid "6bcba4f5-fba5-4bf2-b9f9-4c07fb264cc5")
+		(uuid "6c2b59f4-332d-4504-a4d4-053f1f0cfcad")
 	)
 	(no_connect
 		(at 37.24 65.48)
-		(uuid "c0e1c507-181b-438e-af00-a091a87fa7db")
+		(uuid "19daa370-ab3e-4e54-95c6-9e07c9379286")
 	)
 	(no_connect
 		(at 37.24 50.24)
-		(uuid "7df5bbe3-b69a-4ce6-8580-7f346845be39")
+		(uuid "49785264-782a-4650-b633-ec420222f0ec")
 	)
 	(no_connect
 		(at 37.24 52.78)
-		(uuid "e0bb6e4b-aa22-4b24-9ee7-ed26264b3884")
+		(uuid "968088b7-c8df-499b-8eea-3d6287c7e26f")
 	)
 	(no_connect
 		(at 37.24 60.40)
-		(uuid "e85a3169-11aa-47e3-b864-0cee91726afa")
+		(uuid "0d748dfe-8171-4b9b-993f-0f294f8a66af")
 	)
 	(no_connect
 		(at 37.24 57.86)
-		(uuid "11640336-fa76-4314-a200-d06d1393ceb0")
+		(uuid "bb67f1ec-6444-40c9-ab10-3723adee18cf")
 	)
 	(no_connect
 		(at 37.24 68.02)
-		(uuid "41d6e46f-d2e1-40b2-b51f-21456e8c4309")
+		(uuid "be660ab1-466e-45f9-89c5-b5482d132f10")
 	)
 	(no_connect
 		(at 37.24 35.00)
-		(uuid "49251086-9329-4d67-ba0e-8327ed3934f0")
+		(uuid "e064e082-1ce5-4d23-81cf-e610d7418866")
 	)
 	(no_connect
 		(at 37.24 37.54)
-		(uuid "424e03ac-58b5-4641-89db-da7b9d0a0741")
+		(uuid "6759bba6-d2f4-4455-8e15-ef14e9d459d7")
 	)
 	(symbol
 		(lib_id "Device:Polyfuse")
@@ -6798,7 +6954,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f8e91061-3395-4629-b4e5-0f2cad7c7854")
+		(uuid "903f8e89-37de-4587-b824-68a4d5c68a20")
 		(property "Reference" "F1"
 			(at 48.00 20.00 90)
 			(effects
@@ -6843,14 +6999,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "50d55782-c084-40a7-b5ce-9d9fc56bca93")
+			(uuid "ec5bd127-e3c2-409c-9f7e-033a666fb8fe")
 		)
 		(pin "2"
-			(uuid "792268fb-98ab-4ac7-a731-d4c3de144fe3")
+			(uuid "d49f2d9d-0af8-469a-b569-7cfb9d78e740")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "F1")
 					(unit 1)
 				)
@@ -6864,7 +7020,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "b3ae6b6f-048f-405b-85db-a929c0915c7b")
+		(uuid "d4a29471-f5c4-47a5-88f5-8567c2276e79")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -6877,10 +7033,65 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "a315f796-887c-426b-8175-a96b5312a890")
+		(uuid "81de287c-2e79-43be-af13-b98449fdc504")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 51.81 22.00 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "67f232b7-8be0-4bf0-8a7f-647d4edcd7df")
+		(property "Reference" "#FLG007"
+			(at 51.81 20.00 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 51.81 24.00 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 51.81 22.00 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 51.81 22.00 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4829259a-60a3-48ee-9b92-93dadcf952e2")
+		)
+		(instances
+			(project "HMTL_ESP32_TouchController"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#FLG007")
+					(unit 1)
+				)
+			)
 		)
 	)
 	(symbol
@@ -6891,7 +7102,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1ccf8e76-7601-4a14-b65f-f2e6ac23a0d5")
+		(uuid "c24fa14b-0e78-4628-b872-0015056d302c")
 		(property "Reference" "D1"
 			(at 22.00 53.00 0)
 			(effects
@@ -6936,26 +7147,26 @@
 			)
 		)
 		(pin "1"
-			(uuid "40f0d247-b14d-422f-85d3-b1f6fae75fc6")
+			(uuid "c64769e6-a283-4d07-9492-ed9f29f977f7")
 		)
 		(pin "2"
-			(uuid "20e48639-d204-4b63-8772-c237af82470d")
+			(uuid "ba883f5d-522a-4183-bb2e-3c7e4607fc66")
 		)
 		(pin "3"
-			(uuid "ea458713-603a-40e5-aa2c-71afe2a8dce6")
+			(uuid "34b5e1b9-16e9-4ccf-9e34-3cc2de9848ce")
 		)
 		(pin "4"
-			(uuid "40088095-0cf7-4509-b314-f83755e1cb87")
+			(uuid "24bfa8cc-8544-449f-85fb-863dab5ad558")
 		)
 		(pin "5"
-			(uuid "1e0ad41d-fc14-4eae-bd91-a4679dd0d414")
+			(uuid "84a83770-7ba0-40b1-862b-bf9821b832ec")
 		)
 		(pin "6"
-			(uuid "1bb4517d-aaa8-4368-a1ce-cff19bca5240")
+			(uuid "96935bbb-68bb-4b4c-bd11-3e393edcae08")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "D1")
 					(unit 1)
 				)
@@ -6969,7 +7180,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "d79f2d9c-6304-421a-a21e-a49b0c5d49da")
+		(uuid "9e5ae781-96ea-463f-a240-0b745615a50a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -6982,7 +7193,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "3b317f14-1501-4efe-bba7-f400ea5872b1")
+		(uuid "e913155c-9280-4d54-aadc-a179e9e47254")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -6995,7 +7206,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "50b5913a-89ff-46b9-a923-bdda113b3197")
+		(uuid "c846ef5b-b7fb-4fcf-a61b-cce72142691b")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7008,7 +7219,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "32891cce-e850-4301-8b87-6e07d8ea6b0e")
+		(uuid "dbe65f89-4115-41c7-811e-220a851bb39c")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7021,7 +7232,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "4618bdc1-ea20-42c5-8aa9-175a1907a502")
+		(uuid "2d8cd79f-9f21-4d65-9452-7acb6f16eca1")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7035,8 +7246,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "7c266b0f-7a70-41cc-b530-a091b5d1b9d1")
-		(property "Reference" "#PWR006"
+		(uuid "e5904ab9-b391-4ce6-a598-630f5cdcf586")
+		(property "Reference" "#PWR010"
 			(at 22.00 60.62 0)
 			(effects
 				(font
@@ -7054,12 +7265,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "81a4d431-c939-4f5c-9ddf-6acc73ff55c9")
+			(uuid "84e206e0-01cf-46d7-8b32-8a66506e9fc2")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR006")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
@@ -7073,7 +7284,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d38ddcbd-b8aa-4f29-a2f9-cd77fb1bc1d9")
+		(uuid "4cb4b133-cfa5-408f-9f75-50cf64aa3411")
 		(property "Reference" "R1"
 			(at 52.00 46.00 90)
 			(effects
@@ -7118,14 +7329,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "7752a33c-6cfd-4d2d-b53a-943fdcb7e4cb")
+			(uuid "ea383b06-07bc-42f5-806e-0666f84947df")
 		)
 		(pin "2"
-			(uuid "d60dbcd6-b5fe-4e5d-89cc-23df473e33cb")
+			(uuid "a14cd3a6-f78a-4941-a1b5-3cbe76d859f6")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R1")
 					(unit 1)
 				)
@@ -7140,7 +7351,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "5ea080ff-0ac1-4084-a704-23b7c7b6a41a")
+		(uuid "2a49e481-6162-465e-a284-c5788debb734")
 		(property "Reference" "R2"
 			(at 52.00 56.00 90)
 			(effects
@@ -7185,14 +7396,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "9f2fadd5-7b12-4947-ba9a-730331762393")
+			(uuid "539d3474-fe83-4da7-b15d-2b57acb96455")
 		)
 		(pin "2"
-			(uuid "88467afb-983d-451e-9588-6cde111c61c5")
+			(uuid "d9544246-82e2-436e-aabf-aca14cecc6d6")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R2")
 					(unit 1)
 				)
@@ -7206,7 +7417,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "3070e628-c287-44f2-afe6-ce68c9318cd5")
+		(uuid "cb40ddd7-065b-4abb-844c-6653fbe11d5a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7219,7 +7430,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "7b61c81c-0c99-469c-b8f0-a39b00ea5ba8")
+		(uuid "6d1248ba-dfab-45b7-8dc8-f68f9e6e1cc3")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7232,7 +7443,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "3a397517-fecc-44e5-8ca8-79557ebd4ab4")
+		(uuid "10c1b1c8-fd9f-46a1-998d-030fb9d899c6")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7245,7 +7456,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "3756282d-3e64-405c-82f0-db8c91a85c70")
+		(uuid "c117363c-a419-41e4-b146-099f3f617a5d")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7259,7 +7470,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "2373a9ee-7406-41a9-b98d-56844ed5ca51")
+		(uuid "66084f66-0153-4a72-8e74-d57b7b47d74e")
 		(property "Reference" "U2"
 			(at 90.00 48.00 0)
 			(effects
@@ -7304,95 +7515,95 @@
 			)
 		)
 		(pin "1"
-			(uuid "a711ff0c-7e15-4033-9ebc-bc9e7b097b58")
+			(uuid "916a956c-363e-46f8-8545-dae99bd53982")
 		)
 		(pin "2"
-			(uuid "fa2bb486-6c24-4dd5-88f3-d9a59c42c008")
+			(uuid "9d39f384-1aae-4ac3-a4c7-d111d7435ada")
 		)
 		(pin "3"
-			(uuid "bf027457-1634-420c-a7a2-8e625e1335ec")
+			(uuid "46865670-2b33-435f-9adc-0951fb14a8b7")
 		)
 		(pin "4"
-			(uuid "30cc036c-300e-435d-acd1-a1f75c15c632")
+			(uuid "5133bee8-063e-4437-bd8e-b9d30ecadbd4")
 		)
 		(pin "5"
-			(uuid "9bef8baf-c67a-41a8-8a9d-bd4e18e933ce")
+			(uuid "b944ce33-b251-4886-9c77-43151905aa59")
 		)
 		(pin "6"
-			(uuid "ed45e099-7dcf-468f-9445-6f4728b4a13e")
+			(uuid "1a602b5d-67e0-4abb-ad42-12e55b50b56c")
 		)
 		(pin "7"
-			(uuid "d8565b4c-4f28-422b-9548-861531897f3a")
+			(uuid "b3738253-42ce-499e-83eb-b68d52592694")
 		)
 		(pin "8"
-			(uuid "b9f95e75-6051-4608-a795-5d202124c60d")
+			(uuid "9f731378-e7ad-4be8-969c-a6d8620fcda1")
 		)
 		(pin "9"
-			(uuid "0d3d021e-204c-4998-8073-75eb2a1a119e")
+			(uuid "4c1bb0a3-9ab9-4d9a-8c16-7128062d69ff")
 		)
 		(pin "10"
-			(uuid "85a9c484-7d38-47cc-9c1c-7fc4414ca60c")
+			(uuid "ebfe7d56-1cb7-48c1-9a7d-af7892baa48e")
 		)
 		(pin "11"
-			(uuid "9dd0dd59-d6ba-4c78-88e2-291e94472e50")
+			(uuid "7f7a6799-1aee-4d7d-b4f8-4de06f566361")
 		)
 		(pin "12"
-			(uuid "cd838f2f-7af6-47dd-840f-6e7241cf4d5f")
+			(uuid "cca648c8-2b3c-4ba1-9379-3b1e265314f5")
 		)
 		(pin "13"
-			(uuid "0309c0dd-2f69-4d1f-9fc2-f35231a1487b")
+			(uuid "1f476431-1a60-433c-b4a0-e171c2f01b71")
 		)
 		(pin "14"
-			(uuid "dae1002c-8e19-4a99-8863-8d3f17236684")
+			(uuid "ccdcece4-bd05-480f-ba39-8606774f9ac2")
 		)
 		(pin "15"
-			(uuid "af7186dd-e709-4006-a840-ad550a34c55a")
+			(uuid "fb6070ad-b879-48a3-b5ac-7ea505ec9ca9")
 		)
 		(pin "16"
-			(uuid "3fcd8f0d-1748-46be-88d0-f2d0e516dec2")
+			(uuid "243f4c2c-7975-479d-b145-34de9eb8677a")
 		)
 		(pin "17"
-			(uuid "cad9b9bb-782f-485f-ab96-9cd8d0c3f800")
+			(uuid "6c1b878f-8115-403c-ba65-f3413c084be4")
 		)
 		(pin "18"
-			(uuid "763c3c58-ee0c-471b-9bcc-64741bea504e")
+			(uuid "40c5a09d-332a-42ad-bef7-4f5dbf8c94b4")
 		)
 		(pin "19"
-			(uuid "b4a783ce-ed43-4798-b469-2422ea72d6c2")
+			(uuid "9d5a0074-2fb9-4352-9110-204610bf5a49")
 		)
 		(pin "20"
-			(uuid "69e3a0fd-1b02-479c-b34d-fd3e308ba8ef")
+			(uuid "a253c2a8-6e9b-454e-9e67-d153a4d133f1")
 		)
 		(pin "21"
-			(uuid "83e9cce4-398d-4ab6-b16f-b1d5e6b278a9")
+			(uuid "7de14fc6-d479-49b1-9a33-d33f1f4346d7")
 		)
 		(pin "22"
-			(uuid "4b450c00-426d-4455-a2bd-97c5a9208adc")
+			(uuid "63c3be27-cb4b-4a1a-9544-5396961326d4")
 		)
 		(pin "23"
-			(uuid "58a16a89-fe25-4b1c-83e9-45cd99d5c4d0")
+			(uuid "ad1d59f9-558f-4b43-af1b-cd71251acfc0")
 		)
 		(pin "24"
-			(uuid "2359ef91-3362-4f19-bba3-abcc952a6fda")
+			(uuid "f109dc84-88ed-46ee-ac27-42bbacf3d57b")
 		)
 		(pin "25"
-			(uuid "501a291d-2b6b-4826-a0e4-9c8de396b995")
+			(uuid "d6f374e6-aba2-436e-a0ef-913cea4cb787")
 		)
 		(pin "26"
-			(uuid "23a83ab2-7e3f-46e9-b6c2-732126c02561")
+			(uuid "9acfdb9f-40f3-4809-945c-095682b48967")
 		)
 		(pin "27"
-			(uuid "aa247852-1044-4efc-beb0-04f7bc6f581c")
+			(uuid "e6c8808b-08d7-48a9-b581-5ca567516076")
 		)
 		(pin "28"
-			(uuid "b65c7402-7c3d-4954-a43a-4250bb4ed656")
+			(uuid "2420937f-6fb6-45bf-95d8-f0fde072e4a0")
 		)
 		(pin "29"
-			(uuid "50e59784-de85-4ab1-84d6-87a1dcb90e85")
+			(uuid "34dd4dca-88d4-49ee-a0aa-a5721f1d8389")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "U2")
 					(unit 1)
 				)
@@ -7406,7 +7617,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "295f7930-4432-4573-aa66-b3a108b5d018")
+		(uuid "80d11348-6c89-4579-a380-5e93c9b68fbe")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7419,7 +7630,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "e1bf8eae-b805-41c3-bd4d-fb60d024ba50")
+		(uuid "b5de3704-2ccf-4425-8dfa-c5e82da05b57")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7432,7 +7643,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "db06b9f7-a2f4-4e7f-88c5-576ee93a8823")
+		(uuid "41000b6c-a84a-4d6f-b912-e524bd283d26")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7445,7 +7656,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "3db08fe4-b501-491f-91dc-c6b1eb16f46e")
+		(uuid "ccc88d03-f2b3-4994-8c57-4997d0e50bf1")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7459,8 +7670,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "aa6158d1-a088-4478-a8af-327616cb6a5d")
-		(property "Reference" "#PWR010"
+		(uuid "3e48541b-d20f-4cdd-92bd-6b6defdac333")
+		(property "Reference" "#PWR014"
 			(at 90.00 14.98 0)
 			(effects
 				(font
@@ -7478,12 +7689,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "6846bbae-6d71-4780-9832-4152903cd482")
+			(uuid "895b0c1a-578e-4de9-8d59-207ad26a44d0")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR010")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -7497,8 +7708,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0fd9ad78-1bd5-4b35-99fd-009efb0824b3")
-		(property "Reference" "#PWR011"
+		(uuid "6d015d57-c2ce-4033-a9ea-7a69f1abd064")
+		(property "Reference" "#PWR015"
 			(at 90.00 81.02 0)
 			(effects
 				(font
@@ -7516,12 +7727,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "92c59f07-06f4-4a95-a996-44b551ab8581")
+			(uuid "3ac2ed61-425b-441a-8c4c-26741de1c61c")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR011")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -7535,8 +7746,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "4e885f50-681b-4c12-9808-5408e372fab1")
-		(property "Reference" "#PWR012"
+		(uuid "cfe3551f-4c04-42ec-a0b0-72c6df3b4fdc")
+		(property "Reference" "#PWR016"
 			(at 87.46 14.98 0)
 			(effects
 				(font
@@ -7554,12 +7765,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "39d2a198-8448-4f84-9ebe-589031841658")
+			(uuid "f643bc08-894c-4630-b81b-fc2c20895281")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR012")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
@@ -7572,7 +7783,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "94c92d97-38f4-425e-9804-cf291fc406ad")
+		(uuid "33ddfcb8-7a5f-4e99-a866-245cac5d2454")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7586,8 +7797,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "cf79bd01-b15e-4aed-9d43-fb03b5a9cef2")
-		(property "Reference" "#PWR013"
+		(uuid "e7c358a3-0d32-41c4-aaf0-f97389332c6b")
+		(property "Reference" "#PWR017"
 			(at 77.30 20.06 0)
 			(effects
 				(font
@@ -7605,12 +7816,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "bd205572-6df9-454d-bc5a-0ad75418dea6")
+			(uuid "9602be2c-c017-423c-a6cf-efe03a9f328e")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR013")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -7618,79 +7829,79 @@
 	)
 	(no_connect
 		(at 102.70 37.30)
-		(uuid "ecf8d1f2-01f0-4258-a9b5-5559734b7377")
+		(uuid "207ba4de-b456-473a-84b8-5fb13356d888")
 	)
 	(no_connect
 		(at 102.70 39.84)
-		(uuid "f5916afe-47c7-4a61-8676-e9058943e4ee")
+		(uuid "7b3d54cd-9422-4846-b428-8fcaca078fbd")
 	)
 	(no_connect
 		(at 102.70 47.46)
-		(uuid "75c810e1-02f6-4388-8c08-9539d99d24db")
+		(uuid "5d288dbf-3e68-484c-a6b9-48fb2102b4f2")
 	)
 	(no_connect
 		(at 102.70 44.92)
-		(uuid "ff34537b-354a-4750-8608-335ecac5a2ee")
+		(uuid "fd45af37-4cad-47e9-b77c-1c17e5ea902f")
 	)
 	(no_connect
 		(at 102.70 72.86)
-		(uuid "b4859542-f956-471a-899c-f374632305d5")
+		(uuid "ee6f0b00-152e-486e-8725-443782c26de7")
 	)
 	(no_connect
 		(at 102.70 77.94)
-		(uuid "d160017e-99ca-4ad6-adf3-a6ea5c543146")
+		(uuid "7726ba7e-2e59-4162-9917-c66cbb50ec95")
 	)
 	(no_connect
 		(at 102.70 75.40)
-		(uuid "f945f141-f342-4afd-830d-36294a5482ef")
+		(uuid "ffd1e5f1-cc7c-4364-a5e2-916893591bf8")
 	)
 	(no_connect
 		(at 102.70 60.16)
-		(uuid "fd9730cd-825d-4762-bc47-762346f0541a")
+		(uuid "ee8ce7a4-a1bd-4e03-afb9-981c21256217")
 	)
 	(no_connect
 		(at 102.70 57.62)
-		(uuid "b9d65406-e5d3-4015-81ae-e1203b5e897e")
+		(uuid "2595e353-a918-47bb-b1f3-ee3b896e6883")
 	)
 	(no_connect
 		(at 102.70 55.08)
-		(uuid "1516f17a-ca41-48a2-8942-82da902e227d")
+		(uuid "449b9f59-7d56-4889-872d-1b79e24751f7")
 	)
 	(no_connect
 		(at 102.70 52.54)
-		(uuid "3dc737d2-5b9f-4156-a937-a0e16b78a7ab")
+		(uuid "3f6e5ca3-9d8a-4bb3-84a9-5c60802bef2e")
 	)
 	(no_connect
 		(at 102.70 67.78)
-		(uuid "04a3aee8-a84e-4ca4-8b17-0392df026c07")
+		(uuid "c5f70e2d-1067-4043-bcb8-574cc050eef3")
 	)
 	(no_connect
 		(at 102.70 65.24)
-		(uuid "5c7e5a7b-ce33-42c6-843d-8243460f5a67")
+		(uuid "44e985d3-b9f4-4d9f-b9a8-176c28992cf5")
 	)
 	(no_connect
 		(at 102.70 62.70)
-		(uuid "5ca09aa7-73e3-4289-b7fe-54144a7c5cf2")
+		(uuid "7c3644a8-53b5-4288-9ba1-88aeef7eef1d")
 	)
 	(no_connect
 		(at 102.70 29.68)
-		(uuid "cd871bcd-2dcf-4dce-ba61-3ad44479bfdc")
+		(uuid "07553510-fbc8-4047-9a13-ffe7b4ed51b6")
 	)
 	(no_connect
 		(at 102.70 27.14)
-		(uuid "28c9bf8c-a67c-4c59-8524-138f5be5c34c")
+		(uuid "057bd29d-1884-41bd-8194-976a3cb3c4b7")
 	)
 	(no_connect
 		(at 102.70 32.22)
-		(uuid "37d66f67-1d77-4d97-a0dc-251e57824a7d")
+		(uuid "aa70bc8b-8b26-48ef-b564-dd9d2397f580")
 	)
 	(no_connect
 		(at 102.70 34.76)
-		(uuid "a7102d44-cbe6-4867-880c-48e2b917d88e")
+		(uuid "5869fc65-ef43-4d9a-908b-ebfcdfbdccb4")
 	)
 	(no_connect
 		(at 90.00 83.02)
-		(uuid "4ba60c58-266c-41d3-8a0f-c7cb77fb6b13")
+		(uuid "d2f15503-c95a-4c95-92b4-250f9e1cc5ab")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -7700,7 +7911,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1c7f8544-d8cc-4a63-bc5a-fda5798cb42e")
+		(uuid "8f666b32-211b-429c-a2b9-b5b152c0b575")
 		(property "Reference" "C10"
 			(at 102.00 31.00 0)
 			(effects
@@ -7745,14 +7956,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "5757c2d6-5c2c-45c6-941e-a27f318bed29")
+			(uuid "ed9a08e6-f965-447d-8210-9051319e108f")
 		)
 		(pin "2"
-			(uuid "f806951d-fc42-4472-9114-540c6f408fe8")
+			(uuid "2530cf3a-f14b-4955-90b0-7a666a4fc126")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C10")
 					(unit 1)
 				)
@@ -7767,8 +7978,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "9d3f86c4-f193-41ae-9cbe-04a4698fadb1")
-		(property "Reference" "#PWR015"
+		(uuid "6432e7d0-26a2-4ede-b2ec-02806c254d42")
+		(property "Reference" "#PWR019"
 			(at 102.00 27.19 0)
 			(effects
 				(font
@@ -7786,12 +7997,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "5e34be76-0170-49e8-945d-4609912b276d")
+			(uuid "64f5b13f-f33e-43a6-adf4-bd5c15238ac9")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR015")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -7805,8 +8016,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "abcc623a-5cde-4135-9443-57ec17451308")
-		(property "Reference" "#PWR016"
+		(uuid "094d6fff-b0a3-4b4b-934a-16797ba9b6e5")
+		(property "Reference" "#PWR020"
 			(at 102.00 34.81 0)
 			(effects
 				(font
@@ -7824,12 +8035,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "81d9f3f6-5f43-4336-a02c-71c8cf851137")
+			(uuid "d30b52ec-352b-4e4b-acb6-fc30be73a229")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR016")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -7843,7 +8054,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ec1399e7-b665-4b4b-a7a6-23fc51d6f90a")
+		(uuid "ecd25123-9b8c-4e1d-a891-13bf53fb6df4")
 		(property "Reference" "U5"
 			(at 140.00 23.00 0)
 			(effects
@@ -7888,17 +8099,17 @@
 			)
 		)
 		(pin "1"
-			(uuid "8632296e-b5a3-4a52-a1ad-8239f7193970")
+			(uuid "5323f4cf-0597-4166-8458-8ae41d9c1df6")
 		)
 		(pin "2"
-			(uuid "52caf11e-3164-4bd0-b924-90ca268326d6")
+			(uuid "9bc8f9ba-3d94-419f-af18-8f02af5d355c")
 		)
 		(pin "3"
-			(uuid "7cc73a19-947e-4aa2-b433-d37233d2aa7e")
+			(uuid "f1edaf6d-6eed-4589-b786-9cc97b5638fc")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "U5")
 					(unit 1)
 				)
@@ -7912,7 +8123,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "f94c0f6d-0955-4713-b930-5a51acef8ba0")
+		(uuid "4db67913-fbb2-4f30-81d6-3e8752e35f3e")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -7926,8 +8137,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "7588661b-12bc-4733-87fb-a45541ad9815")
-		(property "Reference" "#PWR018"
+		(uuid "90698949-728e-49ff-ac53-51d82af1775e")
+		(property "Reference" "#PWR022"
 			(at 147.62 23.00 0)
 			(effects
 				(font
@@ -7945,12 +8156,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "18bf4d89-1f89-42af-b54c-93802b21e04a")
+			(uuid "93dd2fba-0b37-410c-bfc3-cf0b14a63ae0")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR018")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -7964,8 +8175,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f4f13cf9-1787-471c-8704-2e47264664ff")
-		(property "Reference" "#PWR019"
+		(uuid "6eff4134-a682-4905-b337-d69bf5f06bb8")
+		(property "Reference" "#PWR023"
 			(at 140.00 30.62 0)
 			(effects
 				(font
@@ -7983,12 +8194,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "8c864b7f-169a-46d5-a3eb-a1d24d2526be")
+			(uuid "3f26ce64-960b-43a5-af2f-3d7b53d35e2a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR019")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -8002,7 +8213,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f9f72fc2-e3ac-4771-8180-2d9ad37de032")
+		(uuid "9a10f4fd-4f41-480d-9276-8df3cc9f045e")
 		(property "Reference" "C7"
 			(at 128.00 23.00 0)
 			(effects
@@ -8047,14 +8258,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "f42b3a9a-1874-4a3f-8ace-45ab6c2fe2bb")
+			(uuid "d117bf72-8605-4e4d-915e-3a400ac46d17")
 		)
 		(pin "2"
-			(uuid "a5b3fb9b-2ebe-4a78-b373-7ebae4f2041e")
+			(uuid "64a8cd32-8b86-4ccb-801f-ec73cd3c839c")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C7")
 					(unit 1)
 				)
@@ -8068,7 +8279,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "4fb7e22c-b963-4be6-96d5-acbf1b0c1cef")
+		(uuid "96a351f0-6b38-43f3-b74f-d5f3e3d584c7")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -8082,8 +8293,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "6e0b8db1-d605-4d49-8cd8-fa0951028194")
-		(property "Reference" "#PWR021"
+		(uuid "44a78681-f971-4693-9b1e-1f24c10d89aa")
+		(property "Reference" "#PWR025"
 			(at 128.00 26.81 0)
 			(effects
 				(font
@@ -8101,12 +8312,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "09536c08-e14c-4c22-ab1f-e2ab484e7839")
+			(uuid "981bcbbf-e1bd-4965-9d12-74af576e8408")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR021")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -8120,7 +8331,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "8df1e31c-4682-4e2f-899a-0e8d2c114395")
+		(uuid "7a987ddd-a9d3-4332-8b0e-0628de93375b")
 		(property "Reference" "C8"
 			(at 162.00 20.00 0)
 			(effects
@@ -8165,14 +8376,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "472dd108-95ed-470c-8018-33213b65cbd7")
+			(uuid "69ef0f36-8a63-4d01-b0d1-37853021fa66")
 		)
 		(pin "2"
-			(uuid "aa57dd61-c036-46b5-b677-62bf90f827f6")
+			(uuid "030c5f64-97c6-4e51-8d35-b773e181703d")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C8")
 					(unit 1)
 				)
@@ -8187,8 +8398,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ffa2a71e-c47d-4f19-9479-834d5cb8108d")
-		(property "Reference" "#PWR023"
+		(uuid "e328b153-638b-4db2-9196-6af988fd3b58")
+		(property "Reference" "#PWR027"
 			(at 162.00 16.19 0)
 			(effects
 				(font
@@ -8206,12 +8417,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "aa3e8754-8bdb-4076-9c8a-0a170ad0caec")
+			(uuid "8009ff6e-af23-494f-94f7-1f5fdd91b85f")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR023")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR027")
 					(unit 1)
 				)
 			)
@@ -8225,8 +8436,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ad37a626-0e7c-43de-91bd-edf7230bef9a")
-		(property "Reference" "#PWR024"
+		(uuid "4abbee4a-b34a-4078-b57f-c68872cf4b2e")
+		(property "Reference" "#PWR028"
 			(at 162.00 23.81 0)
 			(effects
 				(font
@@ -8244,12 +8455,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "829f7726-b2bf-438b-9d2b-e253d404e412")
+			(uuid "d9a1a780-1bfa-4c09-8b32-1f480bf21656")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR024")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR028")
 					(unit 1)
 				)
 			)
@@ -8263,7 +8474,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "60bfbda2-3c79-4284-aeef-65a44dbe76c0")
+		(uuid "6e8f4b39-594b-41ba-afbe-02ceff9ec166")
 		(property "Reference" "C5"
 			(at 170.00 20.00 0)
 			(effects
@@ -8308,14 +8519,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "9c7059b0-289e-4290-a8eb-352d60eae108")
+			(uuid "0ad9872b-9ea3-4e8a-a63d-5b5428279d3b")
 		)
 		(pin "2"
-			(uuid "156e2d5d-457d-489a-9c5d-8f6ba7dc7e67")
+			(uuid "7e5fe248-7723-4e5a-843b-a4b387919f61")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C5")
 					(unit 1)
 				)
@@ -8330,8 +8541,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "cc406cd0-f8ad-4475-b680-7be8cfac2bff")
-		(property "Reference" "#PWR026"
+		(uuid "c1c8ef4c-84ba-4bb0-b2ee-8897e98327fb")
+		(property "Reference" "#PWR030"
 			(at 170.00 16.19 0)
 			(effects
 				(font
@@ -8349,12 +8560,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "5d64250b-7612-4ec8-9697-0af005a4564b")
+			(uuid "1ccb473e-4ee8-4805-ac28-c716ad6f9a3d")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR026")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR030")
 					(unit 1)
 				)
 			)
@@ -8368,8 +8579,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a9e68ec7-9116-49c3-87ef-4ffafd9354b5")
-		(property "Reference" "#PWR027"
+		(uuid "7f62ecc4-85ac-4419-b43b-afe398736ed0")
+		(property "Reference" "#PWR031"
 			(at 170.00 23.81 0)
 			(effects
 				(font
@@ -8387,12 +8598,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "2b1a28c5-82c9-4781-9526-dd2268820f34")
+			(uuid "41797323-3f55-4518-acc4-5e04feae1344")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR027")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR031")
 					(unit 1)
 				)
 			)
@@ -8406,7 +8617,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "bfaef7d9-ee4d-4184-9845-6a9bcd57c715")
+		(uuid "2cee229c-8d3b-4824-b3b4-1a5ecd4de788")
 		(property "Reference" "C6"
 			(at 178.00 20.00 0)
 			(effects
@@ -8451,14 +8662,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "73e25b58-406a-4e8c-89c9-b5dbdc5beb97")
+			(uuid "2e4817a2-9a2f-48b4-980d-d24287983ac9")
 		)
 		(pin "2"
-			(uuid "d7665cd4-f843-4cb5-ae6a-58cf082a7690")
+			(uuid "11a405a9-d606-4cd1-b6fe-cd9a83d66dd2")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C6")
 					(unit 1)
 				)
@@ -8473,8 +8684,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0c62dc0e-5f67-41d9-a754-b28eb27e1a92")
-		(property "Reference" "#PWR029"
+		(uuid "8934960a-5ff9-4362-84f8-740149d8e690")
+		(property "Reference" "#PWR033"
 			(at 178.00 16.19 0)
 			(effects
 				(font
@@ -8492,12 +8703,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "3e1d84cf-cd54-4d1a-bd76-ffd1b4ab906f")
+			(uuid "b6d02287-d16d-455b-b9ce-2a746dcb48b2")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR029")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -8511,8 +8722,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "cf7a6ae2-bf25-48ca-b1bd-6ff43629183c")
-		(property "Reference" "#PWR030"
+		(uuid "eb8c24f2-36c7-4ae9-8f21-f67532119416")
+		(property "Reference" "#PWR034"
 			(at 178.00 23.81 0)
 			(effects
 				(font
@@ -8530,12 +8741,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "7baaed9e-6f66-4a47-ab0e-0128dc01b77b")
+			(uuid "23b5a80c-d93a-4485-a58c-6e648896b915")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR030")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -8549,7 +8760,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a8af108b-c042-4b47-ac7c-00690e3e1724")
+		(uuid "3f30dcbb-7c3d-44f1-aa5c-2d21be40a2ae")
 		(property "Reference" "U1"
 			(at 200.00 138.00 0)
 			(effects
@@ -8594,125 +8805,125 @@
 			)
 		)
 		(pin "1"
-			(uuid "9836a753-a3de-46ad-ad4f-90c417c6dbe2")
+			(uuid "8c1c737d-2587-47ba-878c-1ea5d5f30dfc")
 		)
 		(pin "2"
-			(uuid "094d50e2-fbd3-4de0-a5a5-e826853a2e27")
+			(uuid "1b3625b6-8e2c-4151-861b-a1df5018af4c")
 		)
 		(pin "3"
-			(uuid "4c97f130-55ce-4d1e-ae09-9f5252f2f223")
+			(uuid "34228389-63c6-4c20-9414-8d499b41995d")
 		)
 		(pin "4"
-			(uuid "988227b5-3a18-4588-a1fa-741ed5beb541")
+			(uuid "cbaf58e8-5859-4194-a65f-54cc0dc6c55c")
 		)
 		(pin "5"
-			(uuid "f519285e-45b0-477f-8a8d-987ff1669b90")
+			(uuid "63ab1a23-596b-41b8-a156-7ed4ef3839b4")
 		)
 		(pin "6"
-			(uuid "aeb95122-963a-49a3-b534-1f729788973e")
+			(uuid "6f93209b-ca38-4a75-bd3a-0b739c5496b5")
 		)
 		(pin "7"
-			(uuid "bf00c1f7-34a0-4c9c-8510-0411fcb272c1")
+			(uuid "c8106f80-92bf-430f-9112-4879c611b334")
 		)
 		(pin "8"
-			(uuid "f1185ba0-c8f2-4f6c-999e-10d355ef0d2b")
+			(uuid "e73c9341-e7b0-4069-a5cc-38cec026bd53")
 		)
 		(pin "9"
-			(uuid "b884a6d1-9d45-411e-98d5-d573658467eb")
+			(uuid "777fead1-b488-4f4a-83f9-2bbb464c36c3")
 		)
 		(pin "10"
-			(uuid "f9b5575a-b587-4511-9b31-c3aec5bec7d0")
+			(uuid "305743ac-5c9c-470b-bbce-d5e124d8dc0a")
 		)
 		(pin "11"
-			(uuid "132fc41d-fe49-4946-a628-7c90fa15d16f")
+			(uuid "76f34bd9-3b14-42d8-8715-7b2c06c0b3ab")
 		)
 		(pin "12"
-			(uuid "d13a63e6-516d-4761-815a-a41c8ee2f89e")
+			(uuid "b6d6858b-9ce9-4701-817b-a24c2e10e912")
 		)
 		(pin "13"
-			(uuid "8e4f9663-6409-468e-a72d-34cf346efd13")
+			(uuid "b1fd607c-023c-4cf3-9890-d392991746e9")
 		)
 		(pin "14"
-			(uuid "03ba4ca1-c09a-48c1-a0ec-ecedbfcffdff")
+			(uuid "e62c1d5c-bdb1-496b-b65f-8476ed387cb9")
 		)
 		(pin "15"
-			(uuid "2b161551-a0dc-424a-9584-991484a33063")
+			(uuid "a4bd002b-4f9c-41e1-99c5-a1353a8c4759")
 		)
 		(pin "16"
-			(uuid "d74208ab-cbfc-4268-aa32-8467b4dc9dfe")
+			(uuid "ba68c01d-fc9f-47b4-8fd4-22f442dbeead")
 		)
 		(pin "17"
-			(uuid "63d3a782-6114-4318-b122-b3c067c238b8")
+			(uuid "c9bef60c-61e4-4408-bd90-8e652fe27cd7")
 		)
 		(pin "18"
-			(uuid "29e0ae57-dea1-4a06-863d-bbb0015bdc38")
+			(uuid "a7cc4fa6-379f-48f8-aa9c-6b704569eef2")
 		)
 		(pin "19"
-			(uuid "d7f225a3-4aa6-4aad-a5be-579e404485df")
+			(uuid "3f620d70-9753-4653-a6aa-b70f6ffa9188")
 		)
 		(pin "20"
-			(uuid "390ce2c6-b1e3-4ca0-83f8-31600f0b76c2")
+			(uuid "7990915d-eb13-40bb-8e86-88ecbb345c18")
 		)
 		(pin "21"
-			(uuid "809ff64a-e47f-4096-9af9-7bc2377708f2")
+			(uuid "c48fa432-d718-4d05-8584-e6b86759dfce")
 		)
 		(pin "22"
-			(uuid "d5378641-2c4b-4feb-bcf8-9d9f926f7414")
+			(uuid "3a0b4d35-bdec-4dc9-9696-4fae76a4271f")
 		)
 		(pin "23"
-			(uuid "e8099872-9b64-4b9a-b639-e4fbd7839037")
+			(uuid "5df41710-ad70-4d03-a4c9-0b57a18c3863")
 		)
 		(pin "24"
-			(uuid "a92219d9-adc0-4880-92e9-a1ec41a6568a")
+			(uuid "ddd46b93-09ea-4c22-9b85-1c780d50a4fa")
 		)
 		(pin "25"
-			(uuid "08f5ba9e-042d-445e-9c40-13af7e64036c")
+			(uuid "a2d09fef-b72b-40be-ba52-2d5c32f23ef8")
 		)
 		(pin "26"
-			(uuid "6d3385a8-745b-4559-a013-4875834c7408")
+			(uuid "c73e002e-5cc7-495b-963e-6a6f2028447b")
 		)
 		(pin "27"
-			(uuid "332fc98e-8f71-4de4-8165-eafc291ebfe6")
+			(uuid "0de04246-f376-4a9d-be2c-fadd05c110b1")
 		)
 		(pin "28"
-			(uuid "2f554856-da64-475e-9fe1-a72496f633eb")
+			(uuid "3bd59894-4724-4af4-a2de-2306b80b204a")
 		)
 		(pin "29"
-			(uuid "0da852c8-06e2-4c65-a6e2-296499bbbe8a")
+			(uuid "8ae3aabd-14d4-4440-9a35-4f2360be5745")
 		)
 		(pin "30"
-			(uuid "c8cf5f2c-1191-4df9-89ee-b2854683446a")
+			(uuid "413df5b7-d10d-4d47-982b-f1ec80635805")
 		)
 		(pin "31"
-			(uuid "88c3b878-667a-4a96-93ee-44567e9a9fab")
+			(uuid "a9dd8d88-7793-4368-865d-8c735b80de83")
 		)
 		(pin "32"
-			(uuid "95590b77-e98a-4c4a-9f60-b0e415348f44")
+			(uuid "1382892c-a144-4cf8-abb7-cf8068835a64")
 		)
 		(pin "33"
-			(uuid "82ae8e7a-b731-44de-991e-731c30c729ae")
+			(uuid "19d182e1-b399-4176-9615-8fa36e303c13")
 		)
 		(pin "34"
-			(uuid "0154abbe-9936-470c-b000-608b4cf22990")
+			(uuid "906c4a86-09ed-4339-8794-10fd4d709891")
 		)
 		(pin "35"
-			(uuid "10b86a90-918c-4f88-805f-49257909a953")
+			(uuid "b9b63e51-bd16-4f79-932a-c15b827a1f77")
 		)
 		(pin "36"
-			(uuid "8eceeb22-b9b3-4247-8465-ef29d7623ec6")
+			(uuid "5bedef88-2a11-4fd0-82be-f78a1ea23686")
 		)
 		(pin "37"
-			(uuid "56f0f4e1-b44b-4646-8707-1d73ca2f31b7")
+			(uuid "4688a94f-bcdb-4cea-abaa-37467c1bde4e")
 		)
 		(pin "38"
-			(uuid "11af0fee-0a99-41a6-ba8b-c9a881724a10")
+			(uuid "e0eaddf4-84ed-4345-8816-6524d3a812d4")
 		)
 		(pin "39"
-			(uuid "017a773e-3edd-4a23-a7b7-7227dc289fa4")
+			(uuid "b492980b-2e6f-48b6-8f14-d6d0b0166d08")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "U1")
 					(unit 1)
 				)
@@ -8727,8 +8938,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "89aa1be9-f59a-41e8-83e6-d01a410c9627")
-		(property "Reference" "#PWR032"
+		(uuid "ef662057-acc0-45b1-9b67-9eb12a8ea03f")
+		(property "Reference" "#PWR036"
 			(at 184.76 135.46 0)
 			(effects
 				(font
@@ -8746,12 +8957,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "c1bd760c-bd14-41a3-b343-f842e3afbd62")
+			(uuid "61ff1d3d-dbf5-490c-b907-054b61c9c996")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR032")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
@@ -8765,8 +8976,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "5b330bb3-cff8-42ce-ac2d-3aed354aa52d")
-		(property "Reference" "#PWR033"
+		(uuid "3f550c62-b0ba-4519-a541-577a2ae3db60")
+		(property "Reference" "#PWR037"
 			(at 184.76 138.00 0)
 			(effects
 				(font
@@ -8784,12 +8995,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "954fa03b-676b-482c-b86b-92e76a7a0bd8")
+			(uuid "38c78ab6-af77-48e0-9f31-e64484522f7d")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR033")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -8802,7 +9013,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "2fb848f5-d9b7-41d6-9533-1d6ad4eaa4f2")
+		(uuid "cd98b0cd-5efb-4a35-897b-024bf010fac1")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -8810,19 +9021,19 @@
 	)
 	(no_connect
 		(at 184.76 145.08)
-		(uuid "fcc88b9a-3fc5-4736-a92c-6d6bbb67a9b5")
+		(uuid "49b82b62-7866-433f-8445-4e9934d8ad2a")
 	)
 	(no_connect
 		(at 184.76 147.62)
-		(uuid "45874e23-2ba4-41e6-b23d-143b2674b324")
+		(uuid "29065b54-fd59-4734-a473-ef80b1205fe0")
 	)
 	(no_connect
 		(at 184.76 150.16)
-		(uuid "2907cf54-3ab9-4fc5-8df5-b00afb41c6c1")
+		(uuid "9be08e40-676d-4bf1-a3e5-fd53076a4ccc")
 	)
 	(no_connect
 		(at 184.76 152.70)
-		(uuid "8b80ef7d-6d64-4f60-841d-b677089d92ed")
+		(uuid "8bad70a7-fc21-45e4-9642-1ef9884aa8fa")
 	)
 	(global_label "SW3"
 		(shape passive)
@@ -8831,7 +9042,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "a05e77a7-0346-4277-a5dc-04cc4b61afdc")
+		(uuid "3101f81b-3625-460f-a85c-045434920598")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -8844,7 +9055,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "5fdcfcae-1d16-4e02-84fd-09bbbbe8147a")
+		(uuid "b81bb6bc-b649-4fc2-a259-a1bdf700b612")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -8852,7 +9063,7 @@
 	)
 	(no_connect
 		(at 184.76 160.32)
-		(uuid "c18da84e-41fe-46e5-acb1-6bc0b886e027")
+		(uuid "6c55f1e5-a775-4c2c-b7f3-a07fc3d4ade8")
 	)
 	(global_label "SW1"
 		(shape passive)
@@ -8861,7 +9072,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "770b7383-92ce-4ce5-86c4-eae3558afa90")
+		(uuid "79867f05-4d87-4b13-b9fb-a307ec48a0bf")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -8874,7 +9085,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "baba95f5-067e-43a1-84d4-9e9142038feb")
+		(uuid "d9e439f7-eadd-47b4-8a0b-f4190e10813c")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -8887,7 +9098,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "40c3e0bd-ac82-4ce1-aeb7-336174ef94be")
+		(uuid "2268cb26-2dae-4f6e-9460-a75bed27c24c")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -8895,7 +9106,7 @@
 	)
 	(no_connect
 		(at 184.76 170.48)
-		(uuid "dd87cee6-61a4-4df8-a2e0-0206d932ad16")
+		(uuid "3b17c5fb-2041-491b-b737-224b18d46d3f")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -8905,8 +9116,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a29a67a2-2060-412c-968c-34126bb3aa66")
-		(property "Reference" "#PWR034"
+		(uuid "0d4b1f82-fe4f-4afb-8d08-bbf6e06b0777")
+		(property "Reference" "#PWR038"
 			(at 184.76 171.02 0)
 			(effects
 				(font
@@ -8924,12 +9135,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "9b71470e-a4ad-4f83-a591-8b0ed8c7d59f")
+			(uuid "11f8ebd9-c95c-4773-8d79-4ae8c74deab3")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR034")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -8942,7 +9153,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "ff776cfa-4d89-4c11-9a05-83dc8f7a0be8")
+		(uuid "fee58a11-cb4a-4148-97f2-8c9f4c3996f3")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -8950,27 +9161,27 @@
 	)
 	(no_connect
 		(at 215.24 140.00)
-		(uuid "a1744b40-ae30-4b8f-a30f-9dbf62e9f961")
+		(uuid "db40d2b8-e2ea-48b4-811d-48deec92094c")
 	)
 	(no_connect
 		(at 215.24 142.54)
-		(uuid "a0f0dd8a-c5dc-4450-8355-4166e27e9020")
+		(uuid "a1d16c8e-d42f-4ceb-b44e-686e2e23bec2")
 	)
 	(no_connect
 		(at 215.24 145.08)
-		(uuid "4790f56f-9d31-4b32-808a-2e418d340bea")
+		(uuid "8df13cdd-17c4-40ef-9f80-f3199b81d2b2")
 	)
 	(no_connect
 		(at 215.24 147.62)
-		(uuid "e388db91-cd23-4abf-97e7-343cde02171c")
+		(uuid "93348bf4-7b3b-4fbc-a113-e69623ffb334")
 	)
 	(no_connect
 		(at 215.24 150.16)
-		(uuid "afd435a4-7b46-44c9-ba47-7a479e089475")
+		(uuid "9c09ddba-6695-4662-89e8-0e6c49f682e8")
 	)
 	(no_connect
 		(at 215.24 152.70)
-		(uuid "0204806e-f2d3-459a-af8a-acd867573c79")
+		(uuid "f59f6a8a-5707-4167-bd18-af70aba4befe")
 	)
 	(global_label "GPIO15_PU"
 		(shape passive)
@@ -8979,7 +9190,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "49dacdf1-7239-4749-9771-ed2d08249d54")
+		(uuid "d0833e77-7109-4904-aa70-001b4ac904e6")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -8992,7 +9203,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "6a092fdc-a428-40ea-83f4-df491f035fd0")
+		(uuid "aa5c33f7-b86d-4310-ba7f-231073c490e5")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9005,7 +9216,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "206d465e-7626-4194-b4ee-4f2cd7fac847")
+		(uuid "85cf9b71-d225-4499-a744-e6ebd4e94cac")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9018,7 +9229,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "849cdd0f-b1c0-46c9-85fa-ef8912ddb7cf")
+		(uuid "c82177d1-2402-4cb6-b2a3-ecad44659e30")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9031,7 +9242,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "4365baec-a30f-405c-a58e-70fd8794d415")
+		(uuid "b433e862-b790-4755-8274-8adffcddbbc4")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9044,7 +9255,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "d87dc4bd-8d8a-4902-9270-33c78e393c8a")
+		(uuid "03f8fc2f-fffe-4b35-83d5-0e9499ac131f")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9052,7 +9263,7 @@
 	)
 	(no_connect
 		(at 215.24 170.48)
-		(uuid "bc8cbfc6-29dc-4a6e-955b-797d227d1a0a")
+		(uuid "c42a513b-7be5-4ab2-afac-fc08b6d2dd08")
 	)
 	(global_label "RS485_EN"
 		(shape passive)
@@ -9061,7 +9272,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "820ae33b-aebe-4c60-ab3c-08b821b68b89")
+		(uuid "e56526cb-7293-4044-8e12-921c0bde53b7")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9069,11 +9280,11 @@
 	)
 	(no_connect
 		(at 215.24 175.56)
-		(uuid "3bfad6a3-4a7f-46bb-9481-32a097b7f425")
+		(uuid "4caba6b8-470a-4272-ad06-24f4a37d22b7")
 	)
 	(no_connect
 		(at 215.24 178.10)
-		(uuid "8df09d7f-94c2-414c-8c5d-dcbcc6268ee9")
+		(uuid "cb37caab-1211-444d-ae9e-e62d98a3c1c9")
 	)
 	(global_label "SDA"
 		(shape passive)
@@ -9082,7 +9293,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "a6043c3a-4373-41e7-af6f-098b40f6d6e6")
+		(uuid "d5ebe629-7190-45d7-b2df-fe5f3c086673")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9095,7 +9306,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "5ef8fd6e-1354-4560-8ed1-f95ed3a5bce1")
+		(uuid "0ad61b19-0d49-411e-899f-b5f05fdc5ec2")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9108,7 +9319,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "77e18c64-81b6-44df-9723-1d5d5fa602b4")
+		(uuid "85a790df-8294-44cc-9f39-122d017cbffd")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9121,7 +9332,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "5188054e-8f9a-4757-952b-39ab22c55818")
+		(uuid "e43e8431-9744-4940-b762-79fbefea0352")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9129,7 +9340,7 @@
 	)
 	(no_connect
 		(at 215.24 190.80)
-		(uuid "443bc8ae-ff8f-46e9-b838-70dd63344b5e")
+		(uuid "66d7f0d0-b7e6-4832-b09d-17d780913fb9")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -9139,8 +9350,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "9ddb5c35-78a6-48a0-b49d-9c267c14e263")
-		(property "Reference" "#PWR035"
+		(uuid "7f1c90f1-4036-4777-bbdb-a112baa82025")
+		(property "Reference" "#PWR039"
 			(at 215.24 191.34 0)
 			(effects
 				(font
@@ -9158,12 +9369,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "5e15a60c-9f52-40e9-819f-dcbcd74ffc9c")
+			(uuid "4ca69d1c-e3d1-454f-8a95-892159468219")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR035")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -9177,8 +9388,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0948f0e4-a387-48bf-93cf-00949fd488b3")
-		(property "Reference" "#PWR036"
+		(uuid "bfd4385d-f464-4a98-b0e1-a8f1efffd281")
+		(property "Reference" "#PWR040"
 			(at 215.24 193.88 0)
 			(effects
 				(font
@@ -9196,12 +9407,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "c53f3f68-de3a-4f61-a35f-c113ec86a689")
+			(uuid "5d43481c-d4c9-495d-a07d-a999466d2097")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR036")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -9215,7 +9426,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "47013f2c-3f15-4ad6-b4e7-daa9913afa0d")
+		(uuid "f50e2408-ad05-47df-9d28-7bb93693569e")
 		(property "Reference" "C1"
 			(at 192.00 106.00 0)
 			(effects
@@ -9260,14 +9471,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "becf4b29-09d7-4515-8433-7b014829eeef")
+			(uuid "855b01e2-6458-479b-a107-3721e8881636")
 		)
 		(pin "2"
-			(uuid "8290248a-65a9-44e2-9aa8-da1156a4bcd4")
+			(uuid "5468eaa6-73da-43f6-aeff-7a8072ab0e10")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C1")
 					(unit 1)
 				)
@@ -9282,8 +9493,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "6da1dd00-4882-4b78-9f9d-b671c6fdc6f9")
-		(property "Reference" "#PWR038"
+		(uuid "8408288e-9c74-4d76-a173-caabd13328d5")
+		(property "Reference" "#PWR042"
 			(at 192.00 102.19 0)
 			(effects
 				(font
@@ -9301,12 +9512,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "98cdd8cd-2963-4ee9-bbc0-bccd44d63a1e")
+			(uuid "7f13d0b1-e735-45a9-a3ac-ddad30c2ecbd")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR038")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR042")
 					(unit 1)
 				)
 			)
@@ -9320,8 +9531,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "23d490b4-22a7-47e3-bd1d-f16945d353df")
-		(property "Reference" "#PWR039"
+		(uuid "29f7655d-0ff7-4aa0-b5e0-6e62e08bcb06")
+		(property "Reference" "#PWR043"
 			(at 192.00 109.81 0)
 			(effects
 				(font
@@ -9339,12 +9550,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "f02e4f83-b203-4126-b2f2-bb3d4fb83c46")
+			(uuid "eebbb2ff-7545-4f05-9d00-917fb8a71ef2")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR039")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -9358,7 +9569,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e0c3e97c-ce01-464a-bd78-8ad7329a94ed")
+		(uuid "1231a47b-734a-460a-8e4b-e4c0ac69934a")
 		(property "Reference" "C2"
 			(at 208.00 106.00 0)
 			(effects
@@ -9403,14 +9614,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "994fa798-6655-41e3-b5da-eeb776d5124f")
+			(uuid "13d667f5-15dd-41c3-a11b-6c573feaeec2")
 		)
 		(pin "2"
-			(uuid "6f8657fe-dc3c-4d14-9692-6d6f33761302")
+			(uuid "6e973cdf-0542-42be-b901-f7bdfc20dd7a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C2")
 					(unit 1)
 				)
@@ -9425,8 +9636,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "47ee5d73-e01d-4520-a11d-5418a1506af7")
-		(property "Reference" "#PWR041"
+		(uuid "0dbaa6e9-4925-4fdf-9eed-801d0bef3df9")
+		(property "Reference" "#PWR045"
 			(at 208.00 102.19 0)
 			(effects
 				(font
@@ -9444,12 +9655,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "ebbe3dee-4724-4b31-8f66-4e267fe1ab24")
+			(uuid "07147e6a-6916-497c-ac01-ef5a6aefc09f")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR041")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR045")
 					(unit 1)
 				)
 			)
@@ -9463,8 +9674,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b5523093-0e1a-485c-98f3-372ff68f3f91")
-		(property "Reference" "#PWR042"
+		(uuid "fe58b98c-8f38-4ccd-89e3-46a6fb46a89c")
+		(property "Reference" "#PWR046"
 			(at 208.00 109.81 0)
 			(effects
 				(font
@@ -9482,12 +9693,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "3ffb1f10-52d4-47b8-8738-772928a73d15")
+			(uuid "66789c05-4b79-4f5e-9418-3d04f713d143")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR042")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR046")
 					(unit 1)
 				)
 			)
@@ -9501,7 +9712,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "864b67fc-47eb-4d21-b211-6e60c58ce147")
+		(uuid "8a9fa996-ea64-45ae-90f6-0a55ccad5828")
 		(property "Reference" "R3"
 			(at 168.00 183.00 0)
 			(effects
@@ -9546,14 +9757,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "d6be4b91-f516-4376-9643-071599dddadc")
+			(uuid "ae14d83d-1adb-4d74-aaf3-daca1d0299b5")
 		)
 		(pin "2"
-			(uuid "094df59c-d95e-49e2-97c4-0a85df3e656d")
+			(uuid "79699458-9752-429f-b10f-a96eca1c679a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R3")
 					(unit 1)
 				)
@@ -9568,8 +9779,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "6df0ebf0-c319-411c-bd6e-21a2eaf4d908")
-		(property "Reference" "#PWR044"
+		(uuid "619d71cb-78a3-47df-8254-22fd7f141856")
+		(property "Reference" "#PWR048"
 			(at 168.00 179.19 0)
 			(effects
 				(font
@@ -9587,12 +9798,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "f90d781c-b8ab-4fde-8b8c-95c20065a40d")
+			(uuid "6fc160bc-1b65-489b-8dff-4b6ed5969bab")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR044")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR048")
 					(unit 1)
 				)
 			)
@@ -9605,7 +9816,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "5c15d50c-acfd-44a5-931f-99614d4c556f")
+		(uuid "4d2d3f90-d3af-4fc5-bfc4-da5562ddfe7a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9619,7 +9830,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ace4dfab-b16a-4e01-85ad-9a2ebe62c54e")
+		(uuid "fa9a1d70-0102-4333-ad40-cf66b9aa86e7")
 		(property "Reference" "SW_BOOT"
 			(at 168.00 198.00 0)
 			(effects
@@ -9655,14 +9866,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "aef7ba48-9786-42e0-837f-f0ac81aa8ac9")
+			(uuid "5bb64e5e-5bdc-4ed7-a8e7-7688cc3f9b19")
 		)
 		(pin "2"
-			(uuid "cbd12796-9bdc-43ee-83be-b4fa4d7aa273")
+			(uuid "f634f746-aeca-44fa-905b-1908b38d15b8")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "SW_BOOT")
 					(unit 1)
 				)
@@ -9676,7 +9887,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "124f025d-4e1b-42b3-9916-a181923fed31")
+		(uuid "3cc27336-4491-480d-b7e6-c1ab5bc63c4a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9690,8 +9901,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "4a42836a-6b97-411b-84dd-c5b0f939105e")
-		(property "Reference" "#PWR046"
+		(uuid "bb55eed5-d5bc-40cd-9a65-b24842ae9317")
+		(property "Reference" "#PWR050"
 			(at 173.08 198.00 0)
 			(effects
 				(font
@@ -9709,12 +9920,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "12c283a8-e6be-4602-be9b-2e5ec813c1b6")
+			(uuid "aa6f667e-8d97-406c-9ce8-de2d2bf55ed6")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR046")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR050")
 					(unit 1)
 				)
 			)
@@ -9728,7 +9939,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e1f08226-1d7d-4676-87a8-8fb152c5ad00")
+		(uuid "1a59a9c9-de99-4a1b-b22c-5a323d016889")
 		(property "Reference" "R4"
 			(at 183.00 183.00 0)
 			(effects
@@ -9773,14 +9984,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "2fcac752-4ef8-4bb6-be3e-06897c8a0716")
+			(uuid "9da86018-ecfd-4a59-a56a-3b78543216ac")
 		)
 		(pin "2"
-			(uuid "a1f2f033-3f91-42cf-a40b-f39c9321d28f")
+			(uuid "10a56ffb-9517-47a4-a901-b9279792f01c")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R4")
 					(unit 1)
 				)
@@ -9795,8 +10006,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "96d4a6ae-aedd-4be7-a851-66814138279e")
-		(property "Reference" "#PWR048"
+		(uuid "b5cc0ea5-d78a-4617-9847-0900cc85ab5d")
+		(property "Reference" "#PWR052"
 			(at 183.00 179.19 0)
 			(effects
 				(font
@@ -9814,12 +10025,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "c0989e95-f571-48d1-b4de-5a6c5f4b7ca5")
+			(uuid "3f5d3d73-4ede-463f-ad2a-cc5d35e23bb7")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR048")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR052")
 					(unit 1)
 				)
 			)
@@ -9832,7 +10043,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "eed12955-1ec8-49e6-aa47-f0b9c27f08d8")
+		(uuid "5d1effcf-d4ae-4240-86eb-85958ad6461c")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9846,7 +10057,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "2b532bbf-dd99-4e25-8351-95ac2ce29a51")
+		(uuid "3e813262-7133-4cda-8228-d66d042ec477")
 		(property "Reference" "C9"
 			(at 193.00 183.00 0)
 			(effects
@@ -9891,14 +10102,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "af0d8904-1b48-4543-9a3f-5a4391d80f51")
+			(uuid "a5b1dc8b-582d-4d83-8137-4010472d2cc3")
 		)
 		(pin "2"
-			(uuid "cfbef890-b24b-4486-862c-9cabb379d421")
+			(uuid "e1bd59cf-ce7d-40aa-b126-4bed1f89adf2")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C9")
 					(unit 1)
 				)
@@ -9912,7 +10123,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "a3b741f3-685d-47ac-8deb-d62db56c4620")
+		(uuid "86d2297e-8e5d-4bb8-b881-f78381b71a34")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -9926,8 +10137,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "2acd0fa5-33ea-4b36-9322-1d4f0867d415")
-		(property "Reference" "#PWR050"
+		(uuid "3969c046-01f3-4f6c-a76f-c127d54f7444")
+		(property "Reference" "#PWR054"
 			(at 193.00 186.81 0)
 			(effects
 				(font
@@ -9945,12 +10156,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "e7fcc13a-4791-499f-a078-45e6fb4d0a69")
+			(uuid "fbbb8022-10ce-4218-aec9-5a7a9bd4326f")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR050")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR054")
 					(unit 1)
 				)
 			)
@@ -9964,7 +10175,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "8d9be33a-c050-454c-b151-7d584a56fd69")
+		(uuid "20792977-39c3-4e3b-9d07-cb7424e047e2")
 		(property "Reference" "SW_RESET"
 			(at 183.00 198.00 0)
 			(effects
@@ -10000,14 +10211,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "077fa649-783b-4059-aacd-0c0543d2d968")
+			(uuid "af647e17-9f64-4c5c-a553-41b7d57ce248")
 		)
 		(pin "2"
-			(uuid "6ee4a11a-adec-43a3-9aaf-2cb6f88d04fa")
+			(uuid "a33a7e4c-854b-4592-bfac-7364df5538dc")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "SW_RESET")
 					(unit 1)
 				)
@@ -10021,7 +10232,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "e504c462-7d74-40ef-8234-3d30b9f3b759")
+		(uuid "2ee22406-4627-4ba0-9b81-5314e288c7f6")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10035,8 +10246,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f31a61a4-ab9d-4213-8945-8c1cb9ba23b1")
-		(property "Reference" "#PWR052"
+		(uuid "9395d0f9-f5e8-49e9-aea0-c100bcc3ea1c")
+		(property "Reference" "#PWR056"
 			(at 188.08 198.00 0)
 			(effects
 				(font
@@ -10054,12 +10265,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "261c5727-1cc7-47e0-bfb4-d27d7bd7d30a")
+			(uuid "4fd2a344-04e3-4cce-97ca-ea1af026fdb2")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR052")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR056")
 					(unit 1)
 				)
 			)
@@ -10073,7 +10284,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f0e0e725-3383-4a9c-884f-d4cd3e4254e5")
+		(uuid "60d5245a-ac8b-4de4-b8df-a8c6b228e7a5")
 		(property "Reference" "R5"
 			(at 168.00 216.00 0)
 			(effects
@@ -10118,14 +10329,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "17f16844-22cc-40ed-92fe-188500fd9431")
+			(uuid "da1b668d-35e9-485f-a1fc-930ce2fae7ad")
 		)
 		(pin "2"
-			(uuid "2522151e-6320-4bc6-875b-0faabe8e6653")
+			(uuid "de3a2696-0107-41a3-bfc1-2458cc7e5d9e")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R5")
 					(unit 1)
 				)
@@ -10140,8 +10351,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e85ca016-f881-46f1-8120-30921d860029")
-		(property "Reference" "#PWR054"
+		(uuid "ddc5c45b-f0b6-4871-b036-fa706226cb16")
+		(property "Reference" "#PWR058"
 			(at 168.00 212.19 0)
 			(effects
 				(font
@@ -10159,12 +10370,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "878e2697-9591-43bb-920b-74129771c035")
+			(uuid "d9b6f46c-bf0a-4fef-ad9f-bf85e44db31f")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR054")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR058")
 					(unit 1)
 				)
 			)
@@ -10177,7 +10388,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "1621722f-6bd8-4648-9f22-b2f062504053")
+		(uuid "78a8605a-05a8-4885-9576-7c3eb23289e2")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10191,7 +10402,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1fde6092-b156-4abb-aaec-e0d5bb7c98ed")
+		(uuid "18a9841c-b10c-4e14-9751-8f5c804777b2")
 		(property "Reference" "R6"
 			(at 183.00 216.00 0)
 			(effects
@@ -10236,14 +10447,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "242714c8-c0c6-419a-85ef-190b5ff90b81")
+			(uuid "c1ac0a1c-1c0b-4c77-b8ef-42418785bc78")
 		)
 		(pin "2"
-			(uuid "f77f0ecf-2f52-4838-9ccb-54f0af9f6437")
+			(uuid "4152e129-4887-4b9a-aaa7-56569232693d")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R6")
 					(unit 1)
 				)
@@ -10258,8 +10469,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "da0ba375-08eb-4603-bcb2-9c920a52d81c")
-		(property "Reference" "#PWR056"
+		(uuid "a1c7a912-fabd-4c55-bd36-57e9a2b983ae")
+		(property "Reference" "#PWR060"
 			(at 183.00 212.19 0)
 			(effects
 				(font
@@ -10277,12 +10488,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "a2be7a5f-548e-4b11-9e51-70354440c0bf")
+			(uuid "30d80cb8-23ae-48f6-bd6c-54849f9e8f50")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR056")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR060")
 					(unit 1)
 				)
 			)
@@ -10295,7 +10506,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "7b9e25a4-a1f2-4bb5-adc1-b43ed5264951")
+		(uuid "3f6a7f0b-9a25-4877-a71d-df7d57cee5ff")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10309,7 +10520,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "aa382575-7ade-4aa4-bdf7-17cfa0460aca")
+		(uuid "fa309c81-63d4-4926-af64-c0c1f3220c1c")
 		(property "Reference" "D2"
 			(at 168.00 231.00 0)
 			(effects
@@ -10345,14 +10556,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "7b1db266-c5b4-4b08-9a9d-23e21e6e55bf")
+			(uuid "cc4161b3-fa7a-48c6-9166-6446ea9cbb65")
 		)
 		(pin "2"
-			(uuid "b31948a8-65a9-4d07-801e-4c0f4758decc")
+			(uuid "d58ac939-a47f-4e60-9cc8-949055f779ff")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "D2")
 					(unit 1)
 				)
@@ -10366,7 +10577,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "9515bf80-2259-4571-9fb2-a77ef38ff526")
+		(uuid "29ef36c3-241b-43fc-824d-149fbb149eb6")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10380,7 +10591,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1feaf032-9f13-4d9d-81cb-1bdd06497224")
+		(uuid "0a57e601-6c34-484f-91c8-9e298df6cf7b")
 		(property "Reference" "R7"
 			(at 178.00 231.00 90)
 			(effects
@@ -10425,14 +10636,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "176a7169-e875-4baf-a68f-1847a9d0ce3c")
+			(uuid "9bc47023-68ba-4098-9a65-a501e1681e93")
 		)
 		(pin "2"
-			(uuid "e26d2e3f-c519-42cd-82ca-d3f6da326671")
+			(uuid "73d1ceb1-8931-40b9-9317-b27cc43be13c")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R7")
 					(unit 1)
 				)
@@ -10444,7 +10655,7 @@
 			(xy 171.81 233.00) (xy 174.19 233.00)
 		)
 		(stroke (width 0) (type solid))
-		(uuid "d474d181-b65e-41d6-aba4-612ec5557d9f")
+		(uuid "c791f55e-0ae1-4c92-ba43-ec8c1e1d9944")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -10454,8 +10665,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "c50e27b9-a88c-4d3f-b33b-0d44b91d081d")
-		(property "Reference" "#PWR059"
+		(uuid "dbbb9d74-0f8f-42a2-a159-b539689b939e")
+		(property "Reference" "#PWR063"
 			(at 181.81 231.00 0)
 			(effects
 				(font
@@ -10473,12 +10684,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "395e3754-8048-4099-a931-73c76c94ee59")
+			(uuid "d63a16a9-4012-48ee-9475-42853630e3a4")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR059")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR063")
 					(unit 1)
 				)
 			)
@@ -10492,7 +10703,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b35bf908-93a8-466b-9798-789e9375f737")
+		(uuid "605a95f0-fadc-4175-ab3d-005d8b5cc03f")
 		(property "Reference" "U4"
 			(at 65.00 128.00 0)
 			(effects
@@ -10537,32 +10748,32 @@
 			)
 		)
 		(pin "1"
-			(uuid "88549a31-c1fa-4a73-a834-981c6febb135")
+			(uuid "cbb3e296-7d4d-46c6-8921-fe58b3d59728")
 		)
 		(pin "2"
-			(uuid "c7c184f4-637a-4851-841e-ac063bdaa176")
+			(uuid "382df047-4df4-4a49-922f-1626ca266794")
 		)
 		(pin "3"
-			(uuid "ce53dfc6-c5a3-47c0-b2e8-85bdf2835105")
+			(uuid "f708b236-a7cd-4f24-a607-19a8435e715b")
 		)
 		(pin "4"
-			(uuid "3d6190bf-b1d7-4f44-9cb0-130b2e9c6616")
+			(uuid "642634ba-348d-4212-831a-77ea02f49010")
 		)
 		(pin "5"
-			(uuid "511e939d-5651-48ca-a219-f96edb472bb9")
+			(uuid "93b4501f-fe1f-40d6-abc0-df279c32a35f")
 		)
 		(pin "6"
-			(uuid "4f6eb696-38b8-4e39-b283-f061d36ae07b")
+			(uuid "f54a27c8-122f-4496-985a-abee16971925")
 		)
 		(pin "7"
-			(uuid "af71cd14-0898-49dc-9dbb-0775f27e90d0")
+			(uuid "8f3ae34f-241d-4e9f-9d3f-5b9c6fa940fe")
 		)
 		(pin "8"
-			(uuid "c32d2e0f-8333-42d4-9b9c-826651367074")
+			(uuid "26d6c483-3acd-423c-9e40-4b65cc3d0fe4")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "U4")
 					(unit 1)
 				)
@@ -10576,7 +10787,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "9a944699-1d79-40e4-8590-5217f268d338")
+		(uuid "c6811949-f0b8-4257-a886-bbec0aae0c61")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10589,7 +10800,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "4328faa3-65a3-4316-b45f-28e953da616a")
+		(uuid "8242208f-11ce-4a58-bf3b-748621ef3bc2")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10602,7 +10813,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "a9481127-0710-4acc-82eb-48b7dcbb1740")
+		(uuid "09770f35-bba0-44af-b6e4-9100d0af2013")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10615,7 +10826,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "76a09930-10ab-43e5-bc5c-73c82696e964")
+		(uuid "b45ff4c2-e008-45d9-809a-4c7f7a5bd868")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10629,8 +10840,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0db83e54-0dcd-4886-b644-9c32ae9fdf65")
-		(property "Reference" "#PWR061"
+		(uuid "a8762245-0027-4935-b86a-7d8b418adad9")
+		(property "Reference" "#PWR065"
 			(at 65.00 143.24 0)
 			(effects
 				(font
@@ -10648,12 +10859,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "eda178d7-1e28-401b-a891-189258a78bde")
+			(uuid "81def191-de8c-4a83-82b5-f599e530a3f1")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR061")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR065")
 					(unit 1)
 				)
 			)
@@ -10666,7 +10877,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "23eb91d8-051c-458d-85c6-d4069bfc0330")
+		(uuid "394975cc-cd30-4c1d-9dc4-1e681e43a57b")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10679,7 +10890,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "0c974eaf-6c59-4d95-a524-988f6211cbc9")
+		(uuid "7f3e0cc2-908b-4732-b193-af62ca3652b4")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10693,8 +10904,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "c2feebc4-a89f-42f3-893f-3f160e5b76b4")
-		(property "Reference" "#PWR062"
+		(uuid "d0c4fb1e-dd2c-4f03-8c37-8a18278dfd5b")
+		(property "Reference" "#PWR066"
 			(at 65.00 112.76 0)
 			(effects
 				(font
@@ -10712,12 +10923,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "d931cd63-eace-4260-a407-cdf5d5014fe9")
+			(uuid "e6cd44c5-e7d8-4566-a98b-baea89b5522f")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR062")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR066")
 					(unit 1)
 				)
 			)
@@ -10731,7 +10942,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f8298281-109e-4162-b8a2-9c31b9b76073")
+		(uuid "0bac3215-ec4b-4465-9a52-82b1884e1773")
 		(property "Reference" "R8"
 			(at 48.00 124.00 0)
 			(effects
@@ -10776,14 +10987,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "8a05b246-8123-4e7e-aead-f7bf1e5d5fda")
+			(uuid "3d74e07e-e516-4b44-b6c6-249604727f21")
 		)
 		(pin "2"
-			(uuid "2ca7c41f-dee1-49c9-9f5b-2fb0f5b043e5")
+			(uuid "6fdff41a-a267-4f1a-a9a4-d9c903874948")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R8")
 					(unit 1)
 				)
@@ -10797,7 +11008,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "c29f1909-a05e-4d74-b76e-e383fbf6655e")
+		(uuid "32647a74-34ea-43f1-833e-a848ea3b3b6a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10810,7 +11021,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "c272fa5e-6b74-439c-b4d3-bdaf0bbe2fb2")
+		(uuid "4ccc15c4-73b5-46c6-bf14-4e461d2ffb8a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -10824,7 +11035,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e1bd8fe4-4cca-4b39-af6a-3ad644b70190")
+		(uuid "b257f3c4-ccd2-45c4-9076-0697d8b5f74d")
 		(property "Reference" "R9"
 			(at 35.00 116.00 0)
 			(effects
@@ -10869,14 +11080,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "3c993760-945f-42e1-847c-66da61bbc24e")
+			(uuid "92722c42-2962-464c-87b7-6d8bc4e386b5")
 		)
 		(pin "2"
-			(uuid "33da97e7-2a5a-440d-98e4-453864685989")
+			(uuid "5c434536-726c-454e-87cf-c0934eb03af9")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R9")
 					(unit 1)
 				)
@@ -10891,7 +11102,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d53b1b4e-268f-4c1c-b4cb-1faa49d408f6")
+		(uuid "cf76db5c-9bc9-49c0-a563-366b33dba279")
 		(property "Reference" "R10"
 			(at 35.00 130.00 0)
 			(effects
@@ -10936,14 +11147,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "211f447e-f0d7-4400-9f10-cb7cd07f9a51")
+			(uuid "ceb9acd9-28fd-4048-a34c-7c3fed90afe5")
 		)
 		(pin "2"
-			(uuid "b1b5e134-5a5b-409b-8a64-5bb796c972cd")
+			(uuid "2ba5972e-d82c-4789-a90f-be85325e0461")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R10")
 					(unit 1)
 				)
@@ -10958,8 +11169,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0082b179-6374-45b7-b08d-2d674cf0119b")
-		(property "Reference" "#PWR066"
+		(uuid "f94a4cf6-2f00-4175-b083-6430b059ac18")
+		(property "Reference" "#PWR070"
 			(at 35.00 112.19 0)
 			(effects
 				(font
@@ -10977,12 +11188,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "35dfbffd-258d-4550-9b2d-5a6b45e2640e")
+			(uuid "19d47da7-c67a-4563-846f-db17e73f36d3")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR066")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR070")
 					(unit 1)
 				)
 			)
@@ -10995,7 +11206,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "cee006fe-8952-422d-ad17-72832ed9aff6")
+		(uuid "8d3829e1-b4a8-4908-b2c7-ebbab871c74d")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11009,8 +11220,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "106b783f-5f3a-4a8c-9820-a0d7184fa65d")
-		(property "Reference" "#PWR067"
+		(uuid "735fa639-4663-4869-ab0a-a1d22ba0c66d")
+		(property "Reference" "#PWR071"
 			(at 35.00 126.19 0)
 			(effects
 				(font
@@ -11028,12 +11239,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "d306bbf3-e4fe-4282-8e29-a66782e8b9fe")
+			(uuid "5ead5cd8-7c5b-495f-a464-d1c0b3d6b1f3")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR067")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR071")
 					(unit 1)
 				)
 			)
@@ -11046,7 +11257,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "68fadb95-c820-4781-a2c3-aa55e5b5ae50")
+		(uuid "d187e755-d9dc-4669-ba57-8105e50f3560")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11060,7 +11271,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "51827520-2c7e-4038-afed-061929c1ac15")
+		(uuid "bf195c8c-734d-496b-aff3-aabf01179aa1")
 		(property "Reference" "C3"
 			(at 73.00 128.00 0)
 			(effects
@@ -11105,14 +11316,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "eb399231-3d13-485f-98ea-06b17672ab4b")
+			(uuid "17c2df32-fa79-4dcb-80af-4b119e66a924")
 		)
 		(pin "2"
-			(uuid "7f297d7c-6e30-4b8b-aa1e-881ecfbfae14")
+			(uuid "b838b64c-ef2c-4ca2-9115-beb53cf0e2fb")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C3")
 					(unit 1)
 				)
@@ -11127,8 +11338,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3f180edd-7628-48b9-8499-b550fb505ec9")
-		(property "Reference" "#PWR069"
+		(uuid "fdb1d7c3-4ea1-4a35-adab-3fae55cc7442")
+		(property "Reference" "#PWR073"
 			(at 73.00 124.19 0)
 			(effects
 				(font
@@ -11146,12 +11357,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "1ddbf404-ed97-4b4d-b458-38c2fff70214")
+			(uuid "cd7a03cd-0c91-4742-89ad-99a1d89310e8")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR069")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR073")
 					(unit 1)
 				)
 			)
@@ -11165,8 +11376,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "5732e2ab-952e-40f1-82b1-4c44b37bf521")
-		(property "Reference" "#PWR070"
+		(uuid "436ab8c2-cc3c-4ac4-85c5-8b25f70f48a1")
+		(property "Reference" "#PWR074"
 			(at 73.00 131.81 0)
 			(effects
 				(font
@@ -11184,12 +11395,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "47a0c0b9-8e43-464d-a7c2-723a672612fa")
+			(uuid "aa459394-8544-4a43-866f-a71c296ade99")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR070")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR074")
 					(unit 1)
 				)
 			)
@@ -11203,7 +11414,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "367385b4-4cac-4689-a681-fac3f0909b25")
+		(uuid "6bbc1092-2095-4df0-8fa9-bd4c370668ed")
 		(property "Reference" "J2"
 			(at 22.00 126.00 0)
 			(effects
@@ -11239,17 +11450,17 @@
 			)
 		)
 		(pin "1"
-			(uuid "2386864f-f2b6-470d-bf6d-6ad903ea9577")
+			(uuid "3b80b778-6c14-48dc-9a9d-b9b8f53c8b42")
 		)
 		(pin "2"
-			(uuid "76bbe64a-1090-4839-8d82-b05c6691f678")
+			(uuid "65f0b292-4a00-4859-a015-b088ad58c6db")
 		)
 		(pin "3"
-			(uuid "c369f92f-d404-4a4e-a03a-5aa33c76a09c")
+			(uuid "b6c4c991-808c-43bd-a52a-dfb166f99c95")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "J2")
 					(unit 1)
 				)
@@ -11263,7 +11474,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "01f1daab-258b-4361-9321-8dc1470dd3ef")
+		(uuid "679dca46-73f1-4fef-860b-c2864e8efc57")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11276,7 +11487,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "2aa094a3-09a0-43c5-a382-5d4a5762705d")
+		(uuid "32708c5f-e085-4af1-89b8-78e53bb5b790")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11290,8 +11501,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "fe594357-49a0-42f9-89b1-7ee9b8738c43")
-		(property "Reference" "#PWR072"
+		(uuid "d5a5843e-9970-4996-9919-2df581f856dd")
+		(property "Reference" "#PWR076"
 			(at 16.92 128.54 0)
 			(effects
 				(font
@@ -11309,12 +11520,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "5f49b3d2-7690-4606-9beb-5c47fb535839")
+			(uuid "10fe6962-1811-426f-ac1e-a207af00e489")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR072")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR076")
 					(unit 1)
 				)
 			)
@@ -11328,7 +11539,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ab7a9d57-0c67-437f-90d7-3d786d79ec75")
+		(uuid "a3ff5ca6-ace6-411d-adf4-4ac95fb48be1")
 		(property "Reference" "U3"
 			(at 310.00 108.00 0)
 			(effects
@@ -11373,68 +11584,68 @@
 			)
 		)
 		(pin "1"
-			(uuid "87d41339-265d-464f-b45e-28ab790ed1cf")
+			(uuid "09f1680b-67c1-43a1-9c6b-dbcfcc9945a4")
 		)
 		(pin "2"
-			(uuid "4f82436b-94ad-43cf-a284-fea6de9de490")
+			(uuid "7dbd8908-ce78-48d2-84eb-0b60a5a1270a")
 		)
 		(pin "3"
-			(uuid "390778fe-99be-4208-b504-ce9e6a8f87d0")
+			(uuid "9f8ba01d-bdc6-4812-9e36-08c38134024c")
 		)
 		(pin "4"
-			(uuid "8ad59f63-add1-4870-8caa-7217f62eb7f5")
+			(uuid "46a5c7bb-9efa-4829-84fb-e94dac04fb53")
 		)
 		(pin "5"
-			(uuid "eb73c902-4a23-4337-b42a-920d132b58e2")
+			(uuid "54ffab41-f935-4b19-a20e-aa6c26203ae1")
 		)
 		(pin "6"
-			(uuid "22d3aa2f-952a-4fe3-8e43-f1797f03ef76")
+			(uuid "34d1778f-5cfc-4f7d-901c-3d6f3103854a")
 		)
 		(pin "7"
-			(uuid "c274b6f5-d96c-41dd-bc71-9685b9746777")
+			(uuid "47be7724-7d3e-4cbf-817f-eaf7151a6daa")
 		)
 		(pin "8"
-			(uuid "7189dc7e-4842-4e53-8cbc-c86776aeb65d")
+			(uuid "f39df772-0b14-4f26-b86a-d4057ca3f1fa")
 		)
 		(pin "9"
-			(uuid "9c09e7bc-89b5-4bb4-82d2-c0cf304e3732")
+			(uuid "d1710e2f-1682-496f-9880-adfa1950bd39")
 		)
 		(pin "10"
-			(uuid "14307909-d77c-4458-abd2-62a968d531fb")
+			(uuid "603c1010-41e6-43bd-a00b-70cdada75c9a")
 		)
 		(pin "11"
-			(uuid "3b5ab07e-05f6-4c8c-ba40-6f2fa9082177")
+			(uuid "c43fa0d5-0cfc-4181-843b-e6fc3c1bbd5b")
 		)
 		(pin "12"
-			(uuid "d0e6b2f9-5dd3-4554-83ca-c5acde33e29a")
+			(uuid "ec484cba-f472-4b27-b40c-18b2e783a97e")
 		)
 		(pin "13"
-			(uuid "183dde1a-382d-447e-b80f-f519e3cbf67e")
+			(uuid "24992a1c-355e-4a26-ac62-ca8ae7c5821a")
 		)
 		(pin "14"
-			(uuid "fc67be72-f075-4e32-b155-d31fd177331d")
+			(uuid "ae1cec7b-6a23-4257-9bcb-257212f91988")
 		)
 		(pin "15"
-			(uuid "5cd1a620-8e4b-4979-bfce-f3a2c8d1d36b")
+			(uuid "fda0919a-9941-4fe3-8554-6a1eae009fdc")
 		)
 		(pin "16"
-			(uuid "58877da8-2930-40a1-bcea-570b8718a7cd")
+			(uuid "f4a95566-8a33-4507-8a6b-04296f0944c4")
 		)
 		(pin "17"
-			(uuid "332ff8db-9b38-42e4-945a-f1a83a4617f3")
+			(uuid "0a3c36fc-4664-4d56-94ef-63adc9268217")
 		)
 		(pin "18"
-			(uuid "cd8d63da-effd-4c6e-b9ec-f059b07383ff")
+			(uuid "c8cdc11f-083b-4419-8f1f-75831af6f57a")
 		)
 		(pin "19"
-			(uuid "0785d114-097e-4d6b-9fe3-be080fc04aa6")
+			(uuid "262771af-2f85-47d7-8f11-6d86579869eb")
 		)
 		(pin "20"
-			(uuid "3b200f66-8cbc-4281-bfe1-807e420fd03b")
+			(uuid "ccd666a4-0d46-438a-a644-8ed31633181e")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "U3")
 					(unit 1)
 				)
@@ -11448,7 +11659,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "0ef8c088-6cdd-427e-9c89-451757422b5f")
+		(uuid "c9f858ad-7ee0-451c-936b-3aff48455292")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11461,7 +11672,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "e57e904b-3408-4194-8dd4-44157057835f")
+		(uuid "6e275d53-1438-4808-a613-c1031ddf6a8c")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11474,7 +11685,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "a8ce628b-a00b-4b56-9c01-e31d383977dc")
+		(uuid "115a2515-4d87-4550-b254-538225ac2351")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11488,8 +11699,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1e4b30e5-867e-4fd7-b06f-218094d6b350")
-		(property "Reference" "#PWR074"
+		(uuid "3be58b4b-53e9-4437-920d-9d70e928fa86")
+		(property "Reference" "#PWR078"
 			(at 297.30 108.00 0)
 			(effects
 				(font
@@ -11507,12 +11718,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "c6a240c7-7c87-4d91-b366-d14f6e248bae")
+			(uuid "681437b6-fe9d-4ed6-8a86-de6a782dca5a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR074")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR078")
 					(unit 1)
 				)
 			)
@@ -11526,8 +11737,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "80c50e46-5746-428a-b3d0-9d968c479097")
-		(property "Reference" "#PWR075"
+		(uuid "514ac562-9d72-4044-af3a-f8aa92064d7d")
+		(property "Reference" "#PWR079"
 			(at 310.00 128.32 0)
 			(effects
 				(font
@@ -11545,12 +11756,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "aca50ed3-e1fb-4faf-8bfc-373978c91b08")
+			(uuid "9f304b8f-2331-4639-8f0d-705bd1bef8e6")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR075")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR079")
 					(unit 1)
 				)
 			)
@@ -11564,8 +11775,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d477fbc4-4a98-46e2-98e3-1f4c8259f11f")
-		(property "Reference" "#PWR076"
+		(uuid "fd913ebe-1354-4c5b-abee-79fe4d07e9a4")
+		(property "Reference" "#PWR080"
 			(at 310.00 87.68 0)
 			(effects
 				(font
@@ -11583,12 +11794,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "99e35497-b544-4272-ba2a-4fe5a84516fa")
+			(uuid "abc028a8-02f1-49e3-917e-dc456c00ae7e")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR076")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR080")
 					(unit 1)
 				)
 			)
@@ -11596,7 +11807,7 @@
 	)
 	(no_connect
 		(at 297.30 120.16)
-		(uuid "2006cf0e-0df4-49aa-8f34-e6df431d4ee4")
+		(uuid "53ef3a9b-e585-467c-abe6-f158b5e91ff2")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -11606,7 +11817,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "2a0a56c5-249f-41af-ae47-331753efa94c")
+		(uuid "6e81d1a2-58d7-4497-a615-4673481fc913")
 		(property "Reference" "R13"
 			(at 305.30 113.08 0)
 			(effects
@@ -11651,14 +11862,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "0477c7a5-1879-486f-bc92-5eb5cae40a01")
+			(uuid "4a46a316-12b4-466d-a014-67098b64748d")
 		)
 		(pin "2"
-			(uuid "a8801c8e-6391-434a-825a-443a1b18a7bc")
+			(uuid "51cf4d5b-19a6-4643-a94a-5225a37dd6ee")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R13")
 					(unit 1)
 				)
@@ -11670,7 +11881,7 @@
 			(xy 297.30 115.08) (xy 305.30 111.27)
 		)
 		(stroke (width 0) (type solid))
-		(uuid "c8a5f1ad-7b99-4ad4-8206-b499adf8668a")
+		(uuid "b3d8526b-f962-4a50-8f28-d552d68d6147")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -11680,8 +11891,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "778d1976-20c2-4d20-b118-4283f08f8c7d")
-		(property "Reference" "#PWR078"
+		(uuid "e0a281ca-528c-401f-92f7-e387057122bc")
+		(property "Reference" "#PWR082"
 			(at 305.30 116.89 0)
 			(effects
 				(font
@@ -11699,12 +11910,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "79e93465-d082-4b92-8c14-a3551c3e376e")
+			(uuid "4b794242-6c3f-4037-bac7-157afa0690d0")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR078")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR082")
 					(unit 1)
 				)
 			)
@@ -11718,7 +11929,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b17b89bc-7d18-4c04-9a49-6faf634b7a7e")
+		(uuid "a4782ec8-10d8-4e0f-b74c-bd60245fc82f")
 		(property "Reference" "C4"
 			(at 325.00 92.68 0)
 			(effects
@@ -11763,14 +11974,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "44505133-310d-4a80-92e4-70a286fb22ff")
+			(uuid "be1e0362-9caf-4f76-96a4-72c7a7b9bb24")
 		)
 		(pin "2"
-			(uuid "716b8866-7d5b-43dc-90a9-7e5c93c9d7eb")
+			(uuid "6e580c82-8cb4-4e12-987e-8b0463739953")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C4")
 					(unit 1)
 				)
@@ -11785,8 +11996,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "17087bf2-d961-4bb6-990c-746f6cef1940")
-		(property "Reference" "#PWR080"
+		(uuid "4b26781a-b4e1-47ba-8c33-f1512a9c8204")
+		(property "Reference" "#PWR084"
 			(at 325.00 88.87 0)
 			(effects
 				(font
@@ -11804,12 +12015,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "3120712d-00e5-4a0e-a521-b13ad85a1ac0")
+			(uuid "518db3ca-aa96-4fef-9c9e-1d6d99a78967")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR080")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR084")
 					(unit 1)
 				)
 			)
@@ -11823,8 +12034,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "46506290-20d1-43fb-a619-63636303de55")
-		(property "Reference" "#PWR081"
+		(uuid "69ef6588-c6fc-45b6-a03e-bab93fdae901")
+		(property "Reference" "#PWR085"
 			(at 325.00 96.49 0)
 			(effects
 				(font
@@ -11842,12 +12053,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "25d76a06-bb63-4bc5-96d4-214f927f0890")
+			(uuid "10b10f5b-2816-4be1-803d-dff4bcf70c6b")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR081")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR085")
 					(unit 1)
 				)
 			)
@@ -11860,7 +12071,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "c15e14de-82be-4c18-99e6-1bc24fd8e6f5")
+		(uuid "1abd85d1-1d64-41fe-b521-51870cb557ee")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11873,7 +12084,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "a6f36cb1-26c5-4d1f-835c-99aab84a49fd")
+		(uuid "f50dd09f-c95e-4505-a5a2-91165a74de63")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11886,7 +12097,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "bc422da7-b7b6-4e16-ba01-12b20355307f")
+		(uuid "91915a65-7143-478a-8548-2a4b11f31884")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11899,7 +12110,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "87f9e36b-8a0b-4782-b127-f8dbebe7b19b")
+		(uuid "4e1d0e58-ad04-47dc-90ef-31e0a4b5f967")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11912,7 +12123,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "1d86a067-2623-4cd4-8ddc-f28fb48656d4")
+		(uuid "593567f8-2c11-4234-839b-3c4dd69db0c6")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11925,7 +12136,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "435b05a9-9e7b-4e19-ac8f-4a8b29f08d1f")
+		(uuid "962280bf-129e-4c6c-a011-9f0b52201b35")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11938,7 +12149,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "a02ea29a-b6c1-4260-9559-3c4b43f2f3b5")
+		(uuid "a0d89e64-ef38-4f6f-a6bf-f7583558016b")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11951,7 +12162,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "fe68ce73-e7fa-4823-9716-de9b799ac692")
+		(uuid "d42a05f3-ccf5-4705-b2d9-d742ade817d4")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11964,7 +12175,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "ed1bef47-b060-4bd9-9bf1-c38b92a2a0c6")
+		(uuid "3383e11c-91f3-432e-9879-cb4ac517b753")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11977,7 +12188,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "8c5efa31-8ab3-4f82-b6ca-291e39398d48")
+		(uuid "df46f4fa-a8f8-4395-8808-fdea9baccf95")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -11990,7 +12201,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "809d1544-2e55-451b-9484-336acf9c57d0")
+		(uuid "75c96294-a2f7-4b65-a5b6-6b2284c4e90a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12003,7 +12214,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "47286d9c-33fd-4e93-b305-c7a6d016cb67")
+		(uuid "571136e4-87c0-4f67-8def-d9a038e34795")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12017,7 +12228,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "494e5bd5-2e1b-4c25-adf7-122b8b741964")
+		(uuid "7ebed38c-9c81-47a6-b406-1f748ae35256")
 		(property "Reference" "J6"
 			(at 360.00 88.00 0)
 			(effects
@@ -12053,29 +12264,29 @@
 			)
 		)
 		(pin "1"
-			(uuid "7e8eedab-13d0-46e8-81f2-e3a6556d5d0b")
+			(uuid "e5eb4623-a7a8-40b6-849d-a1222cd2b822")
 		)
 		(pin "2"
-			(uuid "2641d3ae-c4ba-43cb-ad58-2ac5dedaa570")
+			(uuid "4cca9026-1f6b-4ba2-a3b6-cffc98f6f1b6")
 		)
 		(pin "3"
-			(uuid "14b3f539-5c53-4cdd-820f-179946f5d19a")
+			(uuid "edfffa79-e3f0-4003-9120-c8ff9e3d5751")
 		)
 		(pin "4"
-			(uuid "5d0d87b7-8261-4e6e-9580-1a3a684c2624")
+			(uuid "bf32b111-a5ff-41ed-aa48-2105efe3e778")
 		)
 		(pin "5"
-			(uuid "9e206ead-8054-4ce8-ad53-b8950c70dcbf")
+			(uuid "c3cc3184-0a83-48cc-a461-42c4c0907e9a")
 		)
 		(pin "6"
-			(uuid "090dbe0b-7a74-4c7d-bc72-9f8930e8bdad")
+			(uuid "be891cad-f49c-4768-9394-816d8e89ede0")
 		)
 		(pin "7"
-			(uuid "b8026d10-15a8-43c4-b82c-d28eecd7adcf")
+			(uuid "3795ca56-9a83-4132-a141-4f719f1a0713")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "J6")
 					(unit 1)
 				)
@@ -12089,7 +12300,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "f4a10659-ec08-4908-af73-c89f50b02bc7")
+		(uuid "78068f61-5a51-4411-9b19-e64f3922a92c")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12102,7 +12313,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "e966c70d-1905-4f73-a805-0a9f12261eae")
+		(uuid "38c0d1ed-a3b0-416f-97d1-6e4929a533bc")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12115,7 +12326,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "7dd4e2d1-c3fa-422b-95bf-9be4468956e1")
+		(uuid "ea152789-633c-45fb-a5bc-ffc238d16688")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12128,7 +12339,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "00678a86-65a1-429d-863b-c7b64211fbee")
+		(uuid "26fa55c4-6c01-43cd-8d12-d60e8152ff8f")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12141,7 +12352,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "44193e4a-ec0e-436b-b62f-6d78f951c323")
+		(uuid "84fc49ab-40c0-4084-8b02-e91ebee1819c")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12154,7 +12365,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "9c7f5e36-a18e-4cb1-bb8c-cf8a52703919")
+		(uuid "b0410fe4-164e-47ef-a8be-6f5e41a44701")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12168,8 +12379,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "955e52dd-6757-4797-b10d-314164d90309")
-		(property "Reference" "#PWR083"
+		(uuid "08701b0f-6142-49e4-8d2a-b48f129359fa")
+		(property "Reference" "#PWR087"
 			(at 354.92 95.62 0)
 			(effects
 				(font
@@ -12187,12 +12398,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "b7527fff-cf7d-496f-b4cf-b6286c294f31")
+			(uuid "a3a62128-5def-4295-8a0c-f325f86cf332")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR083")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR087")
 					(unit 1)
 				)
 			)
@@ -12206,7 +12417,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "628dbc8f-ee18-4f57-99ac-77c938b742a4")
+		(uuid "0a418083-54a9-41d1-9998-0f607a0f0d83")
 		(property "Reference" "J7"
 			(at 360.00 110.00 0)
 			(effects
@@ -12242,29 +12453,29 @@
 			)
 		)
 		(pin "1"
-			(uuid "76e69f0b-2106-4b77-b0c1-f3be26170d4d")
+			(uuid "418dd808-931f-4709-827c-aa2a2e7b7452")
 		)
 		(pin "2"
-			(uuid "cb55a63f-6221-46ae-8361-e90ddbafb6f8")
+			(uuid "8e567fd2-1f54-45e3-9f78-b18b5db2c6fc")
 		)
 		(pin "3"
-			(uuid "0c7f7c43-80d2-47c4-9bfe-b8bfa6d6fb26")
+			(uuid "cf6e4389-a8eb-46cd-976f-59d656bac8ce")
 		)
 		(pin "4"
-			(uuid "502f2031-a9ef-41ec-8306-3de965311089")
+			(uuid "78e59bd2-fba4-42e7-be27-c117b42bd01f")
 		)
 		(pin "5"
-			(uuid "980db930-ac02-4393-bfcc-5823dcd61ee2")
+			(uuid "a0ea8f68-e7df-4605-ae58-f6f49960642c")
 		)
 		(pin "6"
-			(uuid "250e7c83-e479-48e0-bb58-3ee98b1909f4")
+			(uuid "2f419b70-892b-4902-bc34-e0c1806ec25d")
 		)
 		(pin "7"
-			(uuid "be9d5270-163c-46be-8e87-6709988147e4")
+			(uuid "9a3d33a2-45d7-4e9d-a2b9-94bab9d4cd24")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "J7")
 					(unit 1)
 				)
@@ -12278,7 +12489,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "5b914b77-3bd0-4d7c-9b99-f2f88f2ad87f")
+		(uuid "4f47135b-eacb-4459-85ea-83e7e160938d")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12291,7 +12502,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "c8842859-609a-46ad-9b79-04c4d1f9e209")
+		(uuid "f72f4eba-625f-418b-8ad9-e02b1fcc4b97")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12304,7 +12515,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "f63d1674-4f65-4331-a20e-1a291389d70b")
+		(uuid "cad84941-3b8e-4d6f-a7b6-557beb3898db")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12317,7 +12528,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "48083017-f0af-48fa-8688-9ec80ceb2e63")
+		(uuid "0662f7f1-5e77-4164-b18f-2fbfb1194d56")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12330,7 +12541,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "af979432-42cb-4262-8b64-1af6ffc52924")
+		(uuid "2936713c-9580-4888-991a-f2f8680af67d")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12343,7 +12554,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "0c6eeeff-5bc5-4d3a-a393-193a27c48421")
+		(uuid "8609cd36-b238-481d-a7dd-249ff3e4b7f2")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12357,8 +12568,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b6511a64-7819-495f-a1b0-0d7edcd04bdb")
-		(property "Reference" "#PWR085"
+		(uuid "a7699e0c-43f0-475f-9811-aa8329c58b4c")
+		(property "Reference" "#PWR089"
 			(at 354.92 117.62 0)
 			(effects
 				(font
@@ -12376,12 +12587,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "0108d32a-a221-4e58-9607-fd2502eaed1d")
+			(uuid "39cac020-6fb9-4413-8d81-ffb977b3e08d")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR085")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR089")
 					(unit 1)
 				)
 			)
@@ -12395,7 +12606,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "87753b9a-4236-4e95-9e42-0f135fb22d4e")
+		(uuid "606ceff4-ee1c-49f6-a21d-977f1385dff3")
 		(property "Reference" "U6"
 			(at 310.00 173.00 0)
 			(effects
@@ -12440,56 +12651,56 @@
 			)
 		)
 		(pin "1"
-			(uuid "f0934c10-d953-463a-a28a-4e8cb0bcc1a1")
+			(uuid "b84c5784-55f2-4216-a156-f74f047340d5")
 		)
 		(pin "2"
-			(uuid "4fcbba30-4a69-4d19-9135-c0d01c5ced7d")
+			(uuid "ee6c6952-308f-44fb-ba24-aaaf03d071d6")
 		)
 		(pin "3"
-			(uuid "97eeae04-1b39-464d-be13-d5b10ac2385c")
+			(uuid "02375f72-e905-446a-a793-6384eb26eea5")
 		)
 		(pin "4"
-			(uuid "e98d8e82-a0bd-4e45-8ca9-d7871be55802")
+			(uuid "0457218e-b5c9-4d39-897e-88bef8d09dd2")
 		)
 		(pin "5"
-			(uuid "bec564f6-1be9-4595-8d67-ed601fc4908e")
+			(uuid "62e033fa-e7f6-4c6c-9b32-f3e9c8e11bda")
 		)
 		(pin "6"
-			(uuid "a8bb40ca-1397-490e-b54c-6c02eca516e7")
+			(uuid "87e76092-5052-4ac2-a333-b4ec3b3eaaea")
 		)
 		(pin "7"
-			(uuid "a0f3211d-46f5-4f03-ac2c-77c1bc8c94df")
+			(uuid "b2d2dfa3-2c30-4768-8021-0a3405b0aa30")
 		)
 		(pin "8"
-			(uuid "66954e48-3072-40e0-9d6b-2ddd6c492161")
+			(uuid "9e11959b-6bce-43a4-bdfb-bed8c8f98db6")
 		)
 		(pin "9"
-			(uuid "f7f6043a-52a8-4a10-bf69-b597b75bf4df")
+			(uuid "26b7e47c-a18a-4277-b757-dabf6667cf72")
 		)
 		(pin "10"
-			(uuid "3dbe4418-eff3-443f-972d-c7a9e658933a")
+			(uuid "dadf366b-1a74-4923-8057-575c4c0fd55e")
 		)
 		(pin "11"
-			(uuid "659e1f87-cb6c-49e4-9d33-e7b2faea16c6")
+			(uuid "e531afa8-aa25-49c0-8b4a-71256b14cda8")
 		)
 		(pin "12"
-			(uuid "7903dd22-77e7-40a1-b7a5-c9899090d08e")
+			(uuid "3ba98a3b-f5f5-4059-9290-277bde9868e4")
 		)
 		(pin "13"
-			(uuid "d92807ad-e4a6-4a1b-af35-b481dba1471f")
+			(uuid "39cfb1ec-a7af-4447-8fc0-0762d614e975")
 		)
 		(pin "14"
-			(uuid "7743a8f6-7414-4f42-ab7a-3a3ca3f9f17a")
+			(uuid "f1ab194c-872c-4b4c-a476-3ad6e4f796a7")
 		)
 		(pin "15"
-			(uuid "ce32bc45-0884-474c-baf4-9c5700cdfda2")
+			(uuid "d8de1d15-a7e8-47d6-b5a3-b1a8dd83efa5")
 		)
 		(pin "16"
-			(uuid "484ccd0d-6478-4d20-b7ab-0763b717719f")
+			(uuid "dfe4a67c-82cf-4b49-a3fb-fdb3eed62e93")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "U6")
 					(unit 1)
 				)
@@ -12503,7 +12714,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "a0a3b642-1cb1-4fe6-b10b-5092518356c5")
+		(uuid "6b459996-c332-4555-8ece-fca072d5fb95")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12516,7 +12727,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "f8886563-90e1-4eaa-bb42-6eed0169daca")
+		(uuid "47403341-1961-4627-a6fa-970b39edc276")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -12530,8 +12741,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ed082760-f4b3-4282-8698-5e61174708e5")
-		(property "Reference" "#PWR087"
+		(uuid "b70e5912-ebf3-4caa-bac2-1f37de1ad548")
+		(property "Reference" "#PWR091"
 			(at 299.84 175.54 0)
 			(effects
 				(font
@@ -12549,12 +12760,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "57550f74-494d-4c4a-958b-599f33913a1e")
+			(uuid "4a4a8af4-026e-4306-b477-7f97c346434a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR087")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR091")
 					(unit 1)
 				)
 			)
@@ -12568,8 +12779,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d48db86e-3974-4408-b4cf-49f63fa6975b")
-		(property "Reference" "#PWR088"
+		(uuid "14ef5c54-6f37-4d52-9eea-44e0ed8eb7e0")
+		(property "Reference" "#PWR092"
 			(at 299.84 178.08 0)
 			(effects
 				(font
@@ -12587,12 +12798,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "afd45406-f292-43a9-a47f-a2bda578f106")
+			(uuid "a8fe68ab-205c-4ac4-94bb-9cb7d8469a60")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR088")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR092")
 					(unit 1)
 				)
 			)
@@ -12606,8 +12817,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b1f2d39f-3a61-4a19-96c7-986cbdefaae3")
-		(property "Reference" "#PWR089"
+		(uuid "6547a623-730f-4b46-b0b0-18219fac58ac")
+		(property "Reference" "#PWR093"
 			(at 299.84 180.62 0)
 			(effects
 				(font
@@ -12625,12 +12836,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "205fe9c8-5317-4f53-8417-658b81bd2d14")
+			(uuid "e0002b6f-e1ac-47d2-b62b-1812a614b12c")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR089")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR093")
 					(unit 1)
 				)
 			)
@@ -12644,8 +12855,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "99532637-e5a2-4f61-8b9e-bde119fa8a8c")
-		(property "Reference" "#PWR090"
+		(uuid "ef152fc2-7a19-419e-8dac-eff62e3961ab")
+		(property "Reference" "#PWR094"
 			(at 310.00 185.70 0)
 			(effects
 				(font
@@ -12663,12 +12874,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "d0e000ec-62cb-4e6d-b304-e0a4700c8eee")
+			(uuid "6adb6ad2-4e55-41e1-b46a-b97543ceeee0")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR090")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR094")
 					(unit 1)
 				)
 			)
@@ -12682,8 +12893,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "2c4b257c-cc3a-4037-8b0a-d98089e569a1")
-		(property "Reference" "#PWR091"
+		(uuid "986a4c5f-688a-4ad0-a97b-9a107fdadbfc")
+		(property "Reference" "#PWR095"
 			(at 310.00 157.76 0)
 			(effects
 				(font
@@ -12701,12 +12912,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "4a4179c1-b983-4f89-b3f6-2bac92059487")
+			(uuid "4431b633-9ff2-4194-83b1-063dc8133397")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR091")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR095")
 					(unit 1)
 				)
 			)
@@ -12714,39 +12925,39 @@
 	)
 	(no_connect
 		(at 299.84 172.46)
-		(uuid "77a2c454-4933-4bd5-863e-423b2a9f1b2f")
+		(uuid "2859a8bb-62d5-4257-947f-88fa3d90c9f9")
 	)
 	(no_connect
 		(at 320.16 164.84)
-		(uuid "14ead511-9df1-4155-9bb9-197d68b6eafa")
+		(uuid "bc1002cd-a395-4100-a6fc-ddc06377f586")
 	)
 	(no_connect
 		(at 320.16 167.38)
-		(uuid "502b94d7-9ab3-4060-bb05-939a2aca62e0")
+		(uuid "a6278e8f-6770-4eef-aac2-2a44efd9220a")
 	)
 	(no_connect
 		(at 320.16 169.92)
-		(uuid "cd6a6196-71bc-4865-b9e9-04dee178085c")
+		(uuid "e8510fc1-2839-49cc-9c6b-f969f5fa433c")
 	)
 	(no_connect
 		(at 320.16 172.46)
-		(uuid "b2490d7d-7aee-47df-9512-3509eee77b84")
+		(uuid "e239c584-74ac-4251-99d3-6d937352c4b6")
 	)
 	(no_connect
 		(at 320.16 175.00)
-		(uuid "280c0307-1436-4a7a-9368-3f7aba23a28f")
+		(uuid "78d4d0c7-c668-4ab5-b1f3-89e599c549af")
 	)
 	(no_connect
 		(at 320.16 177.54)
-		(uuid "305ac96f-8e29-4c6b-9d22-2d68cabb370a")
+		(uuid "f2710017-28e5-40cd-bd71-5b105196790f")
 	)
 	(no_connect
 		(at 320.16 180.08)
-		(uuid "1f1573aa-a44b-4ac1-b9b4-0dcff50ba8c7")
+		(uuid "05e19b41-544f-48de-8d29-60f68795ed2c")
 	)
 	(no_connect
 		(at 320.16 182.62)
-		(uuid "0d90fb55-ec63-456d-9a66-7bbf5fe7b1a1")
+		(uuid "7704c18c-fa1b-46c7-a421-f3cf31b03d46")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -12756,7 +12967,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "072156c0-7141-4902-bf0c-6119ef901352")
+		(uuid "98700cd9-8aab-4ab4-9ff3-0c21785eb9b7")
 		(property "Reference" "C11"
 			(at 325.00 162.76 0)
 			(effects
@@ -12801,14 +13012,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "3ea2ad47-909d-4962-a6a9-f77ac9b77169")
+			(uuid "9597f27f-ceb3-426e-a6f8-22cf2b90cb3d")
 		)
 		(pin "2"
-			(uuid "23ef7928-da1b-4a14-8118-8f67fe9a67a9")
+			(uuid "ee3995e7-82f2-4a74-bcaa-061d7b934f20")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C11")
 					(unit 1)
 				)
@@ -12823,8 +13034,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "c5da6692-f462-491f-a9f1-c38b7343a92e")
-		(property "Reference" "#PWR093"
+		(uuid "dcea97ce-a633-4f46-b529-8db4b52157e8")
+		(property "Reference" "#PWR097"
 			(at 325.00 158.95 0)
 			(effects
 				(font
@@ -12842,12 +13053,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "994c618e-9227-4aa7-8251-835bd55430db")
+			(uuid "173a1b85-3969-4e95-b602-6480d3420946")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR093")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR097")
 					(unit 1)
 				)
 			)
@@ -12861,8 +13072,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "5c9d4963-c79a-4abd-8d7c-75f2935703b8")
-		(property "Reference" "#PWR094"
+		(uuid "bc139b3d-0ac9-4d65-8292-7ebb15834a22")
+		(property "Reference" "#PWR098"
 			(at 325.00 166.57 0)
 			(effects
 				(font
@@ -12880,12 +13091,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "0b12ecc8-4812-402f-aa29-761d3f6e77ec")
+			(uuid "bcd0671b-18ee-4bab-9bd1-7c2fe6d9062f")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR094")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR098")
 					(unit 1)
 				)
 			)
@@ -12899,7 +13110,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "73547d8c-f127-4783-8853-55b622ce91f5")
+		(uuid "eecaacbd-f59f-4aa5-ba85-ebb81ec18f33")
 		(property "Reference" "R11"
 			(at 285.00 158.00 0)
 			(effects
@@ -12944,14 +13155,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "9c926904-a84e-4a93-9d01-e3b301ccfa91")
+			(uuid "fd3ba102-4659-44db-80e2-0ac3e04e5657")
 		)
 		(pin "2"
-			(uuid "9ffa04c2-f715-4a82-bde4-73f43b0e3446")
+			(uuid "0379c70c-acc9-49ce-bc81-36e6b84f69af")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R11")
 					(unit 1)
 				)
@@ -12966,7 +13177,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0b2f78f7-7dd6-42d9-890c-13b35821aa4d")
+		(uuid "088ff925-9f4b-44d0-bae6-d1b30b06e102")
 		(property "Reference" "R12"
 			(at 292.00 158.00 0)
 			(effects
@@ -13011,14 +13222,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "f4bcbb2c-ffd4-4c26-90e7-bbfabb2ea6ee")
+			(uuid "73680bc6-112b-41d3-b299-f1b8ddfe4c6b")
 		)
 		(pin "2"
-			(uuid "6c595be5-8f34-4078-bbc1-1562aa8a1a25")
+			(uuid "4b37fc05-e79f-48e3-8c90-d74255570431")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R12")
 					(unit 1)
 				)
@@ -13033,8 +13244,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f64d1baa-9f04-4cd7-9533-920d9eac071e")
-		(property "Reference" "#PWR097"
+		(uuid "bed99782-2678-4145-bb8b-a27447899718")
+		(property "Reference" "#PWR101"
 			(at 285.00 154.19 0)
 			(effects
 				(font
@@ -13052,12 +13263,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "5992a441-82b1-412b-9da7-5e2b9db982b7")
+			(uuid "d427ff20-a621-4099-be0c-cffefbc4da84")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR097")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR101")
 					(unit 1)
 				)
 			)
@@ -13071,8 +13282,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f0f3986b-fdb6-4885-8127-6168afe7c2fe")
-		(property "Reference" "#PWR098"
+		(uuid "1762802f-af88-47a8-85ee-dba26eb99b2b")
+		(property "Reference" "#PWR102"
 			(at 292.00 154.19 0)
 			(effects
 				(font
@@ -13090,12 +13301,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "1bc2a829-6fd6-4769-8fd3-882bf2ec80e9")
+			(uuid "f4e68c16-a3a0-4b07-a504-90a24d1544a2")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR098")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR102")
 					(unit 1)
 				)
 			)
@@ -13108,7 +13319,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "1bcbbf33-ee61-425a-896f-5abd187fc1d3")
+		(uuid "4fbcd2c5-632a-494c-bc6e-bc15c15be7b3")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -13121,7 +13332,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "ef47956b-0bf1-4ea3-ad47-f340d8f2b662")
+		(uuid "ad30f1e6-35c9-4666-b17d-9253b78e2d6c")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -13135,7 +13346,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1659fa30-b3d7-45cc-866a-dc5a3ef33060")
+		(uuid "a464e49c-d050-4296-9b05-41c71299ac56")
 		(property "Reference" "J3"
 			(at 360.00 165.00 0)
 			(effects
@@ -13171,20 +13382,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "4bfcc4ce-dbf6-4367-8e84-a7a5ca9269eb")
+			(uuid "a33fcc4f-98a1-44a5-ae4f-417e6972b85f")
 		)
 		(pin "2"
-			(uuid "64df3772-be10-4926-8e10-301d67d04001")
+			(uuid "08384696-878a-4f02-995e-36741b0c018b")
 		)
 		(pin "3"
-			(uuid "67632963-b2cd-45b3-a7e4-d2695ea0561e")
+			(uuid "bd83768f-a309-4912-8203-2e15eaf2b06b")
 		)
 		(pin "4"
-			(uuid "6b5571e4-7176-4bcd-b29e-1f57f3abe4c8")
+			(uuid "8f7766d4-c3e0-4969-8305-3bc79f32cd27")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "J3")
 					(unit 1)
 				)
@@ -13198,7 +13409,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "364e83fb-2abb-474d-82a1-1a0dbdfe4247")
+		(uuid "39e05ef2-a6e0-4b8e-a5cd-589e163f2ae8")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -13211,7 +13422,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "f2af2127-b50c-4d13-9193-b098dd7d1b56")
+		(uuid "5cfe7eff-f7aa-4fc6-9d0a-23846542226a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -13225,8 +13436,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "55e0105c-a28b-4402-bfe5-abc7675b8b81")
-		(property "Reference" "#PWR100"
+		(uuid "d75d9cea-0da0-4a59-9bc0-7d5170a394af")
+		(property "Reference" "#PWR104"
 			(at 354.92 167.54 0)
 			(effects
 				(font
@@ -13244,12 +13455,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "014b13af-b3a9-4f73-bc64-1a90a3f6280d")
+			(uuid "38f81fce-3ac6-4256-9dbd-ed9ec8b11e6f")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR100")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR104")
 					(unit 1)
 				)
 			)
@@ -13263,8 +13474,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "14b45070-057a-4d58-b3fa-1cc4e0c607ad")
-		(property "Reference" "#PWR101"
+		(uuid "67fa7f36-9d93-44bc-ab08-e17b5dca4d49")
+		(property "Reference" "#PWR105"
 			(at 354.92 170.08 0)
 			(effects
 				(font
@@ -13282,12 +13493,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "99c0560d-ad7f-4544-88f7-f8b40459d83b")
+			(uuid "ed2903be-6c60-49d7-8dee-842556cb91ae")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR101")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR105")
 					(unit 1)
 				)
 			)
@@ -13301,7 +13512,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "fffce5b4-27bc-40d8-857b-22ce33a3fb93")
+		(uuid "248d375e-0ec9-4f24-a053-3c6f1a8d59ee")
 		(property "Reference" "U7"
 			(at 200.00 233.00 0)
 			(effects
@@ -13346,17 +13557,17 @@
 			)
 		)
 		(pin "1"
-			(uuid "f76f2fd3-0b46-4a2a-9b93-f6e4b37abc7a")
+			(uuid "b42d48e0-79de-43c8-a8b2-15b2ab94333f")
 		)
 		(pin "2"
-			(uuid "ef111326-6867-4eb3-8c59-e61bd707abb6")
+			(uuid "0175222a-0e7d-448d-8f42-5c65120bb3a8")
 		)
 		(pin "3"
-			(uuid "c3689592-d7f3-4991-8611-3c64dc24e4f3")
+			(uuid "234cad43-d50b-47ae-ba16-707111e188cf")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "U7")
 					(unit 1)
 				)
@@ -13371,8 +13582,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e40bde0d-ac67-41aa-9912-d7ec298db6d8")
-		(property "Reference" "#PWR103"
+		(uuid "069bb724-f49f-41be-b0b6-7cb88375a0ee")
+		(property "Reference" "#PWR107"
 			(at 200.00 239.35 0)
 			(effects
 				(font
@@ -13390,12 +13601,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "0bf4caab-7818-4276-a8f6-18aa948accde")
+			(uuid "a2161715-5d25-4e9c-9dc6-20d92a4c43f7")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR103")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR107")
 					(unit 1)
 				)
 			)
@@ -13408,7 +13619,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "64faac8e-a778-48ef-8df4-ee6a79c9d377")
+		(uuid "35d10b15-a998-4b1b-b1f7-70a85448e80e")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -13421,7 +13632,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "123b6c7e-8431-4ff4-aca9-951e3705d4c6")
+		(uuid "464c85b5-7694-4e8e-9baa-d09bc12e27b0")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -13435,7 +13646,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ebd68a88-9b0b-45ea-bfa0-b099657846af")
+		(uuid "96524441-7a48-458f-b429-a82ab1611a8c")
 		(property "Reference" "U7"
 			(at 215.00 233.00 0)
 			(effects
@@ -13480,14 +13691,14 @@
 			)
 		)
 		(pin "7"
-			(uuid "f9b0c44f-924f-4e67-ba10-fac058edf6db")
+			(uuid "b78fb678-0401-4680-a51c-d2a2def6a9e2")
 		)
 		(pin "14"
-			(uuid "2eb916a4-f44f-4eee-b83f-3fbf1cd2c575")
+			(uuid "27aaaf72-926c-49e5-ac0f-95b74e0f9a60")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "U7")
 					(unit 5)
 				)
@@ -13502,8 +13713,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3ed29e91-a445-444f-9f19-ad71580fc3af")
-		(property "Reference" "#PWR105"
+		(uuid "10b4f49c-8a21-4a05-a7ed-0156327f2f63")
+		(property "Reference" "#PWR109"
 			(at 215.00 220.30 0)
 			(effects
 				(font
@@ -13521,12 +13732,67 @@
 			)
 		)
 		(pin "1"
-			(uuid "206f18ac-a781-46b1-95ae-95906a2fa63a")
+			(uuid "668148d1-f4b9-431a-a9c3-9485d097a411")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR105")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR109")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 215.00 222.30 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "32e25373-39b1-4559-ac30-c233610af586")
+		(property "Reference" "#FLG110"
+			(at 215.00 220.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 215.00 224.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 215.00 222.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 215.00 222.30 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b890cd2d-cb28-4661-a317-ef0f2fb131f4")
+		)
+		(instances
+			(project "HMTL_ESP32_TouchController"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#FLG110")
 					(unit 1)
 				)
 			)
@@ -13540,8 +13806,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b210e82a-9492-4bcf-9622-c277838f0eeb")
-		(property "Reference" "#PWR106"
+		(uuid "e653f178-0eaa-4de4-9ddf-d9489e2b655b")
+		(property "Reference" "#PWR112"
 			(at 215.00 245.70 0)
 			(effects
 				(font
@@ -13559,12 +13825,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "b20dae0e-1994-4c84-91a2-338122960d6b")
+			(uuid "cf74259a-8517-470e-b12c-c76dab74e6bc")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR106")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR112")
 					(unit 1)
 				)
 			)
@@ -13578,7 +13844,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "02b19869-0ec1-4dfd-b20e-8655b99cc6ef")
+		(uuid "a3f4537d-9d7a-416c-9d7a-fffbbd9ccf86")
 		(property "Reference" "C12"
 			(at 212.00 225.00 0)
 			(effects
@@ -13623,14 +13889,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "c13fca90-d57e-41f5-85e2-463829eedacc")
+			(uuid "d1aa5c7d-e62d-4aff-a710-1ef4196b1e40")
 		)
 		(pin "2"
-			(uuid "7fd19529-db85-47c9-80cf-75b11014f2ea")
+			(uuid "000d7aed-224b-40cd-8765-d30a8843a14a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "C12")
 					(unit 1)
 				)
@@ -13645,8 +13911,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3bdfbb35-9d46-4ff9-9619-f670199debf2")
-		(property "Reference" "#PWR108"
+		(uuid "d990c1ca-6f93-4a74-9671-6c9e3aa80c82")
+		(property "Reference" "#PWR114"
 			(at 212.00 221.19 0)
 			(effects
 				(font
@@ -13664,12 +13930,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "bf95e1b4-8ebe-4523-bf9c-9edb6c6aed72")
+			(uuid "abefb593-6482-4ecc-938b-1e403cf0735a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR108")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR114")
 					(unit 1)
 				)
 			)
@@ -13683,8 +13949,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a12b1ccc-f590-4368-88e3-6db41622b8d3")
-		(property "Reference" "#PWR109"
+		(uuid "c750e3ea-3525-4421-9b71-567226343176")
+		(property "Reference" "#PWR115"
 			(at 212.00 228.81 0)
 			(effects
 				(font
@@ -13702,12 +13968,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "a889a121-b971-4add-9ed6-930b592b3e52")
+			(uuid "6a91c3cb-59dd-42f6-8cc8-b3cb40f0fad0")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR109")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR115")
 					(unit 1)
 				)
 			)
@@ -13721,7 +13987,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e5e8459c-8b9c-4175-bc2d-83ef115d86ea")
+		(uuid "12262057-2783-42f9-bc64-5d4fd6fac80f")
 		(property "Reference" "J4"
 			(at 235.00 231.00 0)
 			(effects
@@ -13757,20 +14023,20 @@
 			)
 		)
 		(pin "1"
-			(uuid "b163c60b-ad4c-4640-9ef9-e5bdc9a4e2e9")
+			(uuid "814ec82e-6970-4732-a345-cc09b8803912")
 		)
 		(pin "2"
-			(uuid "ffbb42e4-ae9c-4d4a-975b-5e7b61e984b1")
+			(uuid "a69338fe-7f01-4edf-8c7f-052a325f0dc3")
 		)
 		(pin "3"
-			(uuid "a70d572c-d2d8-42da-b1ff-b57439c012f9")
+			(uuid "c6498d2d-2965-4e61-931f-63f7364f8576")
 		)
 		(pin "4"
-			(uuid "a7f3c14c-6ae2-4376-b71e-ce0893e4a114")
+			(uuid "e6486e39-b65e-4657-ac7d-a94429c847fa")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "J4")
 					(unit 1)
 				)
@@ -13784,7 +14050,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "30a88f58-0de6-4fb8-ba87-b7f867a66776")
+		(uuid "9b8e87b3-5c41-41d2-b331-eecd2a8c3b06")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -13797,7 +14063,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "091f697e-ff76-45d1-ac6b-98a8c833b7a8")
+		(uuid "7173ca77-d189-49cd-8ada-27cd3360f54d")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -13811,8 +14077,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e41df2ce-9d44-4eac-b37a-12890b160709")
-		(property "Reference" "#PWR111"
+		(uuid "1d267c69-5ecb-4481-97a5-61ff003abc41")
+		(property "Reference" "#PWR117"
 			(at 229.92 233.54 0)
 			(effects
 				(font
@@ -13830,12 +14096,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "3fcbe677-8043-44a6-bd74-5a22496462fc")
+			(uuid "6f105be9-fb42-4dc1-8587-8ba6070dbd3c")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR111")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR117")
 					(unit 1)
 				)
 			)
@@ -13849,8 +14115,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "8d3a0538-bae3-46f0-9ffe-6c08398356ea")
-		(property "Reference" "#PWR112"
+		(uuid "3162713e-ba83-4bd1-8eda-759d48acc47d")
+		(property "Reference" "#PWR118"
 			(at 229.92 236.08 0)
 			(effects
 				(font
@@ -13868,12 +14134,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "3caf10ea-c023-4fed-b0e8-d7ae25ac98bb")
+			(uuid "1cae0ae6-896a-439c-a2a1-543446515f0a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR112")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR118")
 					(unit 1)
 				)
 			)
@@ -13887,7 +14153,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "472b2717-a6a2-4a91-97ba-0c37dfe14722")
+		(uuid "a3fe0c3a-29a5-4f5b-a6d5-f7429378392e")
 		(property "Reference" "R14"
 			(at 348.00 40.00 0)
 			(effects
@@ -13932,14 +14198,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "8236b5cd-3640-4f70-983a-ff466321418d")
+			(uuid "81e8280c-965c-44e5-a16a-f441cee5bc26")
 		)
 		(pin "2"
-			(uuid "2870e23f-1449-42df-9186-b956dd522661")
+			(uuid "bf90b975-9396-441c-a38d-286bd87d0465")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R14")
 					(unit 1)
 				)
@@ -13954,8 +14220,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "43ac7e12-7e1b-4974-b622-f410e643fe68")
-		(property "Reference" "#PWR114"
+		(uuid "38d15885-c451-4425-a092-4277ef92eafa")
+		(property "Reference" "#PWR120"
 			(at 348.00 36.19 0)
 			(effects
 				(font
@@ -13973,12 +14239,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "183e488c-cfb3-4a4e-8bc7-6da73699ce7e")
+			(uuid "2471a38d-ab9b-4da0-b49d-5cef7efe500a")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR114")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR120")
 					(unit 1)
 				)
 			)
@@ -13991,7 +14257,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "0b4273f6-db92-4279-93c8-1102e81c7dc2")
+		(uuid "8ebb17a0-a999-46a3-b4b5-1bf73a3af17a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14005,7 +14271,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d95a396c-bb62-4a82-a04d-cd7088c29209")
+		(uuid "0227fe8c-d8e0-4303-9e63-337a72003598")
 		(property "Reference" "R15"
 			(at 356.00 40.00 0)
 			(effects
@@ -14050,14 +14316,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "3adef680-43c6-4b14-9231-fdc282a10129")
+			(uuid "e012771a-59a2-4e93-81c4-d14b7c52958b")
 		)
 		(pin "2"
-			(uuid "403cd33d-9cb6-4222-97b6-c963ecc23033")
+			(uuid "35c24aeb-5873-4c85-b921-316880958561")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R15")
 					(unit 1)
 				)
@@ -14072,8 +14338,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f340a402-3bf5-4e90-955c-d559c25d2732")
-		(property "Reference" "#PWR116"
+		(uuid "38e3be7b-c6ca-45d5-96f1-09e6890b1977")
+		(property "Reference" "#PWR122"
 			(at 356.00 36.19 0)
 			(effects
 				(font
@@ -14091,12 +14357,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "37c98698-3eba-4f03-a57d-cc9533b57f84")
+			(uuid "c8152f97-0598-4073-866c-227592778206")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR116")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR122")
 					(unit 1)
 				)
 			)
@@ -14109,7 +14375,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "49a13397-87c9-4124-8b2a-a84fdda1ad21")
+		(uuid "b1948aae-c4ba-43a3-92b8-2b14e4a1337c")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14123,7 +14389,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "037df9d8-6d90-49aa-a32a-10aa9c0a5580")
+		(uuid "9babc553-3bd3-461a-88b8-4987283f4187")
 		(property "Reference" "R16"
 			(at 364.00 40.00 0)
 			(effects
@@ -14168,14 +14434,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "90ac2322-6c38-48aa-a4d6-ae3d535bef3d")
+			(uuid "bc2ec69d-9f2b-4cc7-ad00-3008f15569e8")
 		)
 		(pin "2"
-			(uuid "d41dbbfd-0bbb-44d3-9ee8-9f269151326d")
+			(uuid "d207c00f-d491-44ed-9258-71b3e7f974ee")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R16")
 					(unit 1)
 				)
@@ -14190,8 +14456,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "bc0048d3-f889-49e9-919e-09a9703282f4")
-		(property "Reference" "#PWR118"
+		(uuid "4cc57a4e-c889-47e3-bc44-abe10285e2f1")
+		(property "Reference" "#PWR124"
 			(at 364.00 36.19 0)
 			(effects
 				(font
@@ -14209,12 +14475,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "f73eed82-b70b-4ed5-b865-dee049c25900")
+			(uuid "df4f0271-b5fc-4b60-8bb8-a8e8e63b1027")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR118")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR124")
 					(unit 1)
 				)
 			)
@@ -14227,7 +14493,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "05193b3c-0351-4b7f-b86f-252ab9a03ac8")
+		(uuid "5c89df18-ac76-4308-b77d-d1d4a34d1a9a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14241,7 +14507,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "4d3a0bac-3087-42c3-9f25-9ef29294709d")
+		(uuid "61bc4997-67f8-45fd-92b0-c9b691341279")
 		(property "Reference" "R17"
 			(at 372.00 40.00 0)
 			(effects
@@ -14286,14 +14552,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "5f839512-2417-4c4a-bcd9-8e1ab031bf5f")
+			(uuid "c5fe07f7-9cd7-48c3-9808-8a034f58e544")
 		)
 		(pin "2"
-			(uuid "e26ee65a-3848-4d45-96f6-0f269652fb32")
+			(uuid "29ba21c7-51dd-468a-9546-46022d6e1550")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "R17")
 					(unit 1)
 				)
@@ -14308,8 +14574,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b61a5a63-49a7-480f-ae59-dd0abf2591b1")
-		(property "Reference" "#PWR120"
+		(uuid "d17527a1-92e4-48cb-ae06-e2620b5046ee")
+		(property "Reference" "#PWR126"
 			(at 372.00 36.19 0)
 			(effects
 				(font
@@ -14327,12 +14593,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "bbfb68a1-83de-4b75-822d-e61ee994ee4f")
+			(uuid "49ccf908-825a-42ee-a59d-cae5f90ba8a7")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR120")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR126")
 					(unit 1)
 				)
 			)
@@ -14345,7 +14611,7 @@
 			(font (size 1.27 1.27))
 			(justify left)
 		)
-		(uuid "9f466e79-9f36-4495-8f52-0776f43546cb")
+		(uuid "5d04f318-976d-4fc7-88ea-520538c44651")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14359,7 +14625,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "24b4b520-539a-4418-94d7-9ea0e8c215ce")
+		(uuid "d2896995-8ad1-4c04-bbe4-bf957563dbd2")
 		(property "Reference" "J5"
 			(at 380.00 51.00 0)
 			(effects
@@ -14395,23 +14661,23 @@
 			)
 		)
 		(pin "1"
-			(uuid "6fb4dc05-5bd8-413c-98e4-8e006d27115b")
+			(uuid "1e1f43d9-ea33-40c3-95ee-f1a2e3992d40")
 		)
 		(pin "2"
-			(uuid "5c415b01-a02d-4158-8643-d63316731656")
+			(uuid "f71724d0-adeb-4a78-a4c4-422a0a84c01e")
 		)
 		(pin "3"
-			(uuid "e72c1acb-57fa-46f2-b396-116eebe04dbe")
+			(uuid "8af0c207-dea8-4bb0-87d9-1d2eba802bf8")
 		)
 		(pin "4"
-			(uuid "e3819846-4411-4424-92c1-5d6478dfef15")
+			(uuid "a327faae-6bcd-4f63-b36c-ab0da46aac55")
 		)
 		(pin "5"
-			(uuid "8cfa4a14-c42d-438c-9a90-ce23dcee18cc")
+			(uuid "acb28a3e-21c7-4588-a7ae-ee345a2b829d")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "J5")
 					(unit 1)
 				)
@@ -14425,7 +14691,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "fd3d4eae-cef0-43d6-bc47-42986f001e9b")
+		(uuid "5d95c90c-cd37-4c8d-9aef-01a2b3b6492f")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14438,7 +14704,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "dc688c1f-a52f-4ee1-93a2-7f90274655a5")
+		(uuid "ac252a6e-f0b8-47fa-b9cb-ae832ecf2d35")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14451,7 +14717,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "dbcde73d-cdb8-4ada-927e-eb08022aa4a5")
+		(uuid "a30efefb-e213-4299-9440-afedaa154db2")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14464,7 +14730,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "90bfb9f3-03ba-454b-92f4-53bc37145890")
+		(uuid "05491cd1-9ae5-4aa0-a23f-eed4ffc3191a")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14478,8 +14744,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "c53f39e0-53ae-4561-b6ed-388e785a0392")
-		(property "Reference" "#PWR122"
+		(uuid "834cc6e5-2b0a-4047-bf81-20d321a3c4d0")
+		(property "Reference" "#PWR128"
 			(at 374.92 56.08 0)
 			(effects
 				(font
@@ -14497,12 +14763,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "f99b416d-919c-458f-9927-6cf413664898")
+			(uuid "ab1ffe24-0a42-4c05-bedb-71ffe65c04d5")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR122")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR128")
 					(unit 1)
 				)
 			)
@@ -14516,7 +14782,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "6dcb6a13-eec0-4cc0-8ed9-b694298b18d5")
+		(uuid "ff5d7fcf-1bfd-4fbf-9e50-08521c3226e7")
 		(property "Reference" "J1"
 			(at 148.00 263.00 0)
 			(effects
@@ -14552,14 +14818,14 @@
 			)
 		)
 		(pin "1"
-			(uuid "e0a49a20-9cc2-4f6c-91e2-494bd2e7730f")
+			(uuid "7d6bf668-ab41-4698-bd22-7b75048c8cb3")
 		)
 		(pin "2"
-			(uuid "9c3c6f39-4d4a-4c40-99c3-64ce74b8a721")
+			(uuid "655727b4-fd20-46a5-99a0-d51d67b77651")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
 					(reference "J1")
 					(unit 1)
 				)
@@ -14573,7 +14839,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "3df39126-12bc-45d8-9abb-b4f1a03709dd")
+		(uuid "0a43ea74-b523-4086-9bb3-9f90403d0e97")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14587,8 +14853,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "91e039d6-9523-4b9d-a2a7-1886566fb99f")
-		(property "Reference" "#PWR124"
+		(uuid "ffbbc200-0615-43cb-87d3-7c5a8de3bd39")
+		(property "Reference" "#PWR130"
 			(at 142.92 265.54 0)
 			(effects
 				(font
@@ -14606,12 +14872,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "965c64ee-c0e7-4e0d-a1ca-61b4f22ce8e3")
+			(uuid "ceced392-171d-437c-ad7f-0a25fa990cee")
 		)
 		(instances
 			(project "HMTL_ESP32_TouchController"
-				(path "/c776ad97-96bb-4822-b3c1-62c915828a3e"
-					(reference "#PWR124")
+				(path "/3d2597c5-86b6-42ca-ac91-cc7dbbc60c5b"
+					(reference "#PWR130")
 					(unit 1)
 				)
 			)
@@ -14624,7 +14890,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "feb277a9-0110-41cd-936f-256320df3c79")
+		(uuid "810501de-9c92-4e21-a62e-4535ec8186a6")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
@@ -14637,7 +14903,7 @@
 			(font (size 1.27 1.27))
 			(justify right)
 		)
-		(uuid "b8657d37-7ddf-4d85-9b04-db0b1229e053")
+		(uuid "3c0f7c9a-1934-4508-ac16-08d56945f5ff")
 		(property "Intersheet References" ""
 			(at 0 0 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
