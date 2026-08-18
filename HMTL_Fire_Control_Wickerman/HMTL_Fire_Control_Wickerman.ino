@@ -146,7 +146,8 @@ void setup() {
 
   /* Setup the RS485 connection */
 #ifdef ESP32
-  Serial2.begin(RS485Socket::DEFAULT_BAUD, SERIAL_8N1, 16, 17);
+  /* Pin defaults + pair-override guard live in HMTL_Fire_Control.h */
+  Serial2.begin(RS485Socket::DEFAULT_BAUD, SERIAL_8N1, RS485_RX_PIN, RS485_TX_PIN);
 #endif
   rs485.setup();
   rs485.initBuffer(rs485_data_buffer, SEND_BUFFER_SIZE);

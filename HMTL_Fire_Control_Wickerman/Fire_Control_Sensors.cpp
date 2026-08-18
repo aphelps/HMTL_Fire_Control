@@ -36,12 +36,40 @@ uint16_t lights_address = LIGHTS_ADDRESS;
 #define NUM_SWITCHES 4
 bool switch_states[NUM_SWITCHES] = { false, false, false, false };
 bool switch_changed[NUM_SWITCHES] = { false, false, false, false };
+
+/*
+ * Arming interlock: a switch only counts as CLOSED after it has been observed
+ * OPEN since boot.  Anything that holds a switch line low from power-on (a
+ * shorted harness, a miswired pin, a radio sharing the pin) would otherwise
+ * make the controller boot believing the ignition switches are closed and arm
+ * with no operator action.  The cost is one open/close cycle for a switch left
+ * on across a reboot -- the correct arming semantic anyway: outputs default
+ * safe until an operator does something.
+ */
+static bool switch_seen_open[NUM_SWITCHES] = { false, false, false, false };
+
+/*
+ * The latch is TIME-QUALIFIED, not single-sample: a driven or noisy signal
+ * sharing the switch line would otherwise satisfy "seen open" with one pulse
+ * and then read as an armed, closed switch.  A switch must read open continuously for
+ * SWITCH_OPEN_LATCH_MS before closed counts; operators flip switches on human
+ * timescales, so a 1s qualification is invisible to them.
+ */
+#define SWITCH_OPEN_LATCH_MS 1000
+static unsigned long switch_open_since[NUM_SWITCHES] = { 0, 0, 0, 0 };
 const uint8_t switch_pins[NUM_SWITCHES] = {
   SWITCH_PIN_1, SWITCH_PIN_2, SWITCH_PIN_3, SWITCH_PIN_4 };
 
 void initialize_switches(void) {
   for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
-    pinMode(switch_pins[i], INPUT);
+    /*
+     * INPUT_PULLUP, not INPUT: switches are active-low (closed = LOW), so the
+     * pulled-up open state is the safe one, and a floating pin reads a steady
+     * OPEN instead of oscillating -- without it, one noise "open" would let
+     * the seen-open interlock count noise as real closes.  The interlock
+     * handles stuck-low lines; the pullup handles floating ones.
+     */
+    pinMode(switch_pins[i], INPUT_PULLUP);
   }
 
   calculate_pulse();
@@ -49,7 +77,23 @@ void initialize_switches(void) {
 
 void sensor_switches(void) {
   for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
-    bool value = (digitalRead(switch_pins[i]) == LOW);
+    bool raw = (digitalRead(switch_pins[i]) == LOW);
+    if (!raw) {
+      if (!switch_seen_open[i]) {
+        unsigned long now = millis();
+        if (switch_open_since[i] == 0) {
+          switch_open_since[i] = now;
+        } else if (now - switch_open_since[i] >= SWITCH_OPEN_LATCH_MS) {
+          switch_seen_open[i] = true;
+          DEBUG3_VALUELN("Switch armed (seen open) ", i);
+        }
+      }
+    } else {
+      /* A closed reading restarts the qualification window */
+      switch_open_since[i] = 0;
+    }
+    /* Closed only counts once the switch has proven it can stay open */
+    bool value = raw && switch_seen_open[i];
     if (value != switch_states[i]) {
       switch_changed[i] = true;
       data_changed = true;

@@ -69,6 +69,36 @@ extern TimeSync timesync;
 extern uint32_t sensor_state;
 
 /* Physical pins for the rocker switches */
+/*
+ * ESP32 RS485 UART pins.  Boards override the defaults with
+ * -DRS485_RX_PIN/-DRS485_TX_PIN.  Overriding only half the pair is almost
+ * certainly a mistake, so refuse to build.
+ */
+#ifdef ESP32
+  #if defined(RS485_RX_PIN) != defined(RS485_TX_PIN)
+    #error "Override RS485_RX_PIN and RS485_TX_PIN together, not singly"
+  #endif
+  #ifndef RS485_RX_PIN
+    #define RS485_RX_PIN 5
+  #endif
+  #ifndef RS485_TX_PIN
+    #define RS485_TX_PIN 19
+  #endif
+  #ifndef RS485_ENABLE_PIN
+    #define RS485_ENABLE_PIN 18
+  #endif
+#endif
+
+/*
+ * The flagless ESP32 build would otherwise silently collide: default
+ * SWITCH_PIN_1 (5) == default RS485_RX_PIN (5), and initialize_switches()
+ * runs after Serial2.begin, re-muxing the UART's RX pin to GPIO input.
+ * Catch any switch/RS485 pin collision at compile time.
+ */
+#ifdef ESP32
+  #define FC_PIN_COLLIDES(p) ((p) == RS485_RX_PIN || (p) == RS485_TX_PIN || (p) == RS485_ENABLE_PIN)
+#endif
+
 #ifndef SWITCH_PIN_1
   #define SWITCH_PIN_1 5
 #endif
@@ -80,6 +110,13 @@ extern uint32_t sensor_state;
 #endif
 #ifndef SWITCH_PIN_4
   #define SWITCH_PIN_4 10
+#endif
+
+#ifdef ESP32
+  #if FC_PIN_COLLIDES(SWITCH_PIN_1) || FC_PIN_COLLIDES(SWITCH_PIN_2) || \
+      FC_PIN_COLLIDES(SWITCH_PIN_3) || FC_PIN_COLLIDES(SWITCH_PIN_4)
+    #error "A SWITCH_PIN_* collides with an RS485 pin (RX/TX/ENABLE)"
+  #endif
 #endif
 
 void initialize_switches();
