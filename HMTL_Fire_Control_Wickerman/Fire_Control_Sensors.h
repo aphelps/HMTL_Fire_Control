@@ -34,4 +34,14 @@ extern uint8_t led_mode_value;
 
 byte sensor_to_led(byte sensor);
 
+/*
+ * Read-only views of the physical switch state for status reporting.  The
+ * arming predicate is the same condition handle_sensors() gates ignition on;
+ * both read the interlock-qualified states, not raw pin levels.
+ */
+#define FC_NUM_SWITCHES 4
+bool fc_is_armed();
+bool fc_switch_state(uint8_t sw);
+void fc_reset_switch_interlock();
+
 #endif

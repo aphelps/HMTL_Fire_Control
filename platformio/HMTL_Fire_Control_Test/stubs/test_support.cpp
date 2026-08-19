@@ -121,9 +121,23 @@ void print_hex_buffer(const char *, int) {}
 
 uint8_t _mock_pin_values[64] = {};
 
+/* HMTL_Test's stub Socket.h declares the class but defines nothing; supply the
+ * definitions here so any TU that instantiates or derives Socket links. */
+void           Socket::setup()                                       {}
+boolean        Socket::initialized()                                 { return false; }
+byte          *Socket::initBuffer(byte *data, uint16_t data_size)    { return nullptr; }
+void           Socket::sendMsgTo(uint16_t, const byte *, const byte) {}
+const byte    *Socket::getMsg(unsigned int *retlen)                  { if (retlen) *retlen = 0; return nullptr; }
+const byte    *Socket::getMsg(uint16_t, unsigned int *retlen)        { if (retlen) *retlen = 0; return nullptr; }
+byte           Socket::getLength()                                   { return 0; }
+void          *Socket::headerFromData(const void *)                  { return nullptr; }
+socket_addr_t  Socket::sourceFromData(void *)                        { return SOCKET_ADDR_INVALID; }
+socket_addr_t  Socket::destFromData(void *)                          { return SOCKET_ADDR_INVALID; }
+
 int  digitalRead(int pin)              { return (pin < 64) ? _mock_pin_values[pin] : 0; }
 void digitalWrite(int pin, int val)    { if (pin < 64) _mock_pin_values[pin] = val; }
-void pinMode(int pin, int mode)        {}
+/* pinMode comes from HMTL_Test's stub Arduino.h; defining an (int,int) overload
+ * here makes every firmware pinMode call ambiguous between the two. */
 int  analogRead(int pin)               { return 0; }
 
 extern "C" {

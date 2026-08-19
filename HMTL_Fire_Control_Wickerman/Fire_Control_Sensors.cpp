@@ -33,9 +33,18 @@ uint16_t lights_address = LIGHTS_ADDRESS;
 
 /******* Switches *************************************************************/
 
-#define NUM_SWITCHES 4
+#define NUM_SWITCHES FC_NUM_SWITCHES
 bool switch_states[NUM_SWITCHES] = { false, false, false, false };
 bool switch_changed[NUM_SWITCHES] = { false, false, false, false };
+
+bool fc_is_armed() {
+  return switch_states[POOFER_ENABLE_SWITCH] && switch_states[POOFER_PILOT_SWITCH];
+}
+
+bool fc_switch_state(uint8_t sw) {
+  return (sw < NUM_SWITCHES) ? switch_states[sw] : false;
+}
+
 
 /*
  * Arming interlock: a switch only counts as CLOSED after it has been observed
@@ -59,6 +68,14 @@ static bool switch_seen_open[NUM_SWITCHES] = { false, false, false, false };
 static unsigned long switch_open_since[NUM_SWITCHES] = { 0, 0, 0, 0 };
 const uint8_t switch_pins[NUM_SWITCHES] = {
   SWITCH_PIN_1, SWITCH_PIN_2, SWITCH_PIN_3, SWITCH_PIN_4 };
+
+/* Force every switch back through the seen-open qualification */
+void fc_reset_switch_interlock() {
+  for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+    switch_seen_open[i] = false;
+    switch_open_since[i] = 0;
+  }
+}
 
 void initialize_switches(void) {
   for (uint8_t i = 0; i < NUM_SWITCHES; i++) {

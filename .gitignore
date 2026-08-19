@@ -9,3 +9,4 @@ cscope.*
 CMakeLists.txt
 cmake-build-debug
 .coverage
+wifi_credentials.h
