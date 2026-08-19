@@ -48,6 +48,7 @@
 
 
 #include "HMTL_Fire_Control.h"
+#include "HMTL_Fire_Control_API.h"
 #include "modes.h"
 
 /*
@@ -173,6 +174,9 @@ void setup() {
   /* Setup the sensors */
   initialize_switches();
 
+  /* WiFi + status API on the other core (no-op on AVR) */
+  fc_api_setup();
+
   DEBUG2_PRINTLN("* Wickerman Fire Control Initialized *");
   DEBUG2_VALUELN(" Build=", HMTL_FIRE_CONTROL_BUILD);
   DEBUG_MEMORY(DEBUG_HIGH);
@@ -187,6 +191,9 @@ void setup() {
 }
 
 void loop() {
+  /* Publish the status snapshot the API task reads (no-op on AVR) */
+  fc_api_publish();
+
   /* Check the sensor values */
   sensor_cap();
 

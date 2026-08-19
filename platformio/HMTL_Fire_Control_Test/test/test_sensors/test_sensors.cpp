@@ -178,8 +178,24 @@ void test_sensor_to_led_boundary_at_6() {
 // sensor_switches tests — mocked digitalRead
 // ============================================================================
 
+// The arming interlock requires each switch to read open continuously for
+// SWITCH_OPEN_LATCH_MS before a close counts; every test drives that
+// qualification explicitly instead of inheriting latch state from an earlier
+// test.
+static void qualify_all_switches() {
+    fc_reset_switch_interlock();
+    set_pin_value(SWITCH_PIN_1, HIGH);
+    set_pin_value(SWITCH_PIN_2, HIGH);
+    set_pin_value(SWITCH_PIN_3, HIGH);
+    set_pin_value(SWITCH_PIN_4, HIGH);
+    _mock_millis = 1;    sensor_switches();   // window opens (0 is the unset sentinel)
+    _mock_millis = 1500; sensor_switches();   // >= SWITCH_OPEN_LATCH_MS open
+    for (int i = 0; i < 4; i++) switch_changed[i] = false;
+}
+
 void test_sensor_switches_detects_press() {
     // Assert switch 0 pin LOW → switch_states[0] becomes true
+    qualify_all_switches();
     set_pin_value(SWITCH_PIN_1, LOW);
     sensor_switches();
     TEST_ASSERT_TRUE(switch_states[0]);
@@ -188,6 +204,7 @@ void test_sensor_switches_detects_press() {
 
 void test_sensor_switches_detects_release() {
     // Start pressed
+    qualify_all_switches();
     switch_states[0] = true;
     set_pin_value(SWITCH_PIN_1, HIGH);
     sensor_switches();
@@ -196,6 +213,7 @@ void test_sensor_switches_detects_release() {
 }
 
 void test_sensor_switches_stable_high_not_changed() {
+    qualify_all_switches();
     switch_states[0]  = false;  // was already released
     switch_changed[0] = false;
     set_pin_value(SWITCH_PIN_1, HIGH);
@@ -205,6 +223,7 @@ void test_sensor_switches_stable_high_not_changed() {
 }
 
 void test_sensor_switches_stable_low_not_changed() {
+    qualify_all_switches();
     switch_states[0]  = true;   // was already pressed
     switch_changed[0] = false;
     set_pin_value(SWITCH_PIN_1, LOW);
@@ -214,6 +233,7 @@ void test_sensor_switches_stable_low_not_changed() {
 }
 
 void test_sensor_switches_all_four_independent() {
+    qualify_all_switches();
     set_pin_value(SWITCH_PIN_1, LOW);
     set_pin_value(SWITCH_PIN_2, HIGH);
     set_pin_value(SWITCH_PIN_3, LOW);
@@ -223,6 +243,57 @@ void test_sensor_switches_all_four_independent() {
     TEST_ASSERT_FALSE(switch_states[1]);
     TEST_ASSERT_TRUE(switch_states[2]);
     TEST_ASSERT_FALSE(switch_states[3]);
+}
+
+// ============================================================================
+// fc_is_armed / fc_switch_state — the arming predicate the status API reports
+// ============================================================================
+
+void test_fc_is_armed_requires_qualified_switches() {
+    fc_reset_switch_interlock();
+    // Pins idle open, but the seen-open window has not elapsed: a close now
+    // must not arm.
+    set_pin_value(SWITCH_PIN_2, HIGH);   // pilot (switch 1)
+    set_pin_value(SWITCH_PIN_3, HIGH);   // enable (switch 2)
+    _mock_millis = 1;    sensor_switches();   // window opens (0 is the unset sentinel)
+    _mock_millis = 500;  sensor_switches();   // still inside SWITCH_OPEN_LATCH_MS
+    set_pin_value(SWITCH_PIN_2, LOW);
+    set_pin_value(SWITCH_PIN_3, LOW);
+    sensor_switches();
+    TEST_ASSERT_FALSE(fc_is_armed());
+
+    // Reopen and let the full qualification elapse; the same closes now arm.
+    set_pin_value(SWITCH_PIN_2, HIGH);
+    set_pin_value(SWITCH_PIN_3, HIGH);
+    _mock_millis = 1000; sensor_switches();   // the close above reset the window
+    _mock_millis = 2500; sensor_switches();   // >= SWITCH_OPEN_LATCH_MS open
+    set_pin_value(SWITCH_PIN_2, LOW);
+    set_pin_value(SWITCH_PIN_3, LOW);
+    sensor_switches();
+    TEST_ASSERT_TRUE(fc_is_armed());
+}
+
+void test_fc_is_armed_drops_when_either_switch_opens() {
+    fc_reset_switch_interlock();
+    set_pin_value(SWITCH_PIN_2, HIGH);
+    set_pin_value(SWITCH_PIN_3, HIGH);
+    _mock_millis = 1;    sensor_switches();
+    _mock_millis = 1500; sensor_switches();
+    set_pin_value(SWITCH_PIN_2, LOW);
+    set_pin_value(SWITCH_PIN_3, LOW);
+    sensor_switches();
+    TEST_ASSERT_TRUE(fc_is_armed());
+
+    set_pin_value(SWITCH_PIN_2, HIGH);   // pilot opens
+    sensor_switches();
+    TEST_ASSERT_FALSE(fc_is_armed());
+}
+
+void test_fc_switch_state_bounds() {
+    switch_states[0] = true;
+    TEST_ASSERT_TRUE(fc_switch_state(0));
+    TEST_ASSERT_FALSE(fc_switch_state(FC_NUM_SWITCHES));      // out of range
+    TEST_ASSERT_FALSE(fc_switch_state(255));
 }
 
 // ============================================================================
@@ -402,6 +473,9 @@ int main(int argc, char **argv) {
     RUN_TEST(test_sensor_switches_stable_high_not_changed);
     RUN_TEST(test_sensor_switches_stable_low_not_changed);
     RUN_TEST(test_sensor_switches_all_four_independent);
+    RUN_TEST(test_fc_is_armed_requires_qualified_switches);
+    RUN_TEST(test_fc_is_armed_drops_when_either_switch_opens);
+    RUN_TEST(test_fc_switch_state_bounds);
 
     // checkPulse
     RUN_TEST(test_checkPulse_touched_sends_blink);
