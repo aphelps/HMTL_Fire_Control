@@ -95,6 +95,9 @@ extern uint32_t sensor_state;
  * runs after Serial2.begin, re-muxing the UART's RX pin to GPIO input.
  * Catch any switch/RS485 pin collision at compile time.
  */
+/* With the MCP23017 expander the switches use no ESP32 GPIOs at all, so the
+ * pin defines and the collision check below only exist for direct-GPIO builds. */
+#ifndef FC_SWITCHES_MCP23017
 #ifdef ESP32
   #define FC_PIN_COLLIDES(p) ((p) == RS485_RX_PIN || (p) == RS485_TX_PIN || (p) == RS485_ENABLE_PIN)
 #endif
@@ -118,6 +121,7 @@ extern uint32_t sensor_state;
     #error "A SWITCH_PIN_* collides with an RS485 pin (RX/TX/ENABLE)"
   #endif
 #endif
+#endif // !FC_SWITCHES_MCP23017
 
 void initialize_switches();
 void sensor_switches();

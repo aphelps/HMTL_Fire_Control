@@ -23,6 +23,9 @@
 #include "HMTL_Fire_Control.h"
 #include "modes.h"
 #include "Fire_Control_Sensors.h"
+#ifdef FC_SWITCHES_MCP23017
+#include "fc_mcp_switches.h"
+#endif
 
 bool data_changed = true;
 
@@ -66,8 +69,10 @@ static bool switch_seen_open[NUM_SWITCHES] = { false, false, false, false };
  */
 #define SWITCH_OPEN_LATCH_MS 1000
 static unsigned long switch_open_since[NUM_SWITCHES] = { 0, 0, 0, 0 };
+#ifndef FC_SWITCHES_MCP23017
 const uint8_t switch_pins[NUM_SWITCHES] = {
   SWITCH_PIN_1, SWITCH_PIN_2, SWITCH_PIN_3, SWITCH_PIN_4 };
+#endif
 
 /* Force every switch back through the seen-open qualification */
 void fc_reset_switch_interlock() {
@@ -78,6 +83,13 @@ void fc_reset_switch_interlock() {
 }
 
 void initialize_switches(void) {
+#ifdef FC_SWITCHES_MCP23017
+  /* A failed init is survivable: every read will fail too, and a failed read
+   * reports all switches open, so the system runs but cannot arm. */
+  if (!fc_mcp_switches_init()) {
+    DEBUG_ERR("MCP23017 init failed - switches read as open");
+  }
+#else
   for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
     /*
      * INPUT_PULLUP, not INPUT: switches are active-low (closed = LOW), so the
@@ -88,13 +100,42 @@ void initialize_switches(void) {
      */
     pinMode(switch_pins[i], INPUT_PULLUP);
   }
+#endif
 
   calculate_pulse();
 }
 
 void sensor_switches(void) {
+#ifdef FC_SWITCHES_MCP23017
+  uint8_t mcp_bits = 0xFF;                    /* all-open if the read fails */
+  bool mcp_ok = fc_mcp_switches_read(&mcp_bits);
+  if (!mcp_ok) {
+    /*
+     * Fail-safe: a failed read reports every switch OPEN — never
+     * last-known-state — and freezes the seen-open qualification: a dead bus
+     * observes nothing, so it must neither arm nor accrue open-time toward
+     * arming.
+     */
+    for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+      switch_open_since[i] = 0;
+      if (switch_states[i]) {
+        switch_changed[i] = true;
+        data_changed = true;
+        switch_states[i] = false;
+        DEBUG3_VALUELN("Switch off (bus error) ", i);
+      } else {
+        switch_changed[i] = false;
+      }
+    }
+    return;
+  }
+#endif
   for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+#ifdef FC_SWITCHES_MCP23017
+    bool raw = ((mcp_bits & (1 << i)) == 0);  /* opto conducts -> line low -> closed */
+#else
     bool raw = (digitalRead(switch_pins[i]) == LOW);
+#endif
     if (!raw) {
       if (!switch_seen_open[i]) {
         unsigned long now = millis();
