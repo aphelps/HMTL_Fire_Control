@@ -119,6 +119,8 @@ void print_hex_buffer(const char *, int) {}
 // Arduino GPIO mock — controllable pin values for sensor_switches() tests
 // ---------------------------------------------------------------------------
 
+WireMockState wire_mock;
+
 uint8_t _mock_pin_values[64] = {};
 
 /* HMTL_Test's stub Socket.h declares the class but defines nothing; supply the
