@@ -15,7 +15,17 @@
 
 #include "fc_mcp_switches.h"
 
-#define FC_MCP_ADDR  0x26     /* A0 jumpered; 0x27 is the LCD backpack */
+/*
+ * The expander's I2C address is set by the A0/A1/A2 jumpers, so it is a
+ * property of the BOARD, not of the firmware.  Overridable rather than
+ * hardcoded: a differently-jumpered board otherwise needs a source edit, and
+ * getting it wrong fails in a way that is easy to misread -- every read NACKs,
+ * which is indistinguishable from a dead bus.  0x27 is the LCD backpack, so
+ * 0x26 is the default here.
+ */
+#ifndef FC_MCP_ADDR
+  #define FC_MCP_ADDR  0x26
+#endif
 #define MCP_IODIRA   0x00
 #define MCP_GPPUA    0x0C
 #define MCP_GPIOA    0x12
