@@ -22,6 +22,9 @@
 
 #include "HMTL_Fire_Control.h"
 #include "Fire_Control_Sensors.h"
+#ifdef FC_SWITCHES_MCP23017
+#include "fc_mcp_switches.h"
+#endif
 #include "HMTL_Fire_Control_API.h"
 
 /*
@@ -48,6 +51,8 @@
 struct FcStatusSnapshot {
   bool armed;
   bool switches[FC_NUM_SWITCHES];
+  bool switches_read_ok;
+  uint32_t switch_errors;
   uint32_t uptime_ms;
 };
 static FcStatusSnapshot fc_snapshot;
@@ -111,6 +116,12 @@ void fc_api_publish() {
   for (uint8_t i = 0; i < FC_NUM_SWITCHES; i++) {
     s.switches[i] = fc_switch_state(i);
   }
+  s.switches_read_ok = fc_switches_read_ok();
+#ifdef FC_SWITCHES_MCP23017
+  s.switch_errors = fc_mcp_switch_errors();
+#else
+  s.switch_errors = 0;
+#endif
   s.uptime_ms = millis();
 
   portENTER_CRITICAL(&fc_snapshot_mux);
@@ -131,7 +142,11 @@ static void fc_handle_status() {
     if (i > 0) response += ",";
     response += s.switches[i] ? "true" : "false";
   }
-  response += "],\"uptime_ms\":";
+  response += "],\"switches_read_ok\":";
+  response += s.switches_read_ok ? "true" : "false";
+  response += ",\"switch_errors\":";
+  response += s.switch_errors;
+  response += ",\"uptime_ms\":";
   response += s.uptime_ms;
   response += ",\"wifi\":{\"connected\":";
   response += (WiFi.status() == WL_CONNECTED) ? "true" : "false";

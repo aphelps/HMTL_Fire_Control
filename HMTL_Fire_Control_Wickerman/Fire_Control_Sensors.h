@@ -42,6 +42,17 @@ byte sensor_to_led(byte sensor);
 #define FC_NUM_SWITCHES 4
 bool fc_is_armed();
 bool fc_switch_state(uint8_t sw);
+
+/*
+ * True when the last sensor_switches() call actually read the switches.
+ *
+ * Without this a remote consumer cannot tell "all switches open" from "the bus
+ * is dead": the fail-safe reports every switch OPEN on a failed read, which is
+ * indistinguishable on the wire from a genuinely disarmed panel.  The
+ * cumulative error counter is not a substitute -- a monotonic count carries no
+ * information on a single poll, only across two.
+ */
+bool fc_switches_read_ok();
 void fc_reset_switch_interlock();
 
 #endif
