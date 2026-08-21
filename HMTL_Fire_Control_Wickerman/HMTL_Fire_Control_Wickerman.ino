@@ -49,6 +49,7 @@
 
 #include "HMTL_Fire_Control.h"
 #include "HMTL_Fire_Control_API.h"
+#include "Fire_Control_Sensors.h"
 #include "modes.h"
 
 /*
@@ -161,6 +162,56 @@ void setup() {
 
   init_modes(sockets, num_sockets);
 
+  /*
+   * Drive every remote output safe before doing anything else on the bus.
+   *
+   * This fixes a hazard that exists with or without OTA.  The igniter and pilot
+   * are driven with sendBurst(..., 30 * 1000), which starts a THIRTY-SECOND
+   * TIMED_CHANGE program on the remote module and is merely re-sent every 15 s
+   * to keep it going.  The remote needs no further commands to hold that output
+   * on.  So a controller that resets mid-burst -- brownout, watchdog, a failed
+   * OTA, someone pressing reset -- comes back up with a remote igniter or pilot
+   * still running for the remainder of its 30 s, and until now setup() sent
+   * nothing to close it.
+   *
+   * THE TIMED BURST IS THE MILDER CASE, because it self-expires after 30 s.
+   * The one that actually needs this drive is a plain VALUE-driven output: it
+   * has no timer and no self-expiry, so a reboot after a non-timed ON leaves it
+   * latched ON indefinitely with nothing anywhere in the system to end it.  The
+   * cancel-then-off below covers both -- it is sent to every output
+   * unconditionally, timed or not.
+   *
+   * Cancel-then-off (not a bare off) is what actually stops a running burst.
+   */
+  /*
+   * Sent REPEATEDLY, not once.
+   *
+   * Measured on the bench 2026-08-21 against a real peer module (address 72),
+   * resetting only the controller with the peer already settled: a SINGLE
+   * boot-time drive reached the module on just 1 of 3 boots.  On the other two
+   * the module saw nothing at all -- not even a framing error, so the bytes
+   * never made it onto the bus in a usable form.  With a settle and a re-send
+   * it landed 3 of 3.
+   *
+   * The first transmission after boot is evidently lost while the bus and
+   * transceiver settle.  That makes a one-shot drive a fail-safe with a known
+   * single point of failure -- the same objection already raised against a
+   * one-shot cancel elsewhere in this system, and here it is measured rather
+   * than argued.
+   *
+   * A failed OTA, a watchdog reset or a brownout is exactly when this has to
+   * work, and it is the ONLY thing that closes a plain VALUE-driven output
+   * left latched on: that output has no timer and no self-expiry.  Half a
+   * second of boot time is a cheap price for it landing.
+   */
+  DEBUG2_PRINTLN("* Driving remote outputs safe at boot");
+  for (uint8_t attempt = 0; attempt < FC_BOOT_SAFE_ATTEMPTS; attempt++) {
+    if (attempt > 0) {
+      delay(FC_BOOT_SAFE_RESEND_MS);
+    }
+    fc_all_outputs_safe();
+  }
+
   touch_sensor.setThresholds((byte)3, 1);
 
 #if OBJECT_TYPE == OBJECT_TYPE_FIRE_CONTROLLER
@@ -174,7 +225,9 @@ void setup() {
   /* Setup the sensors */
   initialize_switches();
 
-  /* WiFi + status API on the other core (no-op on AVR) */
+  /* WiFi + status API on the other core (no-op on AVR).  Deliberately after
+   * the boot-time safe drive above: the OTA endpoint this starts must never be
+   * reachable before the outputs it protects have been closed. */
   fc_api_setup();
 
   DEBUG2_PRINTLN("* Wickerman Fire Control Initialized *");
@@ -193,6 +246,14 @@ void setup() {
 void loop() {
   /* Publish the status snapshot the API task reads (no-op on AVR) */
   fc_api_publish();
+
+  /*
+   * Service a safe-state request from the API task.  The API task owns no
+   * ignition state and no RS485 -- it raises a request and blocks on the
+   * acknowledgement this call produces, so the actual sends happen here, on the
+   * core that owns the bus.  No-op on AVR and when nothing has asked.
+   */
+  fc_api_service();
 
   /* Check the sensor values */
   sensor_cap();

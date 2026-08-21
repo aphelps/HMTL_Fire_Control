@@ -21,3 +21,9 @@
 #include "../../../../HMTL_Fire_Control_Wickerman/fc_mcp_switches.cpp"
 #endif
 #include "../../../../HMTL_Fire_Control_Wickerman/Fire_Control_Sensors.cpp"
+/* The OTA admission decision.  Deliberately free of ESP32 dependencies so it
+ * can be compiled and tested on the host -- see fc_ota_guard.h. */
+#include "../../../../HMTL_Fire_Control_Wickerman/fc_ota_guard.cpp"
+/* The core-0 -> core-1 safe-state handshake.  Platform services arrive through
+ * an ops table precisely so this compiles on the host -- see fc_safe_state.h. */
+#include "../../../../HMTL_Fire_Control_Wickerman/fc_safe_state.cpp"

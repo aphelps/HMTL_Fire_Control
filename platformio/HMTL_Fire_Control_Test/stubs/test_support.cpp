@@ -192,6 +192,24 @@ struct SendTimedChangeCapture {
     uint32_t stop_color;
 };
 
+/*
+ * Ordered log of every send, so a test can assert on the SEQUENCE rather than
+ * just the last call.  "Cancel then off, for this exact output" is the property
+ * that actually closes a remote output -- a bare value-0 leaves a running
+ * TIMED_CHANGE program to re-assert it -- and that cannot be checked from a
+ * last-call-wins capture.
+ */
+enum SendKind { SEND_VALUE, SEND_TIMED, SEND_CANCEL, SEND_BLINK };
+
+struct SendRecord {
+    SendKind kind;
+    uint16_t address;
+    uint8_t  output;
+    int      value;
+};
+
+static std::vector<SendRecord> s_send_log;
+
 static SendValueCapture      s_send_value       = {};
 static SendTimedChangeCapture s_send_timed       = {};
 static bool                  s_send_cancel_called = false;
@@ -200,6 +218,7 @@ static int                   s_send_call_count    = 0;
 
 void sendHMTLValue(uint16_t address, uint8_t output, int value) {
     s_send_value = { true, address, output, value };
+    s_send_log.push_back({ SEND_VALUE, address, output, value });
     s_send_call_count++;
 }
 
@@ -207,11 +226,13 @@ void sendHMTLTimedChange(uint16_t address, uint8_t output,
                           uint32_t change_period,
                           uint32_t start_color, uint32_t stop_color) {
     s_send_timed = { true, address, output, change_period, start_color, stop_color };
+    s_send_log.push_back({ SEND_TIMED, address, output, (int)change_period });
     s_send_call_count++;
 }
 
 void sendHMTLCancel(uint16_t address, uint8_t output) {
     s_send_cancel_called = true;
+    s_send_log.push_back({ SEND_CANCEL, address, output, 0 });
     s_send_call_count++;
 }
 
@@ -219,6 +240,7 @@ void sendHMTLBlink(uint16_t address, uint8_t output,
                    uint16_t onperiod, uint32_t oncolor,
                    uint16_t offperiod, uint32_t offcolor) {
     s_send_blink_called = true;
+    s_send_log.push_back({ SEND_BLINK, address, output, 0 });
     s_send_call_count++;
 }
 
@@ -229,6 +251,7 @@ extern "C" {
         s_send_cancel_called = false;
         s_send_blink_called  = false;
         s_send_call_count    = 0;
+        s_send_log.clear();
     }
     bool     send_value_was_called()   { return s_send_value.called; }
     uint16_t last_send_address()       { return s_send_value.address; }
@@ -240,6 +263,28 @@ extern "C" {
     bool     send_cancel_was_called()  { return s_send_cancel_called; }
     bool     send_blink_was_called()   { return s_send_blink_called; }
     int      send_call_count()         { return s_send_call_count; }
+
+    /*
+     * 1 if the log contains a CANCEL for (address, output) followed later by a
+     * value-0 for the same (address, output).  This is the exact "actually
+     * closed" property: order matters, and both halves must name the same
+     * output.
+     */
+    int send_log_cancelled_and_off(uint16_t address, uint8_t output) {
+        bool cancelled = false;
+        for (size_t i = 0; i < s_send_log.size(); i++) {
+            const SendRecord &r = s_send_log[i];
+            if (r.address != address || r.output != output) continue;
+            if (r.kind == SEND_CANCEL) {
+                cancelled = true;
+            } else if (r.kind == SEND_VALUE && r.value == 0 && cancelled) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    int send_log_size() { return (int)s_send_log.size(); }
 }
 
 // ---------------------------------------------------------------------------
