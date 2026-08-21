@@ -40,6 +40,23 @@ uint16_t lights_address = LIGHTS_ADDRESS;
 bool switch_states[NUM_SWITCHES] = { false, false, false, false };
 bool switch_changed[NUM_SWITCHES] = { false, false, false, false };
 
+/*
+ * Health of the most recent switch read.
+ *
+ * Set false as the FIRST statement of sensor_switches() and true only once a
+ * read has actually completed, so every early return leaves it false by
+ * construction rather than by remembering to clear it.  An earlier version of
+ * this flag was set at the top and cleared on the failure path, which left it
+ * stale-TRUE on the I2C early return -- the exact bug this ordering prevents.
+ * If a merge ever puts the `!mcp_ok` early return above the false-assignment,
+ * that bug is back.
+ */
+static bool switches_read_ok = false;
+
+bool fc_switches_read_ok() {
+  return switches_read_ok;
+}
+
 bool fc_is_armed() {
   return switch_states[POOFER_ENABLE_SWITCH] && switch_states[POOFER_PILOT_SWITCH];
 }
@@ -106,6 +123,9 @@ void initialize_switches(void) {
 }
 
 void sensor_switches(void) {
+  /* First statement, deliberately: see switches_read_ok above. */
+  switches_read_ok = false;
+
 #ifdef FC_SWITCHES_MCP23017
   uint8_t mcp_bits = 0xFF;                    /* all-open if the read fails */
   bool mcp_ok = fc_mcp_switches_read(&mcp_bits);
@@ -165,6 +185,13 @@ void sensor_switches(void) {
       switch_changed[i] = false;
     }
   }
+
+  /*
+   * Reached only when a read actually completed.  On GPIO builds digitalRead
+   * cannot fail, so this is always reached and the flag is always true --
+   * which is the honest answer for those builds, not a stub.
+   */
+  switches_read_ok = true;
 }
 
 /******* Capacitive Sensors ***************************************************/
