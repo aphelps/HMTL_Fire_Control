@@ -41,6 +41,7 @@ extern "C" {
     bool send_cancel_was_called();
     bool send_blink_was_called();
     int  send_call_count();
+    int  send_log_cancelled_and_off(uint16_t address, uint8_t output);
 
     // mode stub capture API
     void reset_mode_captures();
@@ -421,6 +422,16 @@ void test_ignition_off_sends_value_zero() {
     handle_ignition();
     TEST_ASSERT_TRUE(send_value_was_called());
     TEST_ASSERT_EQUAL(0, last_send_value_int());
+    /*
+     * The value-0 alone is NOT enough, and this used to be all the off-edge
+     * sent.  handle_ignition() drives the igniter with sendBurst(..., 30 * 1000),
+     * i.e. a 30-second TIMED_CHANGE program running on the remote module; a bare
+     * value-0 does not stop that program, which simply re-asserts the output for
+     * the remainder of its duration.  Only the cancel actually closes it.
+     */
+    TEST_ASSERT_EQUAL_INT_MESSAGE(
+        1, send_log_cancelled_and_off(poofer1_address, POOFER1_IGNITER),
+        "the igniter off-edge must CANCEL the burst, not just send a zero");
 }
 
 // ============================================================================
@@ -453,6 +464,82 @@ void test_poof_enable_off_sends_cancel_to_all_poofers() {
 // main
 // ============================================================================
 
+// ---------------------------------------------------------------------------
+// Raw switch state and read health -- the inputs the OTA guard depends on
+// ---------------------------------------------------------------------------
+
+void test_switch_raw_reports_a_switch_closed_since_boot() {
+    /*
+     * THE CASE THAT MOTIVATES fc_switch_raw() EXISTING.
+     *
+     * A switch closed since power-on has never been seen open, so the arming
+     * interlock reports it INACTIVE -- correct for arming, and exactly wrong
+     * for "is this switch physically active?".  An OTA guard reading
+     * fc_switch_state() would see nothing active here and permit an upload on a
+     * controller with a switch thrown.
+     */
+    fc_reset_switch_interlock();
+    set_pin_value(SWITCH_PIN_1, LOW);          // closed, and never seen open
+    _mock_millis = 1;    sensor_switches();
+    _mock_millis = 5000; sensor_switches();    // plenty of time; still never open
+
+    TEST_ASSERT_FALSE_MESSAGE(fc_switch_state(0),
+                              "interlock should still report it inactive");
+    TEST_ASSERT_TRUE_MESSAGE(fc_switch_raw(0),
+                             "raw state must report the physical close");
+    TEST_ASSERT_TRUE_MESSAGE(fc_any_switch_raw_active(),
+                             "a physically closed switch must count as active");
+}
+
+void test_switch_raw_matches_qualified_once_qualified() {
+    qualify_all_switches();
+    set_pin_value(SWITCH_PIN_1, LOW);
+    sensor_switches();
+    TEST_ASSERT_TRUE(fc_switch_raw(0));
+    TEST_ASSERT_TRUE(fc_switch_state(0));
+}
+
+void test_no_raw_switch_active_when_all_open() {
+    qualify_all_switches();
+    set_pin_value(SWITCH_PIN_1, HIGH);
+    set_pin_value(SWITCH_PIN_2, HIGH);
+    set_pin_value(SWITCH_PIN_3, HIGH);
+    set_pin_value(SWITCH_PIN_4, HIGH);
+    sensor_switches();
+    TEST_ASSERT_FALSE(fc_any_switch_raw_active());
+    for (uint8_t i = 0; i < FC_NUM_SWITCHES; i++) {
+        TEST_ASSERT_FALSE(fc_switch_raw(i));
+    }
+}
+
+void test_any_switch_raw_active_covers_every_switch() {
+    const uint8_t pins[FC_NUM_SWITCHES] = {
+        SWITCH_PIN_1, SWITCH_PIN_2, SWITCH_PIN_3, SWITCH_PIN_4 };
+    for (uint8_t i = 0; i < FC_NUM_SWITCHES; i++) {
+        qualify_all_switches();
+        for (uint8_t j = 0; j < FC_NUM_SWITCHES; j++) {
+            set_pin_value(pins[j], HIGH);
+        }
+        set_pin_value(pins[i], LOW);
+        sensor_switches();
+        TEST_ASSERT_TRUE_MESSAGE(fc_any_switch_raw_active(),
+                                 "each switch alone must register as active");
+    }
+}
+
+void test_fc_switch_raw_bounds() {
+    TEST_ASSERT_FALSE(fc_switch_raw(FC_NUM_SWITCHES));
+    TEST_ASSERT_FALSE(fc_switch_raw(200));
+}
+
+void test_switches_read_ok_after_a_read() {
+    /* Positive evidence that core 1 has actually sampled the bank.  On the GPIO
+     * path a read cannot fail, so this is one-way; the MCP23017 path sets it
+     * from the I2C result and the refusal case is covered in test_ota_guard. */
+    sensor_switches();
+    TEST_ASSERT_TRUE(fc_switches_read_ok());
+}
+
 int main(int argc, char **argv) {
     UNITY_BEGIN();
 
@@ -476,6 +563,14 @@ int main(int argc, char **argv) {
     RUN_TEST(test_fc_is_armed_requires_qualified_switches);
     RUN_TEST(test_fc_is_armed_drops_when_either_switch_opens);
     RUN_TEST(test_fc_switch_state_bounds);
+
+    // raw switch state + read health (the OTA guard's inputs)
+    RUN_TEST(test_switch_raw_reports_a_switch_closed_since_boot);
+    RUN_TEST(test_switch_raw_matches_qualified_once_qualified);
+    RUN_TEST(test_no_raw_switch_active_when_all_open);
+    RUN_TEST(test_any_switch_raw_active_covers_every_switch);
+    RUN_TEST(test_fc_switch_raw_bounds);
+    RUN_TEST(test_switches_read_ok_after_a_read);
 
     // checkPulse
     RUN_TEST(test_checkPulse_touched_sends_blink);

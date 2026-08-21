@@ -68,6 +68,21 @@ extern TimeSync timesync;
 /* All sensor info is recorded in a bit mask */
 extern uint32_t sensor_state;
 
+/*
+ * How many times the boot-time safe drive is sent, and the gap between sends.
+ *
+ * Not tuning knobs picked by feel: a single send reached a real peer module on
+ * only 1 of 3 boots on the bench, three sends landed 3 of 3.  Bounded rather
+ * than continuous -- this runs once at boot, on the same bus that carries the
+ * igniter and pilot refresh bursts.
+ */
+#ifndef FC_BOOT_SAFE_ATTEMPTS
+  #define FC_BOOT_SAFE_ATTEMPTS 3
+#endif
+#ifndef FC_BOOT_SAFE_RESEND_MS
+  #define FC_BOOT_SAFE_RESEND_MS 250
+#endif
+
 /* Physical pins for the rocker switches */
 /*
  * ESP32 RS485 UART pins.  Boards override the defaults with

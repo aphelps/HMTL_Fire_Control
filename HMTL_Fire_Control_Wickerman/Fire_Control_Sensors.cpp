@@ -51,11 +51,6 @@ bool switch_changed[NUM_SWITCHES] = { false, false, false, false };
  * If a merge ever puts the `!mcp_ok` early return above the false-assignment,
  * that bug is back.
  */
-static bool switches_read_ok = false;
-
-bool fc_switches_read_ok() {
-  return switches_read_ok;
-}
 
 bool fc_is_armed() {
   return switch_states[POOFER_ENABLE_SWITCH] && switch_states[POOFER_PILOT_SWITCH];
@@ -63,6 +58,41 @@ bool fc_is_armed() {
 
 bool fc_switch_state(uint8_t sw) {
   return (sw < NUM_SWITCHES) ? switch_states[sw] : false;
+}
+
+/*
+ * Raw (pre-interlock) switch state, and whether the bank has actually been
+ * read.  See the commentary on fc_switch_raw()/fc_switches_read_ok() in
+ * Fire_Control_Sensors.h for why a caller that must fail closed needs these
+ * rather than switch_states[].
+ */
+static bool switch_raw[NUM_SWITCHES] = { false, false, false, false };
+static bool switches_read_ok = false;
+
+#ifdef FC_SWITCHES_TEST_FAULT_INJECTION
+/*
+ * Native-test hook, compiled out of every firmware build.  See
+ * read_switch_bank() for why it is here rather than in a test double.
+ */
+static bool s_switch_bank_read_fails = false;
+extern "C" void fc_test_set_switch_bank_read_fails(bool fails) {
+  s_switch_bank_read_fails = fails;
+}
+#endif
+
+bool fc_switch_raw(uint8_t sw) {
+  return (sw < NUM_SWITCHES) ? switch_raw[sw] : false;
+}
+
+bool fc_any_switch_raw_active() {
+  for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+    if (switch_raw[i]) return true;
+  }
+  return false;
+}
+
+bool fc_switches_read_ok() {
+  return switches_read_ok;
 }
 
 
@@ -85,6 +115,31 @@ static bool switch_seen_open[NUM_SWITCHES] = { false, false, false, false };
  * timescales, so a 1s qualification is invisible to them.
  */
 #define SWITCH_OPEN_LATCH_MS 1000
+
+/*
+ * Debounce for an UNREADABLE switch bank -- see SWITCH_READ_FAIL_DEBOUNCE_MS
+ * in the header.
+ *
+ * Measured on the bench 2026-08-21, on the first build to put the MCP23017 on
+ * this hardware: the bus glitches at random -- roughly one failed transaction
+ * in five hundred, recovering on the very next read.  Tripping the fail-safe on
+ * a single failure forced every switch OPEN several times a minute during
+ * normal operation, and could refuse an OTA at random, because the guard reads
+ * switches_read_ok.  (The GPIO path here cannot fail, so this only bites once
+ * the expander branch lands -- but the handling belongs with the failure seam,
+ * which is here.)
+ *
+ * Milliseconds do not matter for switches: operators flip them on human
+ * timescales, and SWITCH_OPEN_LATCH_MS already spends a full second qualifying
+ * one.  So a sub-second read outage is not evidence of anything.
+ *
+ * The cost, stated rather than buried: for up to a second after the bank dies,
+ * the switch values are held at their last good reading, so a disarm inside
+ * that window is noticed up to a second late -- the same order as the
+ * qualification delay that already exists.
+ */
+static bool          switch_read_failing = false;
+static unsigned long switch_read_fail_since = 0;
 static unsigned long switch_open_since[NUM_SWITCHES] = { 0, 0, 0, 0 };
 #ifndef FC_SWITCHES_MCP23017
 const uint8_t switch_pins[NUM_SWITCHES] = {
@@ -122,41 +177,142 @@ void initialize_switches(void) {
   calculate_pulse();
 }
 
+/*
+ * Sample the physical switch bank into raw[], active-high (true == closed).
+ *
+ * Returns false if the bank COULD NOT BE READ.  The direct-GPIO path here
+ * cannot fail; the MCP23017/I2C path on the expander branch can, and this is
+ * the single seam it slots into, so the failure handling in sensor_switches()
+ * below is written once and the platform difference stays confined to this
+ * function.
+ */
+static bool read_switch_bank(bool *raw) {
+#ifdef FC_SWITCHES_TEST_FAULT_INJECTION
+  /*
+   * Test-only, and never defined by any firmware environment (see
+   * platformio/HMTL_Fire_Control_Test/platformio.ini).  It exists because the
+   * single most dangerous behaviour in this file -- what a FAILED switch read
+   * does to fc_switches_read_ok(), and therefore to the OTA guard -- has no
+   * failure mode to stage on the GPIO path.  Without a way to inject one, the
+   * permit-on-fault regression could only be caught on hardware that does not
+   * exist on this branch yet.
+   */
+  if (s_switch_bank_read_fails) return false;
+#endif
+#ifdef FC_SWITCHES_MCP23017
+  /*
+   * The expander read is the failure this seam exists for.  A bus error returns
+   * false here and the caller does the rest -- reports every switch OPEN, clears
+   * switch_raw[] so no refusal can quote a stale sample, and leaves
+   * switches_read_ok false so the OTA guard refuses.
+   */
+  uint8_t mcp_bits = 0xFF;
+  if (!fc_mcp_switches_read(&mcp_bits)) {
+    return false;
+  }
+  for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+    raw[i] = ((mcp_bits & (1 << i)) == 0);  /* opto conducts -> line low -> closed */
+  }
+#else
+  for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+    raw[i] = (digitalRead(switch_pins[i]) == LOW);
+  }
+#endif
+  return true;
+}
+
 void sensor_switches(void) {
-  /* First statement, deliberately: see switches_read_ok above. */
+  /*
+   * Cleared on ENTRY, not merely set at the end.
+   *
+   * This flag is the OTA guard's positive evidence of health, and the guard's
+   * fail-safe direction is the opposite of ignition's: a failed read forces
+   * every switch to report OPEN, which an "is anything active?" test reads as
+   * "nothing active" and would PERMIT on.  Only a completed read may leave
+   * this true.  Setting it at the end alone is not enough -- any early return
+   * from a failure path would then leave a STALE TRUE from the last good read,
+   * which is precisely the silent permit the flag exists to refuse.
+   */
   switches_read_ok = false;
 
-#ifdef FC_SWITCHES_MCP23017
-  uint8_t mcp_bits = 0xFF;                    /* all-open if the read fails */
-  bool mcp_ok = fc_mcp_switches_read(&mcp_bits);
-  if (!mcp_ok) {
+  bool raw[NUM_SWITCHES];
+  if (!read_switch_bank(raw)) {
+    unsigned long now = millis();
+    if (!switch_read_failing) {
+      switch_read_failing = true;
+      switch_read_fail_since = now;
+    }
     /*
-     * Fail-safe: a failed read reports every switch OPEN — never
-     * last-known-state — and freezes the seen-open qualification: a dead bus
-     * observes nothing, so it must neither arm nor accrue open-time toward
-     * arming.
+     * The clock alone already requires MULTIPLE failures, which is why there
+     * is no separate count.
+     *
+     * switch_read_fail_since is stamped on the FIRST failure of a run, so at
+     * that moment the elapsed time is zero.  Crossing the threshold therefore
+     * always takes at least one LATER failed read in the same unbroken run: a
+     * lone glitch can never trip it, and any trip means the bank was unreadable
+     * across a span of at least SWITCH_READ_FAIL_DEBOUNCE_MS.
+     *
+     * An explicit `count >= 2` was tried and removed -- it is provably inert
+     * for the reason above, and a condition that cannot change an outcome is
+     * how an inert guard gets mistaken for a working one.  A count only starts
+     * to matter at 3 or more, which would begin DELAYING a genuine fault on a
+     * slow loop: the wrong direction for a fail-safe.
+     */
+    if ((unsigned long)(now - switch_read_fail_since) < SWITCH_READ_FAIL_DEBOUNCE_MS) {
+      /*
+       * Too brief to mean anything.  This call simply observed nothing:
+       * switch_states[], switch_raw[] and the seen-open timers are all left as
+       * the last good read left them.
+       *
+       * switch_changed[] IS cleared, because no edge was observed either and a
+       * consumer must not re-act on the previous call's edge.
+       *
+       * switches_read_ok is restored to true: its contract is that the switch
+       * data can be trusted, and data under a second old can be, for a signal
+       * that moves on human timescales.  Left false, every glitch would refuse
+       * an OTA at random -- the noise this debounce exists to remove.
+       */
+      for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+        switch_changed[i] = false;
+      }
+      switches_read_ok = true;
+      return;
+    }
+    /*
+     * Sustained: the bank genuinely cannot be read.  Report every switch OPEN
+     * and never
+     * last-known-state -- a dead bus observes nothing, so it must neither arm
+     * nor accrue open-time toward arming.  switch_raw[] is cleared along with
+     * switch_states[]: it is what the OTA guard reads, and leaving the last
+     * good sample there would report a stale "all clear" from a bank nobody
+     * can see.  switches_read_ok stays false, which is what actually refuses
+     * the upload; the cleared raw values only make sure a refusal reason can
+     * never quote values that came from a failed read.
      */
     for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+      switch_raw[i] = false;
       switch_open_since[i] = 0;
       if (switch_states[i]) {
         switch_changed[i] = true;
         data_changed = true;
         switch_states[i] = false;
-        DEBUG3_VALUELN("Switch off (bus error) ", i);
       } else {
         switch_changed[i] = false;
       }
     }
+    /* One line, not one per switch: on AVR every distinct literal is flash
+     * this firmware does not have (both AVR envs sit above 98%). */
+    DEBUG1_PRINTLN("Switch read FAILED; all open");
     return;
   }
-#endif
+
+  switch_read_failing = false;
+
   for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
-#ifdef FC_SWITCHES_MCP23017
-    bool raw = ((mcp_bits & (1 << i)) == 0);  /* opto conducts -> line low -> closed */
-#else
-    bool raw = (digitalRead(switch_pins[i]) == LOW);
-#endif
-    if (!raw) {
+    /* Record the physical reading before the arming interlock is applied --
+     * fc_switch_raw()'s contract. */
+    switch_raw[i] = raw[i];
+    if (!raw[i]) {
       if (!switch_seen_open[i]) {
         unsigned long now = millis();
         if (switch_open_since[i] == 0) {
@@ -171,7 +327,7 @@ void sensor_switches(void) {
       switch_open_since[i] = 0;
     }
     /* Closed only counts once the switch has proven it can stay open */
-    bool value = raw && switch_seen_open[i];
+    bool value = raw[i] && switch_seen_open[i];
     if (value != switch_states[i]) {
       switch_changed[i] = true;
       data_changed = true;
@@ -187,9 +343,9 @@ void sensor_switches(void) {
   }
 
   /*
-   * Reached only when a read actually completed.  On GPIO builds digitalRead
-   * cannot fail, so this is always reached and the flag is always true --
-   * which is the honest answer for those builds, not a stub.
+   * A complete read finished.  Reached only by falling off the end of the loop
+   * above, so the flag can never be true without the bank having been sampled
+   * this call -- see the clear on entry.
    */
   switches_read_ok = true;
 }
@@ -268,6 +424,68 @@ void sendCancel(uint16_t address, uint8_t output) {
 void sendCancelAndOff(uint16_t address, uint8_t output) {
   sendCancel(address, output);
   sendOff(address, output);
+}
+
+/*
+ * Safe-state drives.
+ *
+ * These are the ONE implementation of "close these outputs".  The poofer
+ * sequence used to exist as two hand-maintained copies (the poofer-disable
+ * branch of handle_poof_enable() and the programs-off branch of
+ * handle_single_quint()), which is exactly the kind of duplication that lets a
+ * newly added output be closed on one path and left running on the other.
+ *
+ * Every drive CANCELS before it sets the output off.  sendBurst() runs a
+ * TIMED_CHANGE program on the remote module -- 30 seconds for the igniter and
+ * pilot -- and a bare value-0 does not stop that program; it re-asserts the
+ * output for the rest of its duration.  The igniter and pilot off-edges used to
+ * send a bare sendOff() and so did not actually close a burst that was still
+ * running.  Cancel-then-off does.
+ *
+ * All of these send RS485 traffic, so they belong to the core that owns the bus
+ * (core 1 / loop()).  The API task must never call them directly; it asks core
+ * 1 for a safe state and waits for the acknowledgement.
+ */
+void fc_poofers_safe() {
+#if CONTROL_MODE == CONTROL_SINGLE_QUINT
+  sendCancelAndOff(poofer1_address, POOFER1_LARGE);
+  sendCancelAndOff(poofer2_address, POOFER2_POOF1);
+  sendCancelAndOff(poofer2_address, POOFER2_POOF2);
+  sendCancelAndOff(poofer2_address, POOFER2_POOF3);
+  sendCancelAndOff(poofer2_address, POOFER2_POOF4);
+#else
+  sendCancelAndOff(poofer1_address, POOFER1_POOF1);
+  sendCancelAndOff(poofer1_address, POOFER1_POOF2);
+#if CONTROL_MODE == CONTROL_DOUBLE_DOUBLE
+  sendCancelAndOff(poofer2_address, POOFER2_POOF1);
+  sendCancelAndOff(poofer2_address, POOFER2_POOF2);
+#endif
+#endif
+}
+
+void fc_igniter_safe() {
+  sendCancelAndOff(poofer1_address, POOFER1_IGNITER);
+#if CONTROL_MODE == CONTROL_DOUBLE_DOUBLE
+  sendCancelAndOff(poofer2_address, POOFER2_IGNITER);
+#endif
+}
+
+void fc_pilot_safe() {
+  sendCancelAndOff(poofer1_address, POOFER1_PILOT);
+#if CONTROL_MODE == CONTROL_DOUBLE_DOUBLE
+  sendCancelAndOff(poofer2_address, POOFER2_PILOT);
+#endif
+}
+
+/*
+ * Everything off.  Ordering is deliberate: accumulators first (the outputs that
+ * actually produce flame), then the igniter, then the pilot last -- so a drive
+ * that is interrupted part-way has still closed the largest hazards.
+ */
+void fc_all_outputs_safe() {
+  fc_poofers_safe();
+  fc_igniter_safe();
+  fc_pilot_safe();
 }
 
 void sendPulse(uint16_t address, uint8_t output,
@@ -392,10 +610,7 @@ void handle_ignition() {
     }
   } else if (switch_changed[POOFER_IGNITER_SWITCH]) {
     DEBUG2_PRINTLN("IGNITE OFF");
-    sendOff(poofer1_address, POOFER1_IGNITER);
-#if CONTROL_MODE == CONTROL_DOUBLE_DOUBLE
-    sendOff(poofer2_address, POOFER2_IGNITER);
-#endif
+    fc_igniter_safe();
     last_on = 0;
   }
 }
@@ -419,10 +634,7 @@ void handle_pilot() {
     }
   } else if (switch_changed[POOFER_PILOT_SWITCH]) {
     DEBUG1_PRINTLN("PILOT OFF");
-    sendOff(poofer1_address, POOFER1_PILOT);
-#if CONTROL_MODE == CONTROL_DOUBLE_DOUBLE
-    sendOff(poofer2_address, POOFER2_PILOT);
-#endif
+    fc_pilot_safe();
   }
 }
 
@@ -441,22 +653,7 @@ void handle_poof_enable() {
       /* Cancel all poofing programs and ensure all poofers are disabled */
       DEBUG1_PRINTLN("POOFERS DISABLED");
 
-#if CONTROL_MODE == CONTROL_SINGLE_QUINT
-      sendCancelAndOff(poofer1_address, POOFER1_LARGE);
-      sendCancelAndOff(poofer2_address, POOFER2_POOF1);
-      sendCancelAndOff(poofer2_address, POOFER2_POOF2);
-      sendCancelAndOff(poofer2_address, POOFER2_POOF3);
-      sendCancelAndOff(poofer2_address, POOFER2_POOF4);
-#else
-      sendCancelAndOff(poofer1_address, POOFER1_POOF1);
-      sendCancelAndOff(poofer1_address, POOFER1_POOF2);
-
-#if CONTROL_MODE == CONTROL_DOUBLE_DOUBLE
-      sendCancelAndOff(poofer2_address, POOFER2_POOF1);
-      sendCancelAndOff(poofer2_address, POOFER2_POOF2);
-#endif
-
-#endif
+      fc_poofers_safe();
 
       /* Set lights for non-poof mode */
       setSparkle();
@@ -759,12 +956,7 @@ void handle_single_quint() {
     if (switch_changed[PROGRAM_MODE_SWITCH]) {
       DEBUG3_PRINTLN("Programs off");
 
-      sendCancelAndOff(poofer1_address, POOFER1_LARGE);
-      //sendCancelAndOff(poofer1_address, POOFER1_UNUSED);
-      sendCancelAndOff(poofer2_address, POOFER2_POOF1);
-      sendCancelAndOff(poofer2_address, POOFER2_POOF2);
-      sendCancelAndOff(poofer2_address, POOFER2_POOF3);
-      sendCancelAndOff(poofer2_address, POOFER2_POOF4);
+      fc_poofers_safe();
 
       setBlink(pixel_color(255,0,0));
     }

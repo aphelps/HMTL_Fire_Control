@@ -17,6 +17,16 @@
  * the observable switch state AND the health bit together -- a test that
  * checked only the flag would pass against firmware whose fail-safe never ran.
  */
+/*
+ * NOTE (merge of the OTA branch, 2026-08-21): these cases originally asserted
+ * that a SINGLE failed read trips the fail-safe.  The OTA branch added a
+ * debounce -- only an outage sustained for SWITCH_READ_FAIL_DEBOUNCE_MS counts
+ * -- because this bus glitches roughly once in five hundred transactions and a
+ * one-shot trip forced every switch open several times a minute.  The failures
+ * below are therefore made SUSTAINED rather than single.  A lone glitch not
+ * tripping is now the correct behaviour and is pinned by its own test on the
+ * OTA side.
+ */
 #include <unity.h>
 #include "Wire.h"
 #include "Debug.h"
@@ -87,7 +97,9 @@ void test_failed_read_reports_all_open_AND_says_it_could_not_read() {
     TEST_ASSERT_TRUE(fc_switches_read_ok());
 
     wire_mock.end_rc = 2;                        /* address NACK: bus gone */
-    sensor_switches();
+    sensor_switches();                           /* inside the debounce window */
+    _mock_millis += SWITCH_READ_FAIL_DEBOUNCE_MS + 10;
+    sensor_switches();                           /* sustained -- now a fault */
 
     for (int i = 0; i < 4; i++) {
         TEST_ASSERT_FALSE(switch_states[i]);     /* the fail-safe effect ... */
@@ -110,12 +122,16 @@ void test_health_bit_does_not_go_stale_true_across_a_failure() {
 
     wire_mock.fail_request = true;               /* short read, not a NACK */
     sensor_switches();
+    _mock_millis += SWITCH_READ_FAIL_DEBOUNCE_MS + 10;
+    sensor_switches();                           /* sustained */
     TEST_ASSERT_FALSE(fc_switches_read_ok());
 }
 
 void test_health_recovers_when_the_bus_does() {
     qualify_all_switches();
     wire_mock.end_rc = 2;
+    sensor_switches();
+    _mock_millis += SWITCH_READ_FAIL_DEBOUNCE_MS + 10;
     sensor_switches();
     TEST_ASSERT_FALSE(fc_switches_read_ok());
 
