@@ -84,9 +84,9 @@ void test_combo01_fires_large_after_hold() {
     touch_sensor._setTouched(0, true);
     touch_sensor._setTouched(1, true);
     tick(0);          // records hold start
-    tick(700);        // under threshold
+    tick(400);        // under threshold
     TEST_ASSERT_FALSE(send_timed_was_called());
-    tick(150);        // 850ms held: fires
+    tick(150);        // 550ms held: fires
     TEST_ASSERT_TRUE(send_timed_was_called());
     TEST_ASSERT_EQUAL_UINT16(POOFER1_ADDRESS, last_timed_address());
     TEST_ASSERT_EQUAL(1, timed_count(poofer1_address, LARGE_OUTPUT));
@@ -97,7 +97,7 @@ void test_combo01_latches_until_release() {
     touch_sensor._setTouched(0, true);
     touch_sensor._setTouched(1, true);
     tick(0);
-    tick(900);
+    tick(600);
     TEST_ASSERT_EQUAL(1, timed_count(poofer1_address, LARGE_OUTPUT));
     tick(1000);       // keep holding: no repeat
     tick(1000);
@@ -107,7 +107,7 @@ void test_combo01_latches_until_release() {
     touch_sensor._setTouched(1, false);
     tick(50);
     touch_sensor._setTouched(1, true);
-    tick(900);
+    tick(600);
     TEST_ASSERT_EQUAL(1, timed_count(poofer1_address, LARGE_OUTPUT));
 
     // Releasing both re-arms; next qualified hold fires again
@@ -117,7 +117,7 @@ void test_combo01_latches_until_release() {
     touch_sensor._setTouched(0, true);
     touch_sensor._setTouched(1, true);
     tick(0);
-    tick(900);
+    tick(600);
     TEST_ASSERT_EQUAL(2, timed_count(poofer1_address, LARGE_OUTPUT));
 }
 
@@ -128,42 +128,52 @@ void test_single_pad_hold_does_not_fire() {
     TEST_ASSERT_FALSE(send_timed_was_called());
 }
 
-void test_combo23_runs_one_sweep_in_order() {
+void test_combo23_loops_in_order_while_held() {
     touch_sensor._setTouched(2, true);
     touch_sensor._setTouched(3, true);
     tick(0);
-    tick(800);        // qualifies; step 0 fires immediately
-    tick(200);        // step 1
-    tick(200);        // step 2
-    tick(200);        // step 3
-    tick(200);        // idle — must NOT wrap
-    tick(1000);       // still idle
-    // Exactly one burst per output, in order 0,1,2,3, each 150ms
+    tick(500);        // qualifies; step 0 fires immediately
+    for (int i = 0; i < 7; i++) tick(120);  // 7 more steps = 2 full passes
+    // Bursts wrap in order 0,1,2,3,0,1,2,3 — each 100ms
     int seen = 0;
-    uint8_t expect[4] = {0x0, 0x1, 0x2, 0x3};
     for (int i = 0; i < send_log_size(); i++) {
         int t, v; uint16_t a; uint8_t o;
         send_log_get(i, &t, &a, &o, &v);
         if (t == KIND_TIMED && a == poofer2_address) {
-            TEST_ASSERT_TRUE_MESSAGE(seen < 4, "sequence wrapped/extra step");
-            TEST_ASSERT_EQUAL_UINT8(expect[seen], o);
-            TEST_ASSERT_EQUAL(150, v);
+            TEST_ASSERT_EQUAL_UINT8(seen % 4, o);
+            TEST_ASSERT_EQUAL(100, v);
             seen++;
         }
     }
-    TEST_ASSERT_EQUAL(4, seen);
+    TEST_ASSERT_EQUAL(8, seen);
+}
+
+void test_combo23_release_stops_sweep() {
+    touch_sensor._setTouched(2, true);
+    touch_sensor._setTouched(3, true);
+    tick(0);
+    tick(500);        // step 0
+    tick(120);        // step 1
+    touch_sensor._setTouched(3, false);  // release one pad mid-pass
+    tick(120);
+    tick(120);
+    tick(1000);
+    TEST_ASSERT_EQUAL(1, timed_count(poofer2_address, 0x0));
+    TEST_ASSERT_EQUAL(1, timed_count(poofer2_address, 0x1));
+    TEST_ASSERT_EQUAL(0, timed_count(poofer2_address, 0x2));
+    TEST_ASSERT_EQUAL(0, timed_count(poofer2_address, 0x3));
 }
 
 void test_combo23_disarm_aborts_sweep() {
     touch_sensor._setTouched(2, true);
     touch_sensor._setTouched(3, true);
     tick(0);
-    tick(800);        // step 0 sent
+    tick(500);        // step 0 sent
     TEST_ASSERT_EQUAL(1, timed_count(poofer2_address, 0x0));
     switch_states[POOFER_PILOT_SWITCH] = false;  // disarm mid-sweep
-    tick(200);
-    tick(200);
-    tick(200);
+    tick(120);
+    tick(120);
+    tick(120);
     TEST_ASSERT_EQUAL(0, timed_count(poofer2_address, 0x1));
     TEST_ASSERT_EQUAL(0, timed_count(poofer2_address, 0x2));
     TEST_ASSERT_EQUAL(0, timed_count(poofer2_address, 0x3));
@@ -179,7 +189,7 @@ void test_program_mode_abort_hook() {
     touch_sensor._setTouched(2, true);
     touch_sensor._setTouched(3, true);
     tick(0);
-    tick(800);
+    tick(500);
     TEST_ASSERT_EQUAL(1, timed_count(poofer2_address, 0x0));
     combo_sequence_abort();   // what program-mode entry calls
     _mock_millis += 1000;
@@ -192,7 +202,8 @@ int main(int argc, char **argv) {
     RUN_TEST(test_combo01_fires_large_after_hold);
     RUN_TEST(test_combo01_latches_until_release);
     RUN_TEST(test_single_pad_hold_does_not_fire);
-    RUN_TEST(test_combo23_runs_one_sweep_in_order);
+    RUN_TEST(test_combo23_loops_in_order_while_held);
+    RUN_TEST(test_combo23_release_stops_sweep);
     RUN_TEST(test_combo23_disarm_aborts_sweep);
     RUN_TEST(test_program_mode_abort_hook);
     UNITY_END();

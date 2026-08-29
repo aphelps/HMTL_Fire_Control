@@ -910,17 +910,17 @@ void handle_settings() {
  * tracking disabled (HMTLTypes.cpp passes times=false), so touchTime() is 0.
  */
 #ifndef LONG_COMBO_MS
-  #define LONG_COMBO_MS        800  /* hold to qualify a combo */
+  #define LONG_COMBO_MS        500  /* hold to qualify a combo */
 #endif
 #ifndef COMBO_LARGE_BURST_MS
   #define COMBO_LARGE_BURST_MS 500  /* pads 0+1: large-poofer burst */
 #endif
 #define COMBO_SEQ_STEPS 4
 #ifndef COMBO_SEQ_STEP_MS
-  #define COMBO_SEQ_STEP_MS    200  /* pads 2+3: start-to-start per output */
+  #define COMBO_SEQ_STEP_MS    120  /* pads 2+3: start-to-start per output */
 #endif
 #ifndef COMBO_SEQ_BURST_MS
-  #define COMBO_SEQ_BURST_MS   150  /* pads 2+3: on-time per output */
+  #define COMBO_SEQ_BURST_MS   100  /* pads 2+3: on-time per output */
 #endif
 
 static unsigned long combo_touch_start[COMBO_SEQ_STEPS] = {0, 0, 0, 0};
@@ -968,6 +968,13 @@ void run_combo_sequence() {
     combo_sequence_abort();
     return;
   }
+  /* The sweep runs only while BOTH pads stay held: releasing either stops
+   * it at the next step boundary (already-sent bursts self-expire) */
+  if (!touch_sensor.touched(POOFER3_QUICK_SENSOR) ||
+      !touch_sensor.touched(POOFER4_QUICK_SENSOR)) {
+    combo_sequence_abort();
+    return;
+  }
   unsigned long now = millis();
   if ((long)(now - combo_seq_next_ms) < 0) return;
   static const uint8_t seq_outputs[COMBO_SEQ_STEPS] =
@@ -975,6 +982,9 @@ void run_combo_sequence() {
   DEBUG4_VALUELN("Combo seq step:", combo_seq_step);
   sendBurst(poofer2_address, seq_outputs[combo_seq_step], COMBO_SEQ_BURST_MS);
   combo_seq_step++;
+  if (combo_seq_step >= COMBO_SEQ_STEPS) {
+    combo_seq_step = 0;  /* wrap: loop for as long as the pads stay held */
+  }
   combo_seq_next_ms = now + COMBO_SEQ_STEP_MS;
 }
 
