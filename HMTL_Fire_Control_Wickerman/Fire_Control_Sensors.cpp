@@ -895,6 +895,15 @@ void handle_settings() {
 
 #if (CONTROL_MODE == CONTROL_SINGLE_QUINT)
 
+/* Combo gestures ship on the 4-pad fire controller only: the 12-pad touch
+ * controller does not fit them in flash (and has dedicated program pads for
+ * richer patterns).  FC_ENABLE_COMBOS forces them in for the native test
+ * build, whose env compiles as TOUCH_CONTROLLER. */
+#if (OBJECT_TYPE == OBJECT_TYPE_FIRE_CONTROLLER) || defined(FC_ENABLE_COMBOS)
+  #define FC_COMBOS 1
+#endif
+
+#ifdef FC_COMBOS
 /*
  * Long-combo gestures (direct mode only): both pads of a pair held for
  * LONG_COMBO_MS fire a one-shot action, then latch until both release.
@@ -1029,6 +1038,7 @@ void handle_long_combos() {
 
   run_combo_sequence();
 }
+#endif // FC_COMBOS
 
 void handle_single_quint() {
   if (switch_states[PROGRAM_MODE_SWITCH]) {
@@ -1037,7 +1047,9 @@ void handle_single_quint() {
     if (switch_changed[PROGRAM_MODE_SWITCH]) {
       DEBUG2_PRINTLN("Programs on");
       setBlink(pixel_color(0, 0, 255));
+#ifdef FC_COMBOS
       combo_reset();
+#endif
     }
 
     checkPulse(POOFER1_QUICK_SENSOR,poofer2_address,POOFER2_POOF1,
@@ -1102,7 +1114,9 @@ void handle_single_quint() {
       setBlink(pixel_color(255,0,0));
     }
 
+#ifdef FC_COMBOS
     handle_long_combos();
+#endif
 
     if (touch_sensor.changed(POOFER1_QUICK_SENSOR) &&
         touch_sensor.touched(POOFER1_QUICK_SENSOR)) {
@@ -1411,7 +1425,7 @@ void handle_sensors() {
 
 #endif
   } else {
-#if (CONTROL_MODE == CONTROL_SINGLE_QUINT)
+#if (CONTROL_MODE == CONTROL_SINGLE_QUINT) && defined(FC_COMBOS)
     /* Disarmed: abort any in-flight sweep AND clear hold/latch state, so
      * pads held across a disarm cannot fire the instant of re-arm */
     combo_reset();
