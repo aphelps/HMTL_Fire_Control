@@ -894,6 +894,152 @@ void handle_settings() {
 }
 
 #if (CONTROL_MODE == CONTROL_SINGLE_QUINT)
+
+/* Combo gestures ship on the 4-pad fire controller only: the 12-pad touch
+ * controller does not fit them in flash (and has dedicated program pads for
+ * richer patterns).  FC_ENABLE_COMBOS forces them in for the native test
+ * build, whose env compiles as TOUCH_CONTROLLER. */
+#if (OBJECT_TYPE == OBJECT_TYPE_FIRE_CONTROLLER) || defined(FC_ENABLE_COMBOS)
+  #define FC_COMBOS 1
+#endif
+
+#ifdef FC_COMBOS
+/*
+ * Long-combo gestures (direct mode only): both pads of a pair held for
+ * LONG_COMBO_MS fire a one-shot action, then latch until both release.
+ *
+ * Pads 0+1 -> one COMBO_LARGE_BURST_MS burst on the large poofer (71).
+ * Pads 2+3 -> one sweep of poofer outputs 1-4 on 72, driven from here as
+ * individually self-expiring TIMED_CHANGE bursts (deliberately NOT the
+ * module-side SEQUENCE program: that loops until a cancel frame arrives,
+ * and a lost cancel must never leave poofers cycling).  A lost frame here
+ * skips one step; nothing sticks on.
+ *
+ * Hold times are tracked locally: the MPR121 is initialized with touch-time
+ * tracking disabled (HMTLTypes.cpp passes times=false), so touchTime() is 0.
+ */
+#ifndef LONG_COMBO_MS
+  #define LONG_COMBO_MS        500  /* hold to qualify a combo */
+#endif
+#ifndef COMBO_LARGE_BURST_MS
+  #define COMBO_LARGE_BURST_MS 500  /* pads 0+1: large-poofer burst */
+#endif
+#define COMBO_SEQ_STEPS 4
+#define NUM_COMBO_PADS  4  /* pads 0-3; == COMBO_SEQ_STEPS only by coincidence */
+#ifndef COMBO_SEQ_STEP_MS
+  #define COMBO_SEQ_STEP_MS    120  /* pads 2+3: start-to-start per output */
+#endif
+#ifndef COMBO_SEQ_BURST_MS
+  #define COMBO_SEQ_BURST_MS   100  /* pads 2+3: on-time per output */
+#endif
+
+static unsigned long combo_touch_start[NUM_COMBO_PADS] = {0, 0, 0, 0};
+static boolean combo01_latched = false;
+static boolean combo23_latched = false;
+static uint8_t combo_seq_step = COMBO_SEQ_STEPS;  /* >= COMBO_SEQ_STEPS: idle */
+static unsigned long combo_seq_next_ms = 0;
+
+/* Abort any in-flight poofer sweep (disarm, program-mode entry) */
+void combo_sequence_abort() {
+  combo_seq_step = COMBO_SEQ_STEPS;
+}
+
+/* Full combo teardown: sweep aborted AND hold/latch state cleared.  Called on
+ * disarm and program-mode entry so held-pad time never accumulates while the
+ * combo handler is not watching — stale hold times would otherwise fire a
+ * combo INSTANTLY on the transition back, bypassing the 500ms qualification. */
+void combo_reset() {
+  for (uint8_t i = 0; i < NUM_COMBO_PADS; i++) combo_touch_start[i] = 0;
+  combo01_latched = false;
+  combo23_latched = false;
+  combo_sequence_abort();
+}
+
+static void update_combo_hold(uint8_t pad) {
+  if (pad >= NUM_COMBO_PADS) return;
+  if (touch_sensor.touched(pad)) {
+    if (combo_touch_start[pad] == 0) combo_touch_start[pad] = millis();
+  } else {
+    combo_touch_start[pad] = 0;
+  }
+}
+
+static boolean combo_held(uint8_t a, uint8_t b) {
+  unsigned long now = millis();
+  return combo_touch_start[a] != 0 && combo_touch_start[b] != 0 &&
+         (now - combo_touch_start[a]) >= LONG_COMBO_MS &&
+         (now - combo_touch_start[b]) >= LONG_COMBO_MS;
+}
+
+/* Step the pads-2+3 sweep; called every pass while armed in direct mode */
+void run_combo_sequence() {
+  if (combo_seq_step >= COMBO_SEQ_STEPS) return;
+  if (!fc_is_armed()) {
+    /* Disarmed mid-sweep: the remaining steps must never fire */
+    combo_sequence_abort();
+    return;
+  }
+  /* The sweep runs only while BOTH pads stay held: releasing either stops
+   * it at the next step boundary (already-sent bursts self-expire) */
+  if (!touch_sensor.touched(POOFER3_QUICK_SENSOR) ||
+      !touch_sensor.touched(POOFER4_QUICK_SENSOR)) {
+    combo_sequence_abort();
+    return;
+  }
+  unsigned long now = millis();
+  if ((long)(now - combo_seq_next_ms) < 0) return;
+  static const uint8_t seq_outputs[COMBO_SEQ_STEPS] =
+      {POOFER2_POOF1, POOFER2_POOF2, POOFER2_POOF3, POOFER2_POOF4};
+  DEBUG4_VALUELN("Combo seq step:", combo_seq_step);
+  sendBurst(poofer2_address, seq_outputs[combo_seq_step], COMBO_SEQ_BURST_MS);
+  combo_seq_step++;
+  if (combo_seq_step >= COMBO_SEQ_STEPS) {
+    combo_seq_step = 0;  /* wrap: loop for as long as the pads stay held */
+  }
+  combo_seq_next_ms = now + COMBO_SEQ_STEP_MS;
+}
+
+void handle_long_combos() {
+  /* A wedged I2C bus leaves touched() frozen at its last value; combos are
+   * level-triggered, so stale touched-state must read as all-released or a
+   * dead sensor could sustain the sweep with nobody at the panel. */
+  if (!touch_sensor.readOk()) {
+    combo_reset();
+    return;
+  }
+
+  update_combo_hold(POOFER1_QUICK_SENSOR);
+  update_combo_hold(POOFER2_QUICK_SENSOR);
+  update_combo_hold(POOFER3_QUICK_SENSOR);
+  update_combo_hold(POOFER4_QUICK_SENSOR);
+
+  if (combo_held(POOFER1_QUICK_SENSOR, POOFER2_QUICK_SENSOR)) {
+    if (!combo01_latched) {
+      combo01_latched = true;
+      DEBUG4_PRINTLN("Combo 0+1: large poofer");
+      sendBurst(poofer1_address, POOFER1_LARGE, COMBO_LARGE_BURST_MS);
+    }
+  } else if (!touch_sensor.touched(POOFER1_QUICK_SENSOR) &&
+             !touch_sensor.touched(POOFER2_QUICK_SENSOR)) {
+    combo01_latched = false;
+  }
+
+  if (combo_held(POOFER3_QUICK_SENSOR, POOFER4_QUICK_SENSOR)) {
+    if (!combo23_latched) {
+      combo23_latched = true;
+      DEBUG4_PRINTLN("Combo 2+3: poofer sweep");
+      combo_seq_step = 0;
+      combo_seq_next_ms = millis();
+    }
+  } else if (!touch_sensor.touched(POOFER3_QUICK_SENSOR) &&
+             !touch_sensor.touched(POOFER4_QUICK_SENSOR)) {
+    combo23_latched = false;
+  }
+
+  run_combo_sequence();
+}
+#endif // FC_COMBOS
+
 void handle_single_quint() {
   if (switch_states[PROGRAM_MODE_SWITCH]) {
     /* Capacitive touch runs programs */
@@ -901,6 +1047,9 @@ void handle_single_quint() {
     if (switch_changed[PROGRAM_MODE_SWITCH]) {
       DEBUG2_PRINTLN("Programs on");
       setBlink(pixel_color(0, 0, 255));
+#ifdef FC_COMBOS
+      combo_reset();
+#endif
     }
 
     checkPulse(POOFER1_QUICK_SENSOR,poofer2_address,POOFER2_POOF1,
@@ -933,6 +1082,7 @@ void handle_single_quint() {
     checkPulse(POOFER5_LONG_SENSOR,poofer2_address,POOFER2_POOF2,
                pulse_delay_4, pulse_length_4);
 
+#if POOFER_PROGRAM_1_SENSOR >= 0
     checkPulse(POOFER_PROGRAM_1_SENSOR,poofer2_address,POOFER2_POOF1,
                pulse_length_1, pulse_delay_1);
     checkPulse(POOFER_PROGRAM_1_SENSOR,poofer2_address,POOFER2_POOF2,
@@ -941,7 +1091,9 @@ void handle_single_quint() {
                pulse_length_1, pulse_delay_1);
     checkPulse(POOFER_PROGRAM_1_SENSOR,poofer2_address,POOFER2_POOF4,
                pulse_length_1, pulse_delay_1);
+#endif
 
+#if POOFER_PROGRAM_2_SENSOR >= 0
     checkPulse(POOFER_PROGRAM_2_SENSOR,poofer2_address,POOFER2_POOF1,
                pulse_length_3, pulse_delay_3);
     checkPulse(POOFER_PROGRAM_2_SENSOR,poofer2_address,POOFER2_POOF2,
@@ -950,6 +1102,7 @@ void handle_single_quint() {
                pulse_length_3, pulse_delay_3);
     checkPulse(POOFER_PROGRAM_2_SENSOR,poofer2_address,POOFER2_POOF4,
                pulse_delay_3, pulse_length_3);
+#endif
   } else {
     /* Capacitive touch controls directly */
 
@@ -960,6 +1113,10 @@ void handle_single_quint() {
 
       setBlink(pixel_color(255,0,0));
     }
+
+#ifdef FC_COMBOS
+    handle_long_combos();
+#endif
 
     if (touch_sensor.changed(POOFER1_QUICK_SENSOR) &&
         touch_sensor.touched(POOFER1_QUICK_SENSOR)) {
@@ -1011,6 +1168,7 @@ void handle_single_quint() {
       sendBurst(poofer1_address, POOFER1_LARGE, long_burst);
     }
 
+#if POOFER_PROGRAM_1_SENSOR >= 0
     if (touch_sensor.changed(POOFER_PROGRAM_1_SENSOR) &&
         touch_sensor.touched(POOFER_PROGRAM_1_SENSOR)) {
       /* All on quick burst */
@@ -1020,7 +1178,9 @@ void handle_single_quint() {
       sendBurst(poofer2_address, POOFER2_POOF4, minimum_burst);
 //      sendBurst(poofer1_address, POOFER1_LARGE, minimum_burst);
     }
+#endif
 
+#if POOFER_PROGRAM_2_SENSOR >= 0
     if (touch_sensor.changed(POOFER_PROGRAM_2_SENSOR) &&
         touch_sensor.touched(POOFER_PROGRAM_2_SENSOR)) {
       /* All on large burst */
@@ -1030,6 +1190,7 @@ void handle_single_quint() {
       sendBurst(poofer2_address, POOFER2_POOF4, full_burst);
 //      sendBurst(poofer1_address, POOFER1_LARGE, full_burst);
     }
+#endif
   }
 }
 #endif
@@ -1262,6 +1423,12 @@ void handle_sensors() {
 
 #endif
 
+#endif
+  } else {
+#if (CONTROL_MODE == CONTROL_SINGLE_QUINT) && defined(FC_COMBOS)
+    /* Disarmed: abort any in-flight sweep AND clear hold/latch state, so
+     * pads held across a disarm cannot fire the instant of re-arm */
+    combo_reset();
 #endif
   }
   // END: Poofer controls
