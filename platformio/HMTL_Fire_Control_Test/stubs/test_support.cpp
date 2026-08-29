@@ -285,6 +285,17 @@ extern "C" {
     }
 
     int send_log_size() { return (int)s_send_log.size(); }
+
+    /* Random access into the send log: returns 1 and fills the out-params if
+     * index i exists, else 0.  type is the SendType enum value. */
+    int send_log_get(int i, int *type, uint16_t *address, uint8_t *output,
+                     int *value) {
+        if (i < 0 || i >= (int)s_send_log.size()) return 0;
+        const SendRecord &r = s_send_log[(size_t)i];
+        *type = (int)r.kind; *address = r.address;
+        *output = r.output;  *value = r.value;
+        return 1;
+    }
 }
 
 // ---------------------------------------------------------------------------
