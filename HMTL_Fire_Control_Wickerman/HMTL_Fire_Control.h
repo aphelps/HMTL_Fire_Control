@@ -235,8 +235,13 @@ void handle_sensors();
     #define POOFER4_LONG_SENSOR           -1
     #define POOFER5_LONG_SENSOR           SENSOR_EXTERNAL_2
 
-    #define POOFER_PROGRAM_1_SENSOR       SENSOR_FAR_LEFT
-    #define POOFER_PROGRAM_2_SENSOR       SENSOR_MID_LEFT
+    /* The 4-pad fire controller has no dedicated program pads: leave the
+     * all-outputs program triggers disabled rather than aliasing them onto
+     * pads 0/1 (which made those pads fire every output on top of their
+     * own poofer -- the 12-sensor touch controller has dedicated pads for
+     * these, this box does not). */
+    #define POOFER_PROGRAM_1_SENSOR      -1
+    #define POOFER_PROGRAM_2_SENSOR      -1
 
     /* Replace the "lights on" switch with a programming mode switch */
     #define PROGRAM_MODE_SWITCH           3
