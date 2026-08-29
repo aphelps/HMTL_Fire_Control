@@ -16,6 +16,8 @@ public:
 
     bool readTouchInputs() { return _any_change; }
 
+    bool readOk() { return _read_ok; }
+
     bool touched(uint8_t i) {
         return (i < MAX_MPR121_PINS) && _touched[i];
     }
@@ -43,6 +45,9 @@ public:
     // Simulate a readTouchInputs() that returned nothing new.
     void _setNoChange() { _any_change = false; }
 
+    // Simulate the I2C bus wedging (readOk false) or recovering.
+    void _setReadOk(bool ok) { _read_ok = ok; }
+
     // Clear all state — call from setUp() to start each test clean.
     void _clearAll() {
         for (int i = 0; i < MAX_MPR121_PINS; i++) {
@@ -50,10 +55,12 @@ public:
             _changed[i] = false;
         }
         _any_change = false;
+        _read_ok = true;
     }
 
 private:
     bool _touched[MAX_MPR121_PINS];
     bool _changed[MAX_MPR121_PINS];
     bool _any_change;
+    bool _read_ok = true;
 };
