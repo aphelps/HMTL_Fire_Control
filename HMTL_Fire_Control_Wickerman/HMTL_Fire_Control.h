@@ -287,7 +287,9 @@ extern byte *send_buffer;
 
 #if CONTROL_MODE == CONTROL_SINGLE_QUINT
   #define POOFER1_LARGE    0x2
-  #define POOFER1_UNUSED   0x3
+  #define POOFER1_UNUSED   0x1  /* out1 is the spare; PILOT owns out3 (a stale
+                                 * "UNUSED 0x3" label here caused a field
+                                 * mis-wire of the pilot valve, 2026-08-29) */
 
   #define POOFER2_POOF1    0x0
   #define POOFER2_POOF2    0x1
